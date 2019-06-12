@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?data-format version="0.400"?>
+<Form>
+  <Name value="master" />
+  <Caption value="Master" />
+  <Content>
+    <Panel>
+      <Name value="panel1" />
+      <Orientation value="Vertical" />
+      <Panel.Height value="#" />
+      <Panel.Width value="*" />
+      <Children>
+        <Label>
+          <Name value="label1" />
+          <Data value="Movies" />
+          <Heading value="h3" />
+          <Panel.Height value="#" />
+          <Panel.HorizontalAlignment value="Center" />
+          <Panel.Width value="80px" />
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-label" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Label>
+        <Panel>
+          <Name value="panel2" />
+          <Orientation value="Vertical" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Children>
+            <TextBox>
+              <Name value="textBox1" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Center" />
+              <Panel.Width value="450px" />
+              <Bindings>
+                <Binding SourceProperty="Data" Expression="search" />
+                <Binding SourceProperty="IsRequiredMarkVisible" Expression="search.isRequired()" />
+                <Binding SourceProperty="Caption" Expression="search.caption()" />
+              </Bindings>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-textbox" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </TextBox>
+          </Children>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-panel" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Panel>
+        <FormPlaceholder>
+          <Name value="formPlaceholder1" />
+          <InitialForm reference="+UiParts.list" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+        </FormPlaceholder>
+      </Children>
+      <CssClass>
+        <CssClassConditional>
+          <ClassName value="{theme}-panel" />
+          <IsThemedStyle value="True" />
+        </CssClassConditional>
+      </CssClass>
+    </Panel>
+  </Content>
+  <DataContext>
+    <DataContext>
+      <Children>
+        <Attribute>
+          <Name value="search" />
+          <Caption value="Search" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
+      </Children>
+    </DataContext>
+  </DataContext>
+</Form>

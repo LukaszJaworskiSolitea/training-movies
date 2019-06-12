@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?data-format version="0.400"?>
+<Form>
+  <Name value="list" />
+  <Caption value="List" />
+  <Content>
+    <Panel>
+      <Name value="panel1" />
+      <Orientation value="Vertical" />
+      <Panel.Height value="#" />
+      <Panel.Width value="*" />
+      <Children>
+        <DataTable>
+          <Name value="dataTable1" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Bindings>
+            <Binding SourceProperty="DataItems" Expression="form.all_movies" />
+          </Bindings>
+          <Columns>
+            <DataColumn>
+              <Name value="name" />
+              <Caption value="Title" />
+              <Content>
+                <Label>
+                  <Name value="label1" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="name" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Content>
+              <HeaderCssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-datacolumn" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </HeaderCssClass>
+            </DataColumn>
+            <DataColumn>
+              <Name value="type" />
+              <Caption value="Type" />
+              <Content>
+                <Label>
+                  <Name value="label2" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="type" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Content>
+              <HeaderCssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-datacolumn" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </HeaderCssClass>
+            </DataColumn>
+            <DataColumn>
+              <Name value="yearOfRelease" />
+              <Caption value="Year of release" />
+              <Content>
+                <Label>
+                  <Name value="label3" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="yearOfRelease" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Content>
+              <HeaderCssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-datacolumn" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </HeaderCssClass>
+            </DataColumn>
+          </Columns>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-datatable" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </DataTable>
+      </Children>
+      <CssClass>
+        <CssClassConditional>
+          <ClassName value="{theme}-panel" />
+          <IsThemedStyle value="True" />
+        </CssClassConditional>
+      </CssClass>
+    </Panel>
+  </Content>
+  <DataContext>
+    <DataContext>
+      <Children>
+        <Collection>
+          <Name value="all_movies" />
+          <Caption value="All _ movies" />
+          <Children>
+            <Include>
+              <Include reference="+DataEntities.movie" />
+            </Include>
+          </Children>
+        </Collection>
+      </Children>
+    </DataContext>
+  </DataContext>
+  <OnCreate>
+    <ActionEvent ReferencedAction="~handler_list_OnCreate" />
+  </OnCreate>
+  <Actions>
+    <ActionBlock>
+      <Name value="get_list" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[
+
+var response = apiobjects.get_list.getAsync("")
+
+if response.isError() then 
+	system.console(response.getErrorMessage())
+else 
+	form.all_movies.fromJson(response.getJsonString())
+endif
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_list_OnCreate" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.actions.initList()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="initList" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.actions.get_list()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+  </Actions>
+</Form>
