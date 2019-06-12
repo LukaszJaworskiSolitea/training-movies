@@ -90,6 +90,30 @@
                 </CssClassConditional>
               </HeaderCssClass>
             </DataColumn>
+            <DataColumn>
+              <Name value="dataColumn1" />
+              <Caption value="Score" />
+              <Content>
+                <Label>
+                  <Name value="label4" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="rating.score" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Content>
+              <HeaderCssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-datacolumn" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </HeaderCssClass>
+            </DataColumn>
           </Columns>
           <CssClass>
             <CssClassConditional>
@@ -131,7 +155,7 @@
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
 
-var response = apiobjects.get_list.getAsync("")
+var response = apiobjects.main_server_connection.getAsync("list")
 
 if response.isError() then 
 	system.console(response.getErrorMessage())

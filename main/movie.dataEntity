@@ -34,5 +34,18 @@
         </AttributeType>
       </DeclaredType>
     </Attribute>
+    <Complex>
+      <Name value="rating" />
+      <Caption value="Rating" />
+      <Children>
+        <Attribute>
+          <Name value="score" />
+          <Caption value="Score" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
+      </Children>
+    </Complex>
   </Children>
 </DataEntity>

@@ -8,5 +8,6 @@
     <PackageItem Src="movie.dataEntity" />
     <PackageItem Src="type.metaType" />
     <PackageItem Src="globalApiObjects.globalApiObjects" />
+    <PackageItem Src="filtered_movie.dataEntity" />
   </Items>
 </Package>

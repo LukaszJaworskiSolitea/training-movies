@@ -30,23 +30,43 @@
           <Panel.Height value="#" />
           <Panel.Width value="*" />
           <Children>
-            <TextBox>
-              <Name value="textBox1" />
+            <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
+              <Name value="referenceLookup2" />
+              <Caption value="Reference lookup 2" />
+              <DataApiObject reference="+GlobalApiObjects.filtered_codelist" />
+              <DisplayMember value="name" />
+              <immediateUpdate value="True" />
               <Panel.Height value="#" />
               <Panel.HorizontalAlignment value="Center" />
-              <Panel.Width value="450px" />
+              <Panel.Width value="300px" />
               <Bindings>
-                <Binding SourceProperty="Data" Expression="search" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="search.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="search.caption()" />
+                <Binding SourceProperty="Data" Expression="filtered" />
               </Bindings>
               <CssClass>
                 <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
+                  <ClassName value="{theme}-referencelookup" />
                   <IsThemedStyle value="True" />
                 </CssClassConditional>
               </CssClass>
-            </TextBox>
+            </ReferenceLookup>
+            <ReferenceCombo>
+              <Name value="referenceCombo1" />
+              <DisplayMember value="name" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Center" />
+              <Panel.Width value="300px" />
+              <ReferenceList reference="+GlobalApiObjects.filtered_codelist" />
+              <Bindings>
+                <Binding SourceProperty="Data" Expression="filtered" />
+                <Binding SourceProperty="Caption" Expression="filtered.caption()" />
+              </Bindings>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-referencecombo" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </ReferenceCombo>
           </Children>
           <CssClass>
             <CssClassConditional>
@@ -73,13 +93,15 @@
   <DataContext>
     <DataContext>
       <Children>
-        <Attribute>
-          <Name value="search" />
-          <Caption value="Search" />
-          <DeclaredType>
-            <AttributeType />
-          </DeclaredType>
-        </Attribute>
+        <Reference>
+          <Name value="filtered" />
+          <Caption value="Filtered" />
+          <Children>
+            <Include>
+              <Include reference="+DataEntities.filtered_movie" />
+            </Include>
+          </Children>
+        </Reference>
       </Children>
     </DataContext>
   </DataContext>

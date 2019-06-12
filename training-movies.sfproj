@@ -35,5 +35,13 @@
       <ReferencedIdentity value="ServerConnection.db7b3eef075548988df768923691922c" />
       <ReferencedVersion value="3.2.0" />
     </PackageReference>
+    <PackageReference Alias="referenceLookup" IsComponentLib="True" Origin="ReferenceLookup\ReferenceLookup.package">
+      <ReferencedIdentity value="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e" />
+      <ReferencedVersion value="3.0.0" />
+    </PackageReference>
+    <PackageReference Alias="Codelist" IsComponentLib="True" Origin="Codelist\Codelist.package">
+      <ReferencedIdentity value="Codelist.2fd2d7af4a6d445bad8a58610632f8e0" />
+      <ReferencedVersion value="3.12.0" />
+    </PackageReference>
   </PackageReferences>
 </ProjectRoot>
