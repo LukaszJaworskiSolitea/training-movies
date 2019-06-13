@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?data-format version="0.400"?>
+<DataEntity>
+  <Name value="entity" />
+  <Caption value="Entity" />
+  <Children>
+    <Attribute>
+      <Name value="id" />
+      <Caption value="Id" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
+  </Children>
+</DataEntity>

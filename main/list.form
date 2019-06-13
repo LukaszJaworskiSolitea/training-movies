@@ -14,6 +14,9 @@
           <Name value="dataTable1" />
           <Panel.Height value="#" />
           <Panel.Width value="*" />
+          <OnRowActivate>
+            <ActionEvent ReferencedAction="~handler_dataTable1_OnRowActivate" />
+          </OnRowActivate>
           <Bindings>
             <Binding SourceProperty="DataItems" Expression="form.all_movies" />
           </Bindings>
@@ -172,16 +175,26 @@ endif
       <Name value="handler_list_OnCreate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.actions.initList()]]></Script>
+        <Script><![CDATA[form.actions.init_list_form()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
       </DataContext>
     </ActionBlock>
     <ActionBlock>
-      <Name value="initList" />
+      <Name value="init_list_form" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[form.actions.get_list()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_dataTable1_OnRowActivate" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[navigation.main.detail.go(params.data.id)]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

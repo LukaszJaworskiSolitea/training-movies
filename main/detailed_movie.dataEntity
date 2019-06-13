@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?data-format version="0.400"?>
+<DataEntity>
+  <Name value="detailed_movie" />
+  <Caption value="Detailed _ movie" />
+  <Children>
+    <Attribute>
+      <Name value="id" />
+      <Caption value="Id" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
+    <Attribute>
+      <Name value="name" />
+      <Caption value="Name" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
+    <Attribute>
+      <Name value="type" />
+      <Caption value="Type" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
+    <Attribute>
+      <Name value="yearOfRelease" />
+      <Caption value="Year of release" />
+      <DeclaredType>
+        <AttributeType>
+          <BaseType value="Integer" />
+        </AttributeType>
+      </DeclaredType>
+    </Attribute>
+    <Attribute>
+      <Name value="mainDirector" />
+      <Caption value="Main director" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
+    <Collection>
+      <Name value="starring" />
+      <Caption value="Starring" />
+      <Children>
+        <Attribute>
+          <Name value="actorName" />
+          <Caption value="Actor name" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
+      </Children>
+    </Collection>
+    <Collection>
+      <Name value="genres" />
+      <Caption value="Genres" />
+      <Children>
+        <Attribute>
+          <Name value="genre" />
+          <Caption value="Genre" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
+      </Children>
+    </Collection>
+    <Attribute>
+      <Name value="description" />
+      <Caption value="Description" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
+    <Complex>
+      <Name value="rating" />
+      <Caption value="Rating" />
+      <Children>
+        <Attribute>
+          <Name value="dateOfWatching" />
+          <Caption value="Date of watching" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
+        <Attribute>
+          <Name value="seenItWhole" />
+          <Caption value="Seen it whole" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
+        <Attribute>
+          <Name value="score" />
+          <Caption value="Score" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Integer" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
+      </Children>
+    </Complex>
+  </Children>
+</DataEntity>

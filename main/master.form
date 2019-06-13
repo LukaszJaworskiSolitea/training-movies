@@ -29,45 +29,6 @@
           <Orientation value="Vertical" />
           <Panel.Height value="#" />
           <Panel.Width value="*" />
-          <Children>
-            <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
-              <Name value="referenceLookup2" />
-              <Caption value="Reference lookup 2" />
-              <DataApiObject reference="+GlobalApiObjects.filtered_codelist" />
-              <DisplayMember value="name" />
-              <immediateUpdate value="True" />
-              <Panel.Height value="#" />
-              <Panel.HorizontalAlignment value="Center" />
-              <Panel.Width value="300px" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="filtered" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-referencelookup" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </ReferenceLookup>
-            <ReferenceCombo>
-              <Name value="referenceCombo1" />
-              <DisplayMember value="name" />
-              <Panel.Height value="#" />
-              <Panel.HorizontalAlignment value="Center" />
-              <Panel.Width value="300px" />
-              <ReferenceList reference="+GlobalApiObjects.filtered_codelist" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="filtered" />
-                <Binding SourceProperty="Caption" Expression="filtered.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-referencecombo" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </ReferenceCombo>
-          </Children>
           <CssClass>
             <CssClassConditional>
               <ClassName value="{theme}-panel" />

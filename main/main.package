@@ -9,5 +9,7 @@
     <PackageItem Src="type.metaType" />
     <PackageItem Src="globalApiObjects.globalApiObjects" />
     <PackageItem Src="filtered_movie.dataEntity" />
+    <PackageItem Src="detail.form" />
+    <PackageItem Src="detailed_movie.dataEntity" />
   </Items>
 </Package>
