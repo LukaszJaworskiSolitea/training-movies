@@ -580,6 +580,65 @@
             </CssClassConditional>
           </CssClass>
         </Repeater>
+        <Panel>
+          <Name value="panel16" />
+          <Orientation value="Horizontal" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Children>
+            <Button>
+              <Name value="button1" />
+              <Caption value="Send new to database" />
+              <Panel.Height value="#" />
+              <Panel.Width value="150px" />
+              <OnClick>
+                <ActionEvent ReferencedAction="~handler_button1_OnClick" />
+              </OnClick>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-button" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Button>
+            <Button>
+              <Name value="button2" />
+              <Caption value="Update" />
+              <Panel.Height value="#" />
+              <Panel.Width value="150px" />
+              <OnClick>
+                <ActionEvent ReferencedAction="~handler_button2_OnClick" />
+              </OnClick>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-button" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Button>
+            <Button>
+              <Name value="button3" />
+              <Caption value="Delete" />
+              <Panel.Height value="#" />
+              <Panel.Width value="150px" />
+              <OnClick>
+                <ActionEvent ReferencedAction="~handler_button3_OnClick" />
+              </OnClick>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-button" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Button>
+          </Children>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-panel" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Panel>
       </Children>
       <CssClass>
         <CssClassConditional>
@@ -608,6 +667,38 @@
             <Include>
               <Include reference="+DataEntities.detailed_movie" />
             </Include>
+            <Attribute>
+              <Name value="id" />
+              <Caption value="Id" />
+              <DeclaredType>
+                <AttributeType />
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Complex>
+        <Complex>
+          <Name value="POSTcreate" />
+          <Caption value="POS tcreate" />
+          <Children>
+            <Include>
+              <Include reference="+DataEntities.detailed_movie" />
+            </Include>
+          </Children>
+        </Complex>
+        <Complex>
+          <Name value="POSTupdate" />
+          <Caption value="POS tupdate" />
+          <Children>
+            <Include>
+              <Include reference="+DataEntities.detailed_movie" />
+            </Include>
+            <Attribute>
+              <Name value="id" />
+              <Caption value="Id" />
+              <DeclaredType>
+                <AttributeType />
+              </DeclaredType>
+            </Attribute>
           </Children>
         </Complex>
       </Children>
@@ -630,7 +721,8 @@
     <ActionBlock>
       <Name value="init_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.actions.get_detail()]]></Script>
+        <Script><![CDATA[form.actions.get_detail()
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -647,6 +739,71 @@ if response.isError() then
 	system.console(response.getErrorMessage())
 else 
 	form.detailedMovie.fromJson(response.getJsonString())	
+endif
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_button1_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.POSTcreate.fromJson(form.detailedMovie.toJson())
+var data=form.POSTcreate.toJson()
+
+var response = apiobjects.main_server_connection.postAsync("create",data)
+
+if response.isError() then 
+	system.console(response.getErrorMessage())
+else 
+	//form.detailedMovie.fromJson(response.getJsonString())	
+	system.alert("done")
+endif
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_button2_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[
+
+form.POSTupdate.fromJson(form.detailedMovie.toJson())
+var data=form.POSTupdate.toJson()
+
+var response = apiobjects.main_server_connection.postAsync("update",data)
+
+if response.isError() then 
+	system.console(response.getErrorMessage())
+else 
+	//form.detailedMovie.fromJson(response.getJsonString())	
+	system.alert("done")
+endif
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_button3_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[//it is working but don't know why :( :(
+var data=form.detailedMovie.toJson()
+
+var response = apiobjects.main_server_connection.postAsync("delete",data)
+
+if response.isError() then 
+	system.console(response.getErrorMessage())
+else 
+	//form.detailedMovie.fromJson(response.getJsonString())	
+	system.alert("done")
 endif
 ]]></Script>
       </ActionLangBody>

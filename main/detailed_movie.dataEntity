@@ -5,13 +5,6 @@
   <Caption value="Detailed _ movie" />
   <Children>
     <Attribute>
-      <Name value="id" />
-      <Caption value="Id" />
-      <DeclaredType>
-        <AttributeType />
-      </DeclaredType>
-    </Attribute>
-    <Attribute>
       <Name value="name" />
       <Caption value="Name" />
       <DeclaredType>
