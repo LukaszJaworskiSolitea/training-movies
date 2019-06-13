@@ -47,5 +47,13 @@
       <ReferencedIdentity value="jQueryPackage.969dfbfe76454b4187e210594a2a988b" />
       <ReferencedVersion value="0.0.0" />
     </PackageReference>
+    <PackageReference Alias="UrlRouter" IsComponentLib="True" Origin="UrlRouter\UrlRouter.package">
+      <ReferencedIdentity value="UrlRouter.69a71809c45249cbb2999d13bb9100c0" />
+      <ReferencedVersion value="3.0.2" />
+    </PackageReference>
+    <PackageReference Alias="Breadcrumbs" IsComponentLib="True" Origin="Breadcrumbs\Breadcrumbs.package">
+      <ReferencedIdentity value="Breadcrumbs.4d3eeadca3c54f1caa1d677db7e07acb" />
+      <ReferencedVersion value="1.0.2" />
+    </PackageReference>
   </PackageReferences>
 </ProjectRoot>

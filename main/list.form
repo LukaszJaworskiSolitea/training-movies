@@ -362,7 +362,9 @@ endif
 form.sorting.year=true
 form.sorting.score=true
 
-
+apiobjects.breadcrumbsCtrl1.removeAll()
+apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",false)
+apiobjects.urlRouter1.clearUrl()
 
 form.actions.get_list()
 ]]></Script>
@@ -375,7 +377,7 @@ form.actions.get_list()
       <Name value="handler_dataTable1_OnRowActivate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[navigation.main.detail.go(params.data.id)]]></Script>
+        <Script><![CDATA[navigation.main.detail.go(params.data.id,params.data.name)]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

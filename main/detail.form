@@ -702,6 +702,15 @@
             </Attribute>
           </Children>
         </Complex>
+        <Attribute>
+          <Name value="name" />
+          <Caption value="Name" />
+          <DataContextParameter.IsInput value="True" />
+          <DataContextParameter.IsInputRequired value="True" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
       </Children>
     </DataContext>
   </DataContext>
@@ -722,7 +731,19 @@
     <ActionBlock>
       <Name value="init_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.actions.get_detail()
+        <Script><![CDATA[
+apiobjects.breadcrumbsCtrl1.removeAll()
+apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",true)
+apiobjects.breadcrumbsCtrl1.addBreadcrumb("detail",form.name,"","",false)
+
+var url=apiobjects.urlRouter1.findFormUrl(navigation.main.detail.fullName)
+url.addString("id",form.id)
+url.updatePageUrl()
+
+
+
+
+form.actions.get_detail()
 ]]></Script>
       </ActionLangBody>
       <DataContext>
