@@ -780,8 +780,7 @@ var response = apiobjects.main_server_connection.postAsync("create",data)
 if response.isError() then 
 	system.console(response.getErrorMessage())
 else 
-	//form.detailedMovie.fromJson(response.getJsonString())	
-	system.alert("done")
+	navigation.main.list.go()
 endif
 ]]></Script>
       </ActionLangBody>

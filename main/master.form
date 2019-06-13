@@ -63,14 +63,16 @@
           <CssClass>
             <CssClassConditional>
               <ClassName value="{theme}-panel" />
-              <IsThemedStyle value="True" />
+            </CssClassConditional>
+            <CssClassConditional>
+              <ClassName value="navbar" />
             </CssClassConditional>
           </CssClass>
         </Panel>
         <Panel>
-          <Name value="panel2" />
-          <Orientation value="Vertical" />
-          <Panel.Height value="#" />
+          <Name value="ThisIsBuffor" />
+          <Orientation value="Horizontal" />
+          <Panel.Height value="90px" />
           <Panel.Width value="*" />
           <CssClass>
             <CssClassConditional>

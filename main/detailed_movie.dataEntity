@@ -7,6 +7,7 @@
     <Attribute>
       <Name value="name" />
       <Caption value="Name" />
+      <IsRequired value="True" />
       <DeclaredType>
         <AttributeType />
       </DeclaredType>
@@ -14,6 +15,7 @@
     <Attribute>
       <Name value="type" />
       <Caption value="Type" />
+      <IsRequired value="True" />
       <MetaType reference="+MetaTypes.type" />
     </Attribute>
     <Attribute>
@@ -39,6 +41,7 @@
         <Attribute>
           <Name value="actorName" />
           <Caption value="Actor name" />
+          <IsRequired value="True" />
           <DeclaredType>
             <AttributeType />
           </DeclaredType>
@@ -52,6 +55,7 @@
         <Attribute>
           <Name value="genre" />
           <Caption value="Genre" />
+          <IsRequired value="True" />
           <DeclaredType>
             <AttributeType />
           </DeclaredType>
@@ -81,6 +85,7 @@
         <Attribute>
           <Name value="seenItWhole" />
           <Caption value="Seen it whole" />
+          <IsRequired value="True" />
           <DeclaredType>
             <AttributeType>
               <BaseType value="Bool" />
@@ -90,6 +95,7 @@
         <Attribute>
           <Name value="score" />
           <Caption value="Score" />
+          <IsRequired value="True" />
           <DeclaredType>
             <AttributeType>
               <BaseType value="Integer" />
@@ -117,6 +123,7 @@
         <Attribute>
           <Name value="number" />
           <Caption value="Number" />
+          <IsRequired value="True" />
           <DeclaredType>
             <AttributeType />
           </DeclaredType>
@@ -148,6 +155,7 @@
                 <Attribute>
                   <Name value="seenItWhole" />
                   <Caption value="Seen it whole" />
+                  <IsRequired value="True" />
                   <DeclaredType>
                     <AttributeType>
                       <BaseType value="Bool" />
@@ -157,6 +165,7 @@
                 <Attribute>
                   <Name value="score" />
                   <Caption value="Score" />
+                  <IsRequired value="True" />
                   <DeclaredType>
                     <AttributeType>
                       <BaseType value="Integer" />

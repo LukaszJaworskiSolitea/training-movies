@@ -11,5 +11,6 @@
     <PackageItem Src="filtered_movie.dataEntity" />
     <PackageItem Src="detail.form" />
     <PackageItem Src="detailed_movie.dataEntity" />
+    <ResourceItem ResourceName="styles.css" LinkerAction="Css" OutputFileName="styles.css" Src="styles.css" />
   </Items>
 </Package>
