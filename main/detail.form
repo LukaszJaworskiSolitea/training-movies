@@ -60,10 +60,10 @@
                         </CssClassConditional>
                       </CssClass>
                     </TextBox>
-                    <TextBox>
-                      <Name value="textBox13" />
+                    <EnumCombo>
+                      <Name value="enumCombo1" />
                       <Panel.Height value="#" />
-                      <Panel.Width value="*" />
+                      <Panel.Width value="300px" />
                       <Bindings>
                         <Binding SourceProperty="Data" Expression="detailedMovie.type" />
                         <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.type.isRequired()" />
@@ -71,11 +71,11 @@
                       </Bindings>
                       <CssClass>
                         <CssClassConditional>
-                          <ClassName value="{theme}-textbox" />
+                          <ClassName value="{theme}-enumcombo" />
                           <IsThemedStyle value="True" />
                         </CssClassConditional>
                       </CssClass>
-                    </TextBox>
+                    </EnumCombo>
                     <TextBox>
                       <Name value="textBox14" />
                       <Panel.Height value="#" />

@@ -21,9 +21,7 @@
     <Attribute>
       <Name value="type" />
       <Caption value="Type" />
-      <DeclaredType>
-        <AttributeType />
-      </DeclaredType>
+      <MetaType reference="+MetaTypes.type" />
     </Attribute>
     <Attribute>
       <Name value="yearOfRelease" />
