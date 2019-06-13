@@ -9,5 +9,21 @@
       <listsUrl value="" />
       <rootUrl value="http://localhost:8080/" />
     </ServerConnection>
+    <Codelist identity="Codelist.2fd2d7af4a6d445bad8a58610632f8e0">
+      <Name value="codelist1" />
+      <filterByDate value="False" />
+      <name value="list" />
+      <server reference="~main_server_connection" />
+      <columns>
+        <CodelistColumn identity="Codelist.2fd2d7af4a6d445bad8a58610632f8e0">
+          <columnName value="id" />
+          <columnRole value="Key" />
+        </CodelistColumn>
+        <CodelistColumn identity="Codelist.2fd2d7af4a6d445bad8a58610632f8e0">
+          <columnName value="name" />
+          <columnRole value="Description" />
+        </CodelistColumn>
+      </columns>
+    </Codelist>
   </ApiObjects>
 </GlobalApiObjects>

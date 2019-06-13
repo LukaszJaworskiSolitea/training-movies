@@ -82,7 +82,9 @@
           <Name value="dateOfWatching" />
           <Caption value="Date of watching" />
           <DeclaredType>
-            <AttributeType />
+            <AttributeType>
+              <BaseType value="Date" />
+            </AttributeType>
           </DeclaredType>
         </Attribute>
         <Attribute>
@@ -100,6 +102,8 @@
           <DeclaredType>
             <AttributeType>
               <BaseType value="Integer" />
+              <IntMax value="5" />
+              <IntMin value="1" />
             </AttributeType>
           </DeclaredType>
         </Attribute>

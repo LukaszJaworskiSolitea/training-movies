@@ -24,6 +24,25 @@
             </CssClassConditional>
           </CssClass>
         </Label>
+        <ReferenceCombo>
+          <Name value="referenceCombo1" />
+          <DisplayMember value="name" />
+          <Panel.Height value="#" />
+          <Panel.HorizontalAlignment value="Center" />
+          <Panel.Width value="300px" />
+          <ReferenceList reference="+GlobalApiObjects.codelist1" />
+          <Bindings>
+            <Binding SourceProperty="Data" Expression="filtered" />
+            <Binding SourceProperty="IsRequiredMarkVisible" Expression="filtered.isRequired()" />
+            <Binding SourceProperty="Caption" Expression="filtered.caption()" />
+          </Bindings>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-referencecombo" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </ReferenceCombo>
         <Panel>
           <Name value="panel2" />
           <Orientation value="Vertical" />

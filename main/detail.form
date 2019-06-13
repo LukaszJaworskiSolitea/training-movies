@@ -16,228 +16,288 @@
           <Panel.Height value="#" />
           <Panel.Width value="*" />
           <Children>
-            <TextBox>
-              <Name value="textBox11" />
+            <Panel>
+              <Name value="panel11" />
+              <Orientation value="Horizontal" />
               <Panel.Height value="#" />
               <Panel.Width value="*" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="detailedMovie.id" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.id.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="detailedMovie.id.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </TextBox>
-            <TextBox>
-              <Name value="textBox12" />
-              <Panel.Height value="#" />
-              <Panel.Width value="*" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="detailedMovie.name" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.name.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="detailedMovie.name.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </TextBox>
-            <TextBox>
-              <Name value="textBox13" />
-              <Panel.Height value="#" />
-              <Panel.Width value="*" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="detailedMovie.type" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.type.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="detailedMovie.type.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </TextBox>
-            <TextBox>
-              <Name value="textBox14" />
-              <Panel.Height value="#" />
-              <Panel.Width value="*" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="detailedMovie.yearOfRelease" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.yearOfRelease.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="detailedMovie.yearOfRelease.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </TextBox>
-            <TextBox>
-              <Name value="textBox15" />
-              <Panel.Height value="#" />
-              <Panel.Width value="*" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="detailedMovie.mainDirector" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.mainDirector.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="detailedMovie.mainDirector.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </TextBox>
-            <GroupBox>
-              <Name value="groupBox4" />
-              <Panel.Height value="#" />
-              <Panel.Width value="*" />
-              <Content>
-                <Repeater>
-                  <Name value="repeater4" />
-                  <Content>
-                    <Panel>
-                      <Name value="panel7" />
-                      <Orientation value="Vertical" />
-                      <Children>
-                        <TextBox>
-                          <Name value="textBox16" />
-                          <Panel.Height value="#" />
-                          <Panel.Width value="*" />
-                          <Bindings>
-                            <Binding SourceProperty="Data" Expression="actorName" />
-                            <Binding SourceProperty="IsRequiredMarkVisible" Expression="actorName.isRequired()" />
-                            <Binding SourceProperty="Caption" Expression="actorName.caption()" />
-                          </Bindings>
-                          <CssClass>
-                            <CssClassConditional>
-                              <ClassName value="{theme}-textbox" />
-                              <IsThemedStyle value="True" />
-                            </CssClassConditional>
-                          </CssClass>
-                        </TextBox>
-                      </Children>
+              <Children>
+                <Panel>
+                  <Name value="panel12" />
+                  <Orientation value="Vertical" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="42%" />
+                  <Children>
+                    <TextBox>
+                      <Name value="textBox11" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="*" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="detailedMovie.id" />
+                        <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.id.isRequired()" />
+                        <Binding SourceProperty="Caption" Expression="detailedMovie.id.caption()" />
+                      </Bindings>
                       <CssClass>
                         <CssClassConditional>
-                          <ClassName value="{theme}-panel" />
+                          <ClassName value="{theme}-textbox" />
                           <IsThemedStyle value="True" />
                         </CssClassConditional>
                       </CssClass>
-                    </Panel>
-                  </Content>
-                  <Bindings>
-                    <Binding SourceProperty="DataItems" Expression="detailedMovie.starring" />
-                  </Bindings>
-                  <CssClass>
-                    <CssClassConditional>
-                      <ClassName value="{theme}-repeater" />
-                      <IsThemedStyle value="True" />
-                    </CssClassConditional>
-                  </CssClass>
-                </Repeater>
-              </Content>
-              <Bindings>
-                <Binding SourceProperty="Caption" Expression="detailedMovie.starring.caption()" />
-              </Bindings>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-groupbox" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </GroupBox>
-            <GroupBox>
-              <Name value="groupBox5" />
-              <Panel.Height value="#" />
-              <Panel.Width value="*" />
-              <Content>
-                <Repeater>
-                  <Name value="repeater5" />
-                  <Content>
-                    <Panel>
-                      <Name value="panel8" />
-                      <Orientation value="Vertical" />
-                      <Children>
-                        <TextBox>
-                          <Name value="textBox17" />
-                          <Panel.Height value="#" />
-                          <Panel.Width value="*" />
-                          <Bindings>
-                            <Binding SourceProperty="Data" Expression="genre" />
-                            <Binding SourceProperty="IsRequiredMarkVisible" Expression="genre.isRequired()" />
-                            <Binding SourceProperty="Caption" Expression="genre.caption()" />
-                          </Bindings>
-                          <CssClass>
-                            <CssClassConditional>
-                              <ClassName value="{theme}-textbox" />
-                              <IsThemedStyle value="True" />
-                            </CssClassConditional>
-                          </CssClass>
-                        </TextBox>
-                      </Children>
+                    </TextBox>
+                    <TextBox>
+                      <Name value="textBox12" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="*" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="detailedMovie.name" />
+                        <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.name.isRequired()" />
+                        <Binding SourceProperty="Caption" Expression="detailedMovie.name.caption()" />
+                      </Bindings>
                       <CssClass>
                         <CssClassConditional>
-                          <ClassName value="{theme}-panel" />
+                          <ClassName value="{theme}-textbox" />
                           <IsThemedStyle value="True" />
                         </CssClassConditional>
                       </CssClass>
-                    </Panel>
-                  </Content>
-                  <Bindings>
-                    <Binding SourceProperty="DataItems" Expression="detailedMovie.genres" />
-                  </Bindings>
+                    </TextBox>
+                    <TextBox>
+                      <Name value="textBox13" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="*" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="detailedMovie.type" />
+                        <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.type.isRequired()" />
+                        <Binding SourceProperty="Caption" Expression="detailedMovie.type.caption()" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-textbox" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </TextBox>
+                    <TextBox>
+                      <Name value="textBox14" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="*" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="detailedMovie.yearOfRelease" />
+                        <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.yearOfRelease.isRequired()" />
+                        <Binding SourceProperty="Caption" Expression="detailedMovie.yearOfRelease.caption()" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-textbox" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </TextBox>
+                    <TextBox>
+                      <Name value="textBox15" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="*" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="detailedMovie.mainDirector" />
+                        <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.mainDirector.isRequired()" />
+                        <Binding SourceProperty="Caption" Expression="detailedMovie.mainDirector.caption()" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-textbox" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </TextBox>
+                  </Children>
                   <CssClass>
                     <CssClassConditional>
-                      <ClassName value="{theme}-repeater" />
+                      <ClassName value="{theme}-panel" />
                       <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
-                </Repeater>
-              </Content>
-              <Bindings>
-                <Binding SourceProperty="Caption" Expression="detailedMovie.genres.caption()" />
-              </Bindings>
+                </Panel>
+                <Panel>
+                  <Name value="panel13" />
+                  <Orientation value="Horizontal" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="*" />
+                  <Children>
+                    <TextBox>
+                      <Name value="textBox18" />
+                      <CaptionHAlign value="Center" />
+                      <CaptionLength value="0px" />
+                      <InputType value="Multiline" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="*" />
+                      <Rows value="11" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="detailedMovie.description" />
+                        <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.description.isRequired()" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-textbox" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </TextBox>
+                  </Children>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-panel" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Panel>
+              </Children>
               <CssClass>
                 <CssClassConditional>
-                  <ClassName value="{theme}-groupbox" />
+                  <ClassName value="{theme}-panel" />
                   <IsThemedStyle value="True" />
                 </CssClassConditional>
               </CssClass>
-            </GroupBox>
-            <TextBox>
-              <Name value="textBox18" />
+            </Panel>
+            <Panel>
+              <Name value="panel10" />
+              <Orientation value="Horizontal" />
               <Panel.Height value="#" />
               <Panel.Width value="*" />
-              <Bindings>
-                <Binding SourceProperty="Data" Expression="detailedMovie.description" />
-                <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.description.isRequired()" />
-                <Binding SourceProperty="Caption" Expression="detailedMovie.description.caption()" />
-              </Bindings>
+              <Children>
+                <GroupBox>
+                  <Name value="groupBox4" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="50%" />
+                  <Content>
+                    <Repeater>
+                      <Name value="repeater4" />
+                      <Content>
+                        <Panel>
+                          <Name value="panel7" />
+                          <Orientation value="Horizontal" />
+                          <Children>
+                            <TextBox>
+                              <Name value="textBox16" />
+                              <CaptionLength value="0px" />
+                              <Panel.Height value="#" />
+                              <Panel.Width value="*" />
+                              <Bindings>
+                                <Binding SourceProperty="Data" Expression="actorName" />
+                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="actorName.isRequired()" />
+                              </Bindings>
+                              <CssClass>
+                                <CssClassConditional>
+                                  <ClassName value="{theme}-textbox" />
+                                  <IsThemedStyle value="True" />
+                                </CssClassConditional>
+                              </CssClass>
+                            </TextBox>
+                          </Children>
+                          <CssClass>
+                            <CssClassConditional>
+                              <ClassName value="{theme}-panel" />
+                              <IsThemedStyle value="True" />
+                            </CssClassConditional>
+                          </CssClass>
+                        </Panel>
+                      </Content>
+                      <Bindings>
+                        <Binding SourceProperty="DataItems" Expression="detailedMovie.starring" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-repeater" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Repeater>
+                  </Content>
+                  <Bindings>
+                    <Binding SourceProperty="Caption" Expression="detailedMovie.starring.caption()" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-groupbox" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </GroupBox>
+                <GroupBox>
+                  <Name value="groupBox5" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="50%" />
+                  <Content>
+                    <Repeater>
+                      <Name value="repeater5" />
+                      <Content>
+                        <Panel>
+                          <Name value="panel8" />
+                          <Orientation value="Vertical" />
+                          <Children>
+                            <TextBox>
+                              <Name value="textBox17" />
+                              <CaptionLength value="0px" />
+                              <Panel.Height value="#" />
+                              <Panel.Width value="*" />
+                              <Bindings>
+                                <Binding SourceProperty="Data" Expression="genre" />
+                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="genre.isRequired()" />
+                              </Bindings>
+                              <CssClass>
+                                <CssClassConditional>
+                                  <ClassName value="{theme}-textbox" />
+                                  <IsThemedStyle value="True" />
+                                </CssClassConditional>
+                              </CssClass>
+                            </TextBox>
+                          </Children>
+                          <CssClass>
+                            <CssClassConditional>
+                              <ClassName value="{theme}-panel" />
+                              <IsThemedStyle value="True" />
+                            </CssClassConditional>
+                          </CssClass>
+                        </Panel>
+                      </Content>
+                      <Bindings>
+                        <Binding SourceProperty="DataItems" Expression="detailedMovie.genres" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-repeater" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Repeater>
+                  </Content>
+                  <Bindings>
+                    <Binding SourceProperty="Caption" Expression="detailedMovie.genres.caption()" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-groupbox" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </GroupBox>
+              </Children>
               <CssClass>
                 <CssClassConditional>
-                  <ClassName value="{theme}-textbox" />
+                  <ClassName value="{theme}-panel" />
                   <IsThemedStyle value="True" />
                 </CssClassConditional>
               </CssClass>
-            </TextBox>
+            </Panel>
             <Panel>
               <Name value="panel9" />
               <Orientation value="Vertical" />
               <Panel.Height value="#" />
               <Panel.Width value="*" />
               <Children>
-                <TextBox>
-                  <Name value="textBox19" />
+                <DatePicker>
+                  <Name value="datePicker1" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="*" />
+                  <Panel.Width value="300px" />
+                  <TimePrecision value="NoTime" />
                   <Bindings>
                     <Binding SourceProperty="Data" Expression="detailedMovie.rating.dateOfWatching" />
                     <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.rating.dateOfWatching.isRequired()" />
@@ -245,11 +305,11 @@
                   </Bindings>
                   <CssClass>
                     <CssClassConditional>
-                      <ClassName value="{theme}-textbox" />
+                      <ClassName value="{theme}-datepicker" />
                       <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
-                </TextBox>
+                </DatePicker>
                 <CheckBox>
                   <Name value="checkBox2" />
                   <Panel.Height value="#" />
@@ -268,8 +328,10 @@
                 </CheckBox>
                 <TextBox>
                   <Name value="textBox20" />
+                  <InputType value="Numeric" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="*" />
+                  <Panel.Width value="200px" />
+                  <TextAlign value="Right" />
                   <Bindings>
                     <Binding SourceProperty="Data" Expression="detailedMovie.rating.score" />
                     <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.rating.score.isRequired()" />
