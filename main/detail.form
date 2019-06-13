@@ -30,6 +30,7 @@
                   <Children>
                     <TextBox>
                       <Name value="textBox11" />
+                      <IsEnabled value="False" />
                       <Panel.Height value="#" />
                       <Panel.Width value="*" />
                       <Bindings>

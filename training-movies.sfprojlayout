@@ -112,7 +112,7 @@
     </UIElement>
     <UIElement xsi:type="Workspace" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44">
       <Content xsi:type="TabbedMdiHost">
-        <Content xsi:type="TabbedMdiContainer" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" SelectedWindowUniqueId="e7c99c4a-d9a5-455a-9422-823430900c18">
+        <Content xsi:type="TabbedMdiContainer" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" SelectedWindowUniqueId="0abb62b5-b0e5-4dd0-8817-8a0efa4a4c68">
           <UIElement xsi:type="Track" UniqueId="65c9eeb3-5368-43b4-a6c8-493d80a96c76" />
           <UIElement xsi:type="Track" UniqueId="3d69818d-a29c-45df-a5b5-a2af4602476e" />
           <UIElement xsi:type="Track" UniqueId="1a8e3817-2cff-40ad-a213-2f695ed67155" />
@@ -123,29 +123,25 @@
                 <State Split="0">
                   <ToolsStates>
                     <State Tool="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool">
-                      <State DefaultExpanded="true">
-                  <SelectedPaths>
-                    <Item>/global API objects/codelist1</Item>
-                  </SelectedPaths>
-                </State>
+                      <State DefaultExpanded="true" />
                     </State>
                     <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
                       <State DefaultExpanded="true" />
                     </State>
                     <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
                       <Variables>
-                  <State IsEditMode="false" DefaultExpanded="false">
-                    <SavedPathStates>
-                      <Item>Form variables</Item>
-                      <Item>Form variables/filtered</Item>
-                    </SavedPathStates>
-                  </State>
-                  <Headers>
-                    <Header Width="300" Caption="Name" />
-                    <Header Width="90" Caption="Type" />
-                    <Header Width="120" Caption="Flags" />
-                  </Headers>
-                </Variables>
+                        <State IsEditMode="false" DefaultExpanded="false">
+                          <SavedPathStates>
+                            <Item>Form variables</Item>
+                            <Item>Form variables/filtered</Item>
+                          </SavedPathStates>
+                        </State>
+                        <Headers>
+                          <Header Width="300" Caption="Name" />
+                          <Header Width="90" Caption="Type" />
+                          <Header Width="120" Caption="Flags" />
+                        </Headers>
+                      </Variables>
                     </State>
                   </ToolsStates>
                   <FormTree>
@@ -223,7 +219,6 @@
                           <SavedPathStates>
                             <Item>Form variables</Item>
                             <Item>Form variables/detailedMovie</Item>
-                            <Item>Form variables/postDetailedMovie</Item>
                             <Item>Form variables/detailedMovie/seasons/episodes</Item>
                             <Item>Form variables/detailedMovie/seasons/episodes/rating</Item>
                           </SavedPathStates>
@@ -237,7 +232,11 @@
                     </State>
                   </ToolsStates>
                   <FormTree>
-                    <TreeState DefaultExpanded="true" />
+                    <TreeState DefaultExpanded="true">
+                      <SelectedPaths>
+                        <Item>detail/panel1/panel6/panel11/panel12/textBox11</Item>
+                      </SelectedPaths>
+                    </TreeState>
                     <Headers>
                       <Header Width="240" Caption="Component" />
                       <Header Width="90" Caption="Type" />
@@ -250,8 +249,8 @@
               </Data>
             </Tag>
           </UIElement>
-          <UIElement xsi:type="DocumentWindowRef" UniqueId="3b407c28-c334-4632-bc8d-2b434077e0bf">
-            <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.detail.handler_button1_OnClick">
+          <UIElement xsi:type="DocumentWindowRef" UniqueId="89cae647-c1b8-4354-be24-068ee82d6bf0">
+            <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.master.handler_filtered_OnUserChange">
               <Data>
                 <State>
                   <ToolsStates>
@@ -261,7 +260,7 @@
                     <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
                       <State DefaultExpanded="true">
                         <SelectedPaths>
-                          <Item>/form actions (detail)/handler_button1_OnClick</Item>
+                          <Item>/form actions (master)/handler_filtered_OnUserChange</Item>
                         </SelectedPaths>
                       </State>
                     </State>
@@ -271,48 +270,8 @@
                           <SavedPathStates>
                             <Item>Action parameters</Item>
                             <Item>Form variables</Item>
-                            <Item>Form variables/detailedMovie</Item>
-                            <Item>Form variables/detailedMovie/seasons/episodes</Item>
-                            <Item>Form variables/detailedMovie/seasons/episodes/rating</Item>
+                            <Item>Form variables/filtered</Item>
                           </SavedPathStates>
-                        </State>
-                        <Headers>
-                          <Header Width="300" Caption="Name" />
-                          <Header Width="90" Caption="Type" />
-                          <Header Width="120" Caption="Flags" />
-                        </Headers>
-                      </Variables>
-                    </State>
-                  </ToolsStates>
-                </State>
-              </Data>
-            </Tag>
-          </UIElement>
-          <UIElement xsi:type="DocumentWindowRef" UniqueId="e7c99c4a-d9a5-455a-9422-823430900c18">
-            <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.detail.handler_button2_OnClick">
-              <Data>
-                <State>
-                  <ToolsStates>
-                    <State Tool="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool">
-                      <State DefaultExpanded="true" />
-                    </State>
-                    <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
-                      <State DefaultExpanded="true" />
-                    </State>
-                    <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
-                      <Variables>
-                        <State IsEditMode="false" DefaultExpanded="false">
-                          <SavedPathStates>
-                            <Item>Action parameters</Item>
-                            <Item>Form variables</Item>
-                            <Item>Form variables/detailedMovie</Item>
-                            <Item>Form variables/POSTupdate</Item>
-                            <Item>Form variables/detailedMovie/seasons/episodes</Item>
-                            <Item>Form variables/detailedMovie/seasons/episodes/rating</Item>
-                          </SavedPathStates>
-                          <SelectedPaths>
-                            <Item>Form variables/POSTupdate/id</Item>
-                          </SelectedPaths>
                         </State>
                         <Headers>
                           <Header Width="300" Caption="Name" />
@@ -398,11 +357,7 @@
           <State Split="0">
             <ToolsStates>
               <State Tool="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool">
-                <State DefaultExpanded="true">
-                  <SelectedPaths>
-                    <Item>/global API objects/codelist1</Item>
-                  </SelectedPaths>
-                </State>
+                <State DefaultExpanded="true" />
               </State>
               <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
                 <State DefaultExpanded="true" />
@@ -454,7 +409,6 @@
                     <SavedPathStates>
                       <Item>Form variables</Item>
                       <Item>Form variables/detailedMovie</Item>
-                      <Item>Form variables/postDetailedMovie</Item>
                       <Item>Form variables/detailedMovie/seasons/episodes</Item>
                       <Item>Form variables/detailedMovie/seasons/episodes/rating</Item>
                     </SavedPathStates>
@@ -468,7 +422,11 @@
               </State>
             </ToolsStates>
             <FormTree>
-              <TreeState DefaultExpanded="true" />
+              <TreeState DefaultExpanded="true">
+                <SelectedPaths>
+                  <Item>detail/panel1/panel6/panel11/panel12/textBox11</Item>
+                </SelectedPaths>
+              </TreeState>
               <Headers>
                 <Header Width="240" Caption="Component" />
                 <Header Width="90" Caption="Type" />
@@ -481,8 +439,8 @@
         </Data>
       </Tag>
     </DocumentWindow>
-    <DocumentWindow UniqueId="3b407c28-c334-4632-bc8d-2b434077e0bf" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
-      <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.detail.handler_button1_OnClick">
+    <DocumentWindow UniqueId="89cae647-c1b8-4354-be24-068ee82d6bf0" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
+      <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.master.handler_filtered_OnUserChange">
         <Data>
           <State>
             <ToolsStates>
@@ -492,7 +450,7 @@
               <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
                 <State DefaultExpanded="true">
                   <SelectedPaths>
-                    <Item>/form actions (detail)/handler_button1_OnClick</Item>
+                    <Item>/form actions (master)/handler_filtered_OnUserChange</Item>
                   </SelectedPaths>
                 </State>
               </State>
@@ -502,48 +460,8 @@
                     <SavedPathStates>
                       <Item>Action parameters</Item>
                       <Item>Form variables</Item>
-                      <Item>Form variables/detailedMovie</Item>
-                      <Item>Form variables/detailedMovie/seasons/episodes</Item>
-                      <Item>Form variables/detailedMovie/seasons/episodes/rating</Item>
+                      <Item>Form variables/filtered</Item>
                     </SavedPathStates>
-                  </State>
-                  <Headers>
-                    <Header Width="300" Caption="Name" />
-                    <Header Width="90" Caption="Type" />
-                    <Header Width="120" Caption="Flags" />
-                  </Headers>
-                </Variables>
-              </State>
-            </ToolsStates>
-          </State>
-        </Data>
-      </Tag>
-    </DocumentWindow>
-    <DocumentWindow UniqueId="e7c99c4a-d9a5-455a-9422-823430900c18" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
-      <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.detail.handler_button2_OnClick">
-        <Data>
-          <State>
-            <ToolsStates>
-              <State Tool="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool">
-                <State DefaultExpanded="true" />
-              </State>
-              <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
-                <State DefaultExpanded="true" />
-              </State>
-              <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
-                <Variables>
-                  <State IsEditMode="false" DefaultExpanded="false">
-                    <SavedPathStates>
-                      <Item>Action parameters</Item>
-                      <Item>Form variables</Item>
-                      <Item>Form variables/detailedMovie</Item>
-                      <Item>Form variables/POSTupdate</Item>
-                      <Item>Form variables/detailedMovie/seasons/episodes</Item>
-                      <Item>Form variables/detailedMovie/seasons/episodes/rating</Item>
-                    </SavedPathStates>
-                    <SelectedPaths>
-                      <Item>Form variables/POSTupdate/id</Item>
-                    </SelectedPaths>
                   </State>
                   <Headers>
                     <Header Width="300" Caption="Name" />

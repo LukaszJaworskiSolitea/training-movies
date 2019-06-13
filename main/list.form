@@ -337,6 +337,7 @@ if response.isError() then
 	system.console(response.getErrorMessage())
 else 
 	form.all_movies.fromJson(response.getJsonString())
+	apiobjects.search_codelist.fillFromJson(response.getJsonString())
 endif
 ]]></Script>
       </ActionLangBody>
@@ -363,7 +364,8 @@ form.sorting.score=true
 
 
 
-form.actions.get_list()]]></Script>
+form.actions.get_list()
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

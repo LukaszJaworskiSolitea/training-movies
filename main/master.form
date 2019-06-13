@@ -24,25 +24,26 @@
             </CssClassConditional>
           </CssClass>
         </Label>
-        <ReferenceCombo>
-          <Name value="referenceCombo1" />
+        <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
+          <Name value="referenceLookup1" />
+          <Caption value="Search" />
+          <CaptionLength value="60px" />
+          <DataApiObject reference="+GlobalApiObjects.search_codelist" />
           <DisplayMember value="name" />
+          <immediateUpdate value="True" />
           <Panel.Height value="#" />
           <Panel.HorizontalAlignment value="Center" />
-          <Panel.Width value="300px" />
-          <ReferenceList reference="+GlobalApiObjects.codelist1" />
+          <Panel.Width value="500px" />
           <Bindings>
             <Binding SourceProperty="Data" Expression="filtered" />
-            <Binding SourceProperty="IsRequiredMarkVisible" Expression="filtered.isRequired()" />
-            <Binding SourceProperty="Caption" Expression="filtered.caption()" />
           </Bindings>
           <CssClass>
             <CssClassConditional>
-              <ClassName value="{theme}-referencecombo" />
+              <ClassName value="{theme}-referencelookup" />
               <IsThemedStyle value="True" />
             </CssClassConditional>
           </CssClass>
-        </ReferenceCombo>
+        </ReferenceLookup>
         <Panel>
           <Name value="panel2" />
           <Orientation value="Vertical" />
@@ -76,6 +77,9 @@
         <Reference>
           <Name value="filtered" />
           <Caption value="Filtered" />
+          <OnUserChange>
+            <ActionEvent ReferencedAction="+UiParts.master.handler_filtered_OnUserChange" />
+          </OnUserChange>
           <Children>
             <Include>
               <Include reference="+DataEntities.filtered_movie" />
@@ -85,4 +89,17 @@
       </Children>
     </DataContext>
   </DataContext>
+  <Actions>
+    <ActionBlock>
+      <Name value="handler_filtered_OnUserChange" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[navigation.main.detail.go(params.data.filtered.id)
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+  </Actions>
 </Form>
