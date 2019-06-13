@@ -10,6 +10,138 @@
       <Panel.Height value="#" />
       <Panel.Width value="*" />
       <Children>
+        <Panel>
+          <Name value="panel2" />
+          <Orientation value="Horizontal" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Children>
+            <Panel>
+              <Name value="panel3" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.Width value="25%" />
+              <Children>
+                <Label>
+                  <Name value="label5" />
+                  <Data value="Title" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="150px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_label5_OnClick" />
+                  </OnClick>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+            <Panel>
+              <Name value="panel31" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.Width value="25%" />
+              <Children>
+                <EnumCombo>
+                  <Name value="enumCombo1" />
+                  <Caption value="Type" />
+                  <CaptionLength value="70px" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="150px" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="form.type_filter" />
+                    <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.type_filter.isRequired()" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-enumcombo" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </EnumCombo>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+            <Panel>
+              <Name value="panel32" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.Width value="25%" />
+              <Children>
+                <Label>
+                  <Name value="label6" />
+                  <Data value="Year of release" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="150px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_label6_OnClick" />
+                  </OnClick>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+            <Panel>
+              <Name value="panel33" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.Width value="25%" />
+              <Children>
+                <Label>
+                  <Name value="label7" />
+                  <Data value="Score" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="150px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_label7_OnClick" />
+                  </OnClick>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+          </Children>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-panel" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Panel>
         <DataTable>
           <Name value="dataTable1" />
           <Panel.Height value="#" />
@@ -71,7 +203,7 @@
             </DataColumn>
             <DataColumn>
               <Name value="yearOfRelease" />
-              <Caption value="Year of release" />
+              <Caption value="Year of Release" />
               <Content>
                 <Label>
                   <Name value="label3" />
@@ -146,6 +278,47 @@
             </Include>
           </Children>
         </Collection>
+        <Complex>
+          <Name value="sorting" />
+          <Caption value="Sorting" />
+          <Children>
+            <Attribute>
+              <Name value="title" />
+              <Caption value="Title" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="year" />
+              <Caption value="Year" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="score" />
+              <Caption value="Score" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Complex>
+        <Attribute>
+          <Name value="type_filter" />
+          <Caption value="Type _ filter" />
+          <MetaType reference="+MetaTypes.type" />
+          <OnUserChange>
+            <ActionEvent ReferencedAction="+UiParts.list.handler_type_filter_OnUserChange" />
+          </OnUserChange>
+        </Attribute>
       </Children>
     </DataContext>
   </DataContext>
@@ -184,7 +357,13 @@ endif
     <ActionBlock>
       <Name value="init_list_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.actions.get_list()]]></Script>
+        <Script><![CDATA[form.sorting.title=true
+form.sorting.year=true
+form.sorting.score=true
+
+
+
+form.actions.get_list()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -195,6 +374,73 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[navigation.main.detail.go(params.data.id)]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_label5_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[if isTrue(form.sorting.title) then 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.name,true).toJson())
+	form.sorting.title=false
+else 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.name,false).toJson())
+	form.sorting.title=true
+endif]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_label6_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[
+
+if isTrue(form.sorting.year) then 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.yearOfRelease,true).toJson())
+	form.sorting.year=false
+else 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.yearOfRelease,false).toJson())
+	form.sorting.year=true
+endif]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_label7_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,true).toJson())
+
+if isTrue(form.sorting.score) then 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,true).toJson())
+	form.sorting.score=false
+else 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,false).toJson())
+	form.sorting.score=true
+endif]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_type_filter_OnUserChange" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[if hasValue(form.type_filter) then
+	form.actions.get_list()
+	form.all_movies.fromJson(form.all_movies.where(current.type=form.type_filter.enumValue()).toJson())
+else 
+	form.actions.get_list()
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

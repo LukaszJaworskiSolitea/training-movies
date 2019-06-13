@@ -43,5 +43,9 @@
       <ReferencedIdentity value="Codelist.2fd2d7af4a6d445bad8a58610632f8e0" />
       <ReferencedVersion value="3.12.0" />
     </PackageReference>
+    <PackageReference Alias="jQueryPackage" IsComponentLib="True" Origin="jQueryPackage\jQueryPackage.package">
+      <ReferencedIdentity value="jQueryPackage.969dfbfe76454b4187e210594a2a988b" />
+      <ReferencedVersion value="0.0.0" />
+    </PackageReference>
   </PackageReferences>
 </ProjectRoot>
