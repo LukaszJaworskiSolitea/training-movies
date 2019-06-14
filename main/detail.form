@@ -833,7 +833,7 @@
                                     </DataColumn>
                                     <DataColumn>
                                       <Name value="dataColumn3" />
-                                      <Caption value="Seen in whole" />
+                                      <Caption value="Seen it whole" />
                                       <Content>
                                         <Panel>
                                           <Name value="panel15" />
@@ -1386,6 +1386,47 @@
             </CssClassConditional>
           </CssClass>
         </Panel>
+        <Panel>
+          <Name value="panel40" />
+          <Orientation value="Horizontal" />
+          <Panel.Height value="42px" />
+          <Panel.Width value="*" />
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-panel" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Panel>
+        <Panel>
+          <Name value="panel35" />
+          <Orientation value="Vertical" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Children>
+            <Label>
+              <Name value="label2" />
+              <Data value="Copyright 2019" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Center" />
+              <Panel.Width value="150px" />
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-label" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Label>
+          </Children>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-panel" />
+            </CssClassConditional>
+            <CssClassConditional>
+              <ClassName value="navbar" />
+            </CssClassConditional>
+          </CssClass>
+        </Panel>
       </Children>
       <CssClass>
         <CssClassConditional>
@@ -1410,6 +1451,7 @@
         <Complex>
           <Name value="detailedMovie" />
           <Caption value="Detailed movie" />
+          <IsRequired value="True" />
           <Children>
             <Include>
               <Include reference="+DataEntities.detailed_movie" />
@@ -1535,6 +1577,8 @@
               <DeclaredType>
                 <AttributeType>
                   <BaseType value="Integer" />
+                  <IntMax value="5" />
+                  <IntMin value="1" />
                 </AttributeType>
               </DeclaredType>
             </Attribute>
@@ -1543,6 +1587,7 @@
         <Attribute>
           <Name value="type" />
           <Caption value="Type" />
+          <IsRequired value="True" />
           <MetaType reference="+MetaTypes.type" />
           <OnUserChange>
             <ActionEvent ReferencedAction="+UiParts.detail.handler_type_OnUserChange" />
@@ -1585,7 +1630,14 @@
     <ActionBlock>
       <Name value="init_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.starring_delete_vis=true
+        <Script><![CDATA[//this is her for validation purpose only 
+form.new_episode.new_seen_it_whole=false
+
+
+
+form.type=enums.type.movie
+form.detailedMovie.rating.seenItWhole=false
+form.starring_delete_vis=true
 form.genre_delete_vis=true
 
 apiobjects.breadcrumbsCtrl1.removeAll()
@@ -1628,16 +1680,34 @@ endif
       <Name value="handler_button1_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.POSTcreate.fromJson(form.detailedMovie.toJson())
-var data=form.POSTcreate.toJson()
-
-var response = apiobjects.main_server_connection.postAsync("create",data)
-
-if response.isError() then 
-	system.console(response.getErrorMessage())
+        <Script><![CDATA[
+var validation=true
+if form.type=enums.type.movie then 
+	//movie validation
+	if form.isValid() then 
+		form.actions.create_new_record()
+	else 
+		system.alert("Form is not valid")
+	endif
 else 
-	navigation.main.list.go()
+	//series validation:
+	//make sure every seasons has at leasta one episode...
+	foreach season in form.detailedMovie.seasons do 
+		if not (season.episodes.count()>0) then
+			validation=false
+		endif	
+	endfor 
+	
+	//...and form is valid
+	if (form.isValid()) and isTrue(validation) then 
+		form.actions.create_new_record()
+	else 
+		system.alert("Form is not valid")
+	endif
 endif
+
+
+
 ]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1649,19 +1719,23 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
-
-form.POSTupdate.fromJson(form.detailedMovie.toJson())
-var data=form.POSTupdate.toJson()
-
-var response = apiobjects.main_server_connection.postAsync("update",data)
-
-if response.isError() then 
-	system.console(response.getErrorMessage())
+if page1.confirm("Are you sure you want to update these data?") then 
+	form.POSTupdate.fromJson(form.detailedMovie.toJson())
+	form.POSTupdate.type=form.type
+	var data=form.POSTupdate.toJson()
+	
+	var response = apiobjects.main_server_connection.postAsync("update",data)
+	
+	if response.isError() then 
+		system.console(response.getErrorMessage())
+	else 
+		//form.detailedMovie.fromJson(response.getJsonString())	
+		system.alert("Update successful")
+	endif
 else 
-	//form.detailedMovie.fromJson(response.getJsonString())	
-	system.alert("done")
-endif
-]]></Script>
+	//do nothing
+
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1672,17 +1746,23 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[//it is working but don't know why :( :(
-var data=form.detailedMovie.toJson()
 
-var response = apiobjects.main_server_connection.postAsync("delete",data)
 
-if response.isError() then 
-	system.console(response.getErrorMessage())
+if isTrue(page1.confirm("You will lose all your data, are you sure?")) then 
+	var data=form.detailedMovie.toJson()
+	
+	var response = apiobjects.main_server_connection.postAsync("delete",data)
+	
+	if response.isError() then 
+		system.console(response.getErrorMessage())
+	else 
+		//form.detailedMovie.fromJson(response.getJsonString())	
+		navigation.main.list.go()
+	endif
 else 
-	//form.detailedMovie.fromJson(response.getJsonString())	
-	system.alert("done")
-endif
-]]></Script>
+	//do nothing
+
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1716,6 +1796,7 @@ form.actions.hide_buttons()]]></Script>
         <Script><![CDATA[
 var new_actor=form.detailedMovie.starring.addItem()
 new_actor.actorName=form.new_actor
+form.new_actor=""
 form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1743,7 +1824,7 @@ form.actions.hide_buttons()]]></Script>
       <ActionLangBody IsValid="True">
         <Script><![CDATA[var new_genre=form.detailedMovie.genres.addItem()
 new_genre.genre=form.new_genre
-
+form.new_genre=""
 form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1803,7 +1884,10 @@ endif]]></Script>
     <ActionBlock>
       <Name value="create_new_season" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[var seasons_amount=form.detailedMovie.seasons.count()
+        <Script><![CDATA[
+form.new_episode.new_seen_it_whole=false
+
+var seasons_amount=form.detailedMovie.seasons.count()
 
 var item=form.detailedMovie.seasons.addItem()
 	item.number=seasons_amount+1]]></Script>
@@ -1823,7 +1907,16 @@ if hasValue(form.new_episode.new_epizode_name) then
 	item.rating.dateOfWatching=form.new_episode.new_date_of_watching
 	item.rating.seenItWhole=form.new_episode.new_seen_it_whole
 	item.rating.score=form.new_episode.new_score
-endif]]></Script>
+endif
+
+form.new_episode.new_epizode_name=defaultFromValue(form.new_episode.new_epizode_name)
+form.new_episode.new_date_of_watching=defaultFromValue(form.new_episode.new_date_of_watching)
+form.new_episode.new_seen_it_whole=defaultFromValue(form.new_episode.new_seen_it_whole)
+form.new_episode.new_score=defaultFromValue(form.new_episode.new_score)
+
+
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1860,7 +1953,8 @@ endfor]]></Script>
       <Name value="handler_type_OnUserChange" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[if params.data.type = enums.type.movie then
+        <Script><![CDATA[
+if params.data.type = enums.type.movie then
 	//series -> movies
 	if isTrue(page1.confirm("You are about to lose some data, are you sure?")) then 
 		params.data.detailedMovie.seasons.clear()
@@ -1879,9 +1973,32 @@ else
 endif
 
 
-		
-		
 		]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="create_new_record" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[if page1.confirm("Are you sure you want to create new record?") then
+	form.POSTcreate.fromJson(form.detailedMovie.toJson())
+	form.POSTcreate.type=form.type
+	var data=form.POSTcreate.toJson()
+	
+	var response = apiobjects.main_server_connection.postAsync("create",data)
+	
+	if response.isError() then 
+		system.console(response.getErrorMessage())
+	else 
+		navigation.main.list.go()
+	endif
+
+else 
+	//do nothing
+endif
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

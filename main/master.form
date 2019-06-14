@@ -74,6 +74,40 @@
           <Orientation value="Horizontal" />
           <Panel.Height value="90px" />
           <Panel.Width value="*" />
+          <Children>
+            <Panel>
+              <Name value="panel2" />
+              <Orientation value="Vertical" />
+              <Panel.Height value="#" />
+              <Panel.VerticalAlignment value="Bottom" />
+              <Panel.Width value="*" />
+              <Children>
+                <Button>
+                  <Name value="button1" />
+                  <Caption value="Add new" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.VerticalAlignment value="Middle" />
+                  <Panel.Width value="150px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_button1_OnClick" />
+                  </OnClick>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-button" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Button>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+          </Children>
           <CssClass>
             <CssClassConditional>
               <ClassName value="{theme}-panel" />
@@ -131,6 +165,17 @@
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[navigation.main.list.go()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_button1_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[navigation.main.detail.go("","")
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
