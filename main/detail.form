@@ -346,6 +346,9 @@
                                   <OnClick>
                                     <ActionEvent ReferencedAction="~handler_button6_OnClick" />
                                   </OnClick>
+                                  <Bindings>
+                                    <Binding SourceProperty="IsVisible" Expression="form.starring_delete_vis" />
+                                  </Bindings>
                                   <CssClass>
                                     <CssClassConditional>
                                       <ClassName value="{theme}-button" />
@@ -568,6 +571,9 @@
                                   <OnClick>
                                     <ActionEvent ReferencedAction="~handler_button8_OnClick" />
                                   </OnClick>
+                                  <Bindings>
+                                    <Binding SourceProperty="IsVisible" Expression="form.genre_delete_vis" />
+                                  </Bindings>
                                   <CssClass>
                                     <CssClassConditional>
                                       <ClassName value="{theme}-button" />
@@ -1099,6 +1105,24 @@
             <AttributeType />
           </DeclaredType>
         </Attribute>
+        <Attribute>
+          <Name value="starring_delete_vis" />
+          <Caption value="Starring _ delete _ vis" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
+        <Attribute>
+          <Name value="genre_delete_vis" />
+          <Caption value="Genre _ delete _ vis" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
       </Children>
     </DataContext>
   </DataContext>
@@ -1119,7 +1143,8 @@
     <ActionBlock>
       <Name value="init_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[
+        <Script><![CDATA[form.starring_delete_vis=true
+form.genre_delete_vis=true
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",true)
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("detail",form.name,"","",false)
@@ -1128,11 +1153,9 @@ var url=apiobjects.urlRouter1.findFormUrl(navigation.main.detail.fullName)
 url.addString("id",form.id)
 url.updatePageUrl()
 
-
-
-
 form.actions.get_detail()
-]]></Script>
+
+form.actions.hide_delete()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1247,7 +1270,7 @@ form.detailedMovie.clear()]]></Script>
         <Script><![CDATA[
 var new_actor=form.detailedMovie.starring.addItem()
 new_actor.actorName=form.new_actor
-]]></Script>
+form.actions.hide_delete()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1261,7 +1284,8 @@ new_actor.actorName=form.new_actor
 	if isTrue(item._delete) then 
 		item.removeMe()
 	endif
-endfor]]></Script>
+endfor
+form.actions.hide_delete()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1272,7 +1296,9 @@ endfor]]></Script>
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[var new_genre=form.detailedMovie.genres.addItem()
-new_genre.genre=form.new_genre]]></Script>
+new_genre.genre=form.new_genre
+
+form.actions.hide_delete()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1281,12 +1307,32 @@ new_genre.genre=form.new_genre]]></Script>
     <ActionBlock>
       <Name value="handler_button8_OnClick" />
       <IsPrivate value="True" />
-      <ActionLangBody>
+      <ActionLangBody IsValid="True">
         <Script><![CDATA[foreach item in form.detailedMovie.genres do 
 	if isTrue(item._delete) then 
 		item.removeMe()
 	endif
-endfor]]></Script>
+endfor
+form.actions.hide_delete()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="hide_delete" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[if form.detailedMovie.starring.count() = 0 then 
+	form.starring_delete_vis=false
+else 
+	form.starring_delete_vis=true
+endif
+
+if form.detailedMovie.genres.count() = 0 then 
+	form.genre_delete_vis=false
+else 
+	form.genre_delete_vis=true
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
