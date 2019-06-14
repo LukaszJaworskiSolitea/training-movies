@@ -46,6 +46,15 @@
             <AttributeType />
           </DeclaredType>
         </Attribute>
+        <Attribute>
+          <Name value="_delete" />
+          <Caption value="_ delete" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
       </Children>
     </Collection>
     <Collection>
@@ -58,6 +67,15 @@
           <IsRequired value="True" />
           <DeclaredType>
             <AttributeType />
+          </DeclaredType>
+        </Attribute>
+        <Attribute>
+          <Name value="_delete" />
+          <Caption value="_ delete" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
           </DeclaredType>
         </Attribute>
       </Children>

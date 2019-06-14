@@ -70,7 +70,7 @@
           </CssClass>
         </Panel>
         <Panel>
-          <Name value="ThisIsBuffor" />
+          <Name value="panel" />
           <Orientation value="Horizontal" />
           <Panel.Height value="90px" />
           <Panel.Width value="*" />
