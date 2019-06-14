@@ -72,9 +72,9 @@
                           <Panel.Height value="#" />
                           <Panel.Width value="300px" />
                           <Bindings>
-                            <Binding SourceProperty="Data" Expression="detailedMovie.type" />
-                            <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.type.isRequired()" />
-                            <Binding SourceProperty="Caption" Expression="detailedMovie.type.caption()" />
+                            <Binding SourceProperty="Data" Expression="form.type" />
+                            <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.type.isRequired()" />
+                            <Binding SourceProperty="Caption" Expression="form.type.caption()" />
                           </Bindings>
                           <CssClass>
                             <CssClassConditional>
@@ -998,7 +998,7 @@
                                               <Name value="textBox5" />
                                               <CaptionLength value="0px" />
                                               <Panel.Height value="#" />
-                                              <Panel.Width value="*" />
+                                              <Panel.Width value="80%" />
                                               <Bindings>
                                                 <Binding SourceProperty="Data" Expression="form.new_episode.new_epizode_name" />
                                                 <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.new_episode.new_epizode_name.isRequired()" />
@@ -1022,12 +1022,11 @@
                                           <Name value="panel37" />
                                           <Orientation value="Horizontal" />
                                           <Panel.Height value="#" />
-                                          <Panel.Width value="25%" />
+                                          <Panel.Width value="24%" />
                                           <Children>
                                             <DatePicker>
                                               <Name value="datePicker2" />
                                               <CaptionPosition value="Top" />
-                                              <Margin value="6, 6, 6, 15 px" />
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <Bindings>
@@ -1053,12 +1052,11 @@
                                           <Name value="panel38" />
                                           <Orientation value="Horizontal" />
                                           <Panel.Height value="#" />
-                                          <Panel.Width value="25%" />
+                                          <Panel.Width value="24%" />
                                           <Children>
                                             <CheckBox>
                                               <Name value="checkBox5" />
                                               <CaptionPosition value="Top" />
-                                              <Margin value="6, 6, 6, 14 px" />
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <Bindings>
@@ -1090,7 +1088,6 @@
                                               <Name value="textBox4" />
                                               <CaptionPosition value="Top" />
                                               <InputType value="Numeric" />
-                                              <Margin value="6, 6, 6, 11 px" />
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <TextAlign value="Right" />
@@ -1131,7 +1128,7 @@
                                           <Name value="panel43" />
                                           <Orientation value="Horizontal" />
                                           <Panel.Height value="#" />
-                                          <Panel.Width value="*" />
+                                          <Panel.Width value="33%" />
                                           <Children>
                                             <Button>
                                               <Name value="button10" />
@@ -1157,10 +1154,40 @@
                                           </CssClass>
                                         </Panel>
                                         <Panel>
+                                          <Name value="panel45" />
+                                          <Orientation value="Vertical" />
+                                          <Panel.Height value="#" />
+                                          <Panel.Width value="33%" />
+                                          <Children>
+                                            <HyperLink>
+                                              <Name value="hyperLink1" />
+                                              <Data value="Delete this season" />
+                                              <Panel.Height value="#" />
+                                              <Panel.HorizontalAlignment value="Center" />
+                                              <Panel.Width value="120px" />
+                                              <OnClick>
+                                                <ActionEvent ReferencedAction="~handler_hyperLink1_OnClick" />
+                                              </OnClick>
+                                              <CssClass>
+                                                <CssClassConditional>
+                                                  <ClassName value="{theme}-hyperlink" />
+                                                  <IsThemedStyle value="True" />
+                                                </CssClassConditional>
+                                              </CssClass>
+                                            </HyperLink>
+                                          </Children>
+                                          <CssClass>
+                                            <CssClassConditional>
+                                              <ClassName value="{theme}-panel" />
+                                              <IsThemedStyle value="True" />
+                                            </CssClassConditional>
+                                          </CssClass>
+                                        </Panel>
+                                        <Panel>
                                           <Name value="panel44" />
                                           <Orientation value="Vertical" />
                                           <Panel.Height value="#" />
-                                          <Panel.Width value="*" />
+                                          <Panel.Width value="33%" />
                                           <Children>
                                             <Button>
                                               <Name value="button11" />
@@ -1513,6 +1540,14 @@
             </Attribute>
           </Children>
         </Complex>
+        <Attribute>
+          <Name value="type" />
+          <Caption value="Type" />
+          <MetaType reference="+MetaTypes.type" />
+          <OnUserChange>
+            <ActionEvent ReferencedAction="+UiParts.detail.handler_type_OnUserChange" />
+          </OnUserChange>
+        </Attribute>
       </Children>
       <Modifiers>
         <Modifier>
@@ -1562,14 +1597,9 @@ url.addString("id",form.id)
 url.updatePageUrl()
 
 form.actions.get_detail()
+form.actions.hide_buttons()
 
-form.actions.hide_delete()
-
-if form.detailedMovie.type=enums.type.series then 
-	form.add_season_vis=true
-else 
-	form.add_season_vis=false
-endif]]></Script>
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1586,6 +1616,7 @@ if response.isError() then
 	system.console(response.getErrorMessage())
 else 
 	form.detailedMovie.fromJson(response.getJsonString())	
+	form.type=form.detailedMovie.type
 endif
 ]]></Script>
       </ActionLangBody>
@@ -1672,7 +1703,7 @@ form.detailedMovie.clear()]]></Script>
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[form.actions.clear_details()
-form.actions.hide_delete()]]></Script>
+form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1685,7 +1716,7 @@ form.actions.hide_delete()]]></Script>
         <Script><![CDATA[
 var new_actor=form.detailedMovie.starring.addItem()
 new_actor.actorName=form.new_actor
-form.actions.hide_delete()]]></Script>
+form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1700,7 +1731,7 @@ form.actions.hide_delete()]]></Script>
 		item.removeMe()
 	endif
 endfor
-form.actions.hide_delete()]]></Script>
+form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1713,7 +1744,7 @@ form.actions.hide_delete()]]></Script>
         <Script><![CDATA[var new_genre=form.detailedMovie.genres.addItem()
 new_genre.genre=form.new_genre
 
-form.actions.hide_delete()]]></Script>
+form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1728,14 +1759,14 @@ form.actions.hide_delete()]]></Script>
 		item.removeMe()
 	endif
 endfor
-form.actions.hide_delete()]]></Script>
+form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
       </DataContext>
     </ActionBlock>
     <ActionBlock>
-      <Name value="hide_delete" />
+      <Name value="hide_buttons" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[if form.detailedMovie.starring.count() = 0 then 
 	form.starring_delete_vis=false
@@ -1747,6 +1778,12 @@ if form.detailedMovie.genres.count() = 0 then
 	form.genre_delete_vis=false
 else 
 	form.genre_delete_vis=true
+endif
+
+if form.type=enums.type.series then 
+	form.add_season_vis=true
+else 
+	form.add_season_vis=false
 endif]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1804,6 +1841,47 @@ endif]]></Script>
 	
 
 endfor]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_hyperLink1_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[params.data.removeMe()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_type_OnUserChange" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[if params.data.type = enums.type.movie then
+	//series -> movies
+	if isTrue(page1.confirm("You are about to lose some data, are you sure?")) then 
+		params.data.detailedMovie.seasons.clear()
+		form.actions.hide_buttons()	
+	else
+		params.data.type=enums.type.series	
+	endif
+else 
+	//second if has to be here to exclude value=null problem
+	if params.data.type=enums.type.series then
+		//movies->series
+		
+		form.actions.create_new_season()
+		form.actions.hide_buttons()	
+	endif
+endif
+
+
+		
+		
+		]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

@@ -55,5 +55,9 @@
       <ReferencedIdentity value="Breadcrumbs.4d3eeadca3c54f1caa1d677db7e07acb" />
       <ReferencedVersion value="1.0.2" />
     </PackageReference>
+    <PackageReference Alias="Page" IsComponentLib="True" Origin="Page\Page.package">
+      <ReferencedIdentity value="Page.f7aa0c151c64407daef13910dcf7b72a" />
+      <ReferencedVersion value="1.6.1" />
+    </PackageReference>
   </PackageReferences>
 </ProjectRoot>
