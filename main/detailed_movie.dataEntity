@@ -97,6 +97,7 @@
           <DeclaredType>
             <AttributeType>
               <BaseType value="Date" />
+              <DateAllowFuture value="False" />
             </AttributeType>
           </DeclaredType>
         </Attribute>
@@ -132,7 +133,7 @@
           <Name value="computed1" />
           <Caption value="Computed 1" />
           <Expression IsValid="True">
-            <ExpressionText><![CDATA["Season " +number]]></ExpressionText>
+            <ExpressionText><![CDATA["Season " +toString(number)]]></ExpressionText>
             <ResultType>
               <BaseType value="String" />
             </ResultType>
@@ -143,7 +144,9 @@
           <Caption value="Number" />
           <IsRequired value="True" />
           <DeclaredType>
-            <AttributeType />
+            <AttributeType>
+              <BaseType value="Integer" />
+            </AttributeType>
           </DeclaredType>
         </Attribute>
         <Collection>
@@ -167,6 +170,7 @@
                   <DeclaredType>
                     <AttributeType>
                       <BaseType value="Date" />
+                      <DateAllowFuture value="False" />
                     </AttributeType>
                   </DeclaredType>
                 </Attribute>
