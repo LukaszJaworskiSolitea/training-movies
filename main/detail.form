@@ -913,6 +913,46 @@
                                         </CssClassConditional>
                                       </HeaderCssClass>
                                     </DataColumn>
+                                    <DataColumn>
+                                      <Name value="dataColumn5" />
+                                      <Caption value=" " />
+                                      <Width value="40px" />
+                                      <Content>
+                                        <Panel>
+                                          <Name value="panel41" />
+                                          <Orientation value="Horizontal" />
+                                          <Children>
+                                            <CheckBox>
+                                              <Name value="checkBox6" />
+                                              <Panel.Height value="#" />
+                                              <Panel.Width value="*" />
+                                              <Bindings>
+                                                <Binding SourceProperty="Data" Expression="_delete" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="_delete.isRequired()" />
+                                              </Bindings>
+                                              <CssClass>
+                                                <CssClassConditional>
+                                                  <ClassName value="{theme}-checkbox" />
+                                                  <IsThemedStyle value="True" />
+                                                </CssClassConditional>
+                                              </CssClass>
+                                            </CheckBox>
+                                          </Children>
+                                          <CssClass>
+                                            <CssClassConditional>
+                                              <ClassName value="{theme}-panel" />
+                                              <IsThemedStyle value="True" />
+                                            </CssClassConditional>
+                                          </CssClass>
+                                        </Panel>
+                                      </Content>
+                                      <HeaderCssClass>
+                                        <CssClassConditional>
+                                          <ClassName value="{theme}-datacolumn" />
+                                          <IsThemedStyle value="True" />
+                                        </CssClassConditional>
+                                      </HeaderCssClass>
+                                    </DataColumn>
                                   </Columns>
                                   <CssClass>
                                     <CssClassConditional>
@@ -927,21 +967,6 @@
                                   <Panel.Height value="#" />
                                   <Panel.Width value="*" />
                                   <Children>
-                                    <Button>
-                                      <Name value="button10" />
-                                      <Caption value="Add new episode" />
-                                      <Panel.Height value="#" />
-                                      <Panel.Width value="150px" />
-                                      <OnClick>
-                                        <ActionEvent ReferencedAction="~handler_button10_OnClick" />
-                                      </OnClick>
-                                      <CssClass>
-                                        <CssClassConditional>
-                                          <ClassName value="{theme}-button" />
-                                          <IsThemedStyle value="True" />
-                                        </CssClassConditional>
-                                      </CssClass>
-                                    </Button>
                                     <CustomHtml>
                                       <Name value="customHtml1" />
                                       <HtmlMarkup><![CDATA[<hr>]]></HtmlMarkup>
@@ -1080,6 +1105,79 @@
                                                 </CssClassConditional>
                                               </CssClass>
                                             </TextBox>
+                                          </Children>
+                                          <CssClass>
+                                            <CssClassConditional>
+                                              <ClassName value="{theme}-panel" />
+                                              <IsThemedStyle value="True" />
+                                            </CssClassConditional>
+                                          </CssClass>
+                                        </Panel>
+                                      </Children>
+                                      <CssClass>
+                                        <CssClassConditional>
+                                          <ClassName value="{theme}-panel" />
+                                          <IsThemedStyle value="True" />
+                                        </CssClassConditional>
+                                      </CssClass>
+                                    </Panel>
+                                    <Panel>
+                                      <Name value="panel42" />
+                                      <Orientation value="Horizontal" />
+                                      <Panel.Height value="#" />
+                                      <Panel.Width value="*" />
+                                      <Children>
+                                        <Panel>
+                                          <Name value="panel43" />
+                                          <Orientation value="Horizontal" />
+                                          <Panel.Height value="#" />
+                                          <Panel.Width value="*" />
+                                          <Children>
+                                            <Button>
+                                              <Name value="button10" />
+                                              <Caption value="Add new episode" />
+                                              <Panel.Height value="#" />
+                                              <Panel.Width value="150px" />
+                                              <OnClick>
+                                                <ActionEvent ReferencedAction="~handler_button10_OnClick" />
+                                              </OnClick>
+                                              <CssClass>
+                                                <CssClassConditional>
+                                                  <ClassName value="{theme}-button" />
+                                                  <IsThemedStyle value="True" />
+                                                </CssClassConditional>
+                                              </CssClass>
+                                            </Button>
+                                          </Children>
+                                          <CssClass>
+                                            <CssClassConditional>
+                                              <ClassName value="{theme}-panel" />
+                                              <IsThemedStyle value="True" />
+                                            </CssClassConditional>
+                                          </CssClass>
+                                        </Panel>
+                                        <Panel>
+                                          <Name value="panel44" />
+                                          <Orientation value="Vertical" />
+                                          <Panel.Height value="#" />
+                                          <Panel.Width value="*" />
+                                          <Children>
+                                            <Button>
+                                              <Name value="button11" />
+                                              <Caption value="Delete episode" />
+                                              <Panel.Height value="#" />
+                                              <Panel.HorizontalAlignment value="Right" />
+                                              <Panel.Width value="150px" />
+                                              <OnClick>
+                                                <ActionEvent ReferencedAction="~handler_button11_OnClick" />
+                                              </OnClick>
+                                              <CssClass>
+                                                <CssClassConditional>
+                                                  <ClassName value="{theme}-button" />
+                                                  <IsThemedStyle value="True" />
+                                                </CssClassConditional>
+                                              </CssClass>
+                                            </Button>
                                           </Children>
                                           <CssClass>
                                             <CssClassConditional>
@@ -1416,6 +1514,23 @@
           </Children>
         </Complex>
       </Children>
+      <Modifiers>
+        <Modifier>
+          <Name value="modifier_D99DD79E_episodes" />
+          <SourcePath value="detailedMovie.seasons.episodes" />
+          <Children>
+            <Attribute>
+              <Name value="_delete" />
+              <Caption value="_ delete" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Modifier>
+      </Modifiers>
     </DataContext>
   </DataContext>
   <OnCreate>
@@ -1437,6 +1552,7 @@
       <ActionLangBody IsValid="True">
         <Script><![CDATA[form.starring_delete_vis=true
 form.genre_delete_vis=true
+
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",true)
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("detail",form.name,"","",false)
@@ -1663,12 +1779,31 @@ var item=form.detailedMovie.seasons.addItem()
       <Name value="handler_button10_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[var item=params.data.episodes.addItem()
-item.episodeName=form.new_episode.new_epizode_name
-item.rating.dateOfWatching=form.new_episode.new_date_of_watching
-item.rating.seenItWhole=form.new_episode.new_seen_it_whole
-item.rating.score=form.new_episode.new_score
-]]></Script>
+        <Script><![CDATA[
+if hasValue(form.new_episode.new_epizode_name) then 
+	var item=params.data.episodes.addItem()
+	item.episodeName=form.new_episode.new_epizode_name
+	item.rating.dateOfWatching=form.new_episode.new_date_of_watching
+	item.rating.seenItWhole=form.new_episode.new_seen_it_whole
+	item.rating.score=form.new_episode.new_score
+endif]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_button11_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[foreach item in params.data.episodes do
+
+	if isTrue(item._delete) then 
+		item.removeMe()
+	endif 
+	
+
+endfor]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
