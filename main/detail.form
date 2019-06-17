@@ -927,8 +927,8 @@
                                               <Panel.Height value="#" />
                                               <Panel.Width value="*" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="_delete" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="_delete.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="_deleteCheckbox" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="_deleteCheckbox.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1198,6 +1198,9 @@
                                               <OnClick>
                                                 <ActionEvent ReferencedAction="~handler_button11_OnClick" />
                                               </OnClick>
+                                              <Bindings>
+                                                <Binding SourceProperty="IsVisible" Expression="delete_vis" />
+                                              </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
                                                   <ClassName value="{theme}-button" />
@@ -1283,6 +1286,21 @@
             </CssClassConditional>
           </CssClass>
         </Repeater>
+        <CustomHtml>
+          <Name value="customHtml2" />
+          <HtmlMarkup><![CDATA[<hr>]]></HtmlMarkup>
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Bindings>
+            <Binding SourceProperty="Data" Expression="" />
+          </Bindings>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-customhtml" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </CustomHtml>
         <Panel>
           <Name value="panel16" />
           <Orientation value="Horizontal" />
@@ -1356,7 +1374,7 @@
               <Children>
                 <Button>
                   <Name value="button3" />
-                  <Caption value="Delete" />
+                  <Caption value="Delete record" />
                   <Panel.Height value="#" />
                   <Panel.HorizontalAlignment value="Right" />
                   <Panel.Width value="150px" />
@@ -1600,8 +1618,23 @@
           <SourcePath value="detailedMovie.seasons.episodes" />
           <Children>
             <Attribute>
-              <Name value="_delete" />
-              <Caption value="_ delete" />
+              <Name value="_deleteCheckbox" />
+              <Caption value="_ delete checkbox" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Modifier>
+        <Modifier>
+          <Name value="modifier_EA040B86_seasons" />
+          <SourcePath value="detailedMovie.seasons" />
+          <Children>
+            <Attribute>
+              <Name value="delete_vis" />
+              <Caption value="Delete _ vis" />
               <DeclaredType>
                 <AttributeType>
                   <BaseType value="Bool" />
@@ -1637,6 +1670,10 @@ form.new_episode.new_seen_it_whole=false
 
 form.type=enums.type.movie
 form.detailedMovie.rating.seenItWhole=false
+//visibility
+foreach season in form.detailedMovie.seasons do 
+	season.delete_vis=true
+endfor
 form.starring_delete_vis=true
 form.genre_delete_vis=true
 
@@ -1865,7 +1902,15 @@ if form.type=enums.type.series then
 	form.add_season_vis=true
 else 
 	form.add_season_vis=false
-endif]]></Script>
+endif
+
+foreach seasons in form.detailedMovie.seasons do 
+	if seasons.episodes.count()=0 then 
+		seasons.delete_vis=false
+	else 
+		seasons.delete_vis=true
+	endif
+endfor]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1890,7 +1935,9 @@ form.new_episode.new_seen_it_whole=false
 var seasons_amount=form.detailedMovie.seasons.count()
 
 var item=form.detailedMovie.seasons.addItem()
-	item.number=seasons_amount+1]]></Script>
+	item.number=seasons_amount+1
+	
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1914,7 +1961,7 @@ form.new_episode.new_date_of_watching=defaultFromValue(form.new_episode.new_date
 form.new_episode.new_seen_it_whole=defaultFromValue(form.new_episode.new_seen_it_whole)
 form.new_episode.new_score=defaultFromValue(form.new_episode.new_score)
 
-
+form.actions.hide_buttons()
 
 ]]></Script>
       </ActionLangBody>
@@ -1928,12 +1975,12 @@ form.new_episode.new_score=defaultFromValue(form.new_episode.new_score)
       <ActionLangBody IsValid="True">
         <Script><![CDATA[foreach item in params.data.episodes do
 
-	if isTrue(item._delete) then 
+	if isTrue(item._deleteCheckbox) then 
 		item.removeMe()
 	endif 
-	
-
-endfor]]></Script>
+		form.actions.hide_buttons()
+endfor
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
