@@ -84,7 +84,7 @@
               <Children>
                 <Button>
                   <Name value="button1" />
-                  <Caption value="Add new" />
+                  <Caption value="Add new record" />
                   <Panel.Height value="#" />
                   <Panel.HorizontalAlignment value="Right" />
                   <Panel.VerticalAlignment value="Middle" />
@@ -234,7 +234,6 @@ else
 	//if all good 
 	navigation.main.detail.go("","")
 endif
-
 
 ]]></Script>
       </ActionLangBody>

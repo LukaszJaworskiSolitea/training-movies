@@ -771,18 +771,34 @@
                                       <Name value="dataColumn1" />
                                       <Caption value="Episode name" />
                                       <Content>
-                                        <Label>
-                                          <Name value="label1" />
-                                          <Bindings>
-                                            <Binding SourceProperty="Data" Expression="episodeName" />
-                                          </Bindings>
+                                        <Panel>
+                                          <Name value="panel46" />
+                                          <Orientation value="Horizontal" />
+                                          <Children>
+                                            <TextBox>
+                                              <Name value="textBox13" />
+                                              <CaptionPosition value="Top" />
+                                              <Panel.Height value="#" />
+                                              <Panel.Width value="150px" />
+                                              <Bindings>
+                                                <Binding SourceProperty="Data" Expression="episodeName" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="episodeName.isRequired()" />
+                                              </Bindings>
+                                              <CssClass>
+                                                <CssClassConditional>
+                                                  <ClassName value="{theme}-textbox" />
+                                                  <IsThemedStyle value="True" />
+                                                </CssClassConditional>
+                                              </CssClass>
+                                            </TextBox>
+                                          </Children>
                                           <CssClass>
                                             <CssClassConditional>
-                                              <ClassName value="{theme}-label" />
+                                              <ClassName value="{theme}-panel" />
                                               <IsThemedStyle value="True" />
                                             </CssClassConditional>
                                           </CssClass>
-                                        </Label>
+                                        </Panel>
                                       </Content>
                                       <HeaderCssClass>
                                         <CssClassConditional>
@@ -1336,6 +1352,9 @@
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_button2_OnClick" />
                   </OnClick>
+                  <Bindings>
+                    <Binding SourceProperty="IsEnabled" Expression="form.helpers._update_enable" />
+                  </Bindings>
                   <CssClass>
                     <CssClassConditional>
                       <ClassName value="{theme}-button" />
@@ -1381,6 +1400,9 @@
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_button3_OnClick" />
                   </OnClick>
+                  <Bindings>
+                    <Binding SourceProperty="IsEnabled" Expression="form.helpers._del_record_enable" />
+                  </Bindings>
                   <CssClass>
                     <CssClassConditional>
                       <ClassName value="{theme}-button" />
@@ -1570,6 +1592,30 @@
             <ActionEvent ReferencedAction="+UiParts.detail.handler_type_OnUserChange" />
           </OnUserChange>
         </Attribute>
+        <Complex>
+          <Name value="helpers" />
+          <Caption value="Helpers" />
+          <Children>
+            <Attribute>
+              <Name value="_update_enable" />
+              <Caption value="_ update _ enable" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="_del_record_enable" />
+              <Caption value="_ del _ record _ enable" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Complex>
       </Children>
       <Modifiers>
         <Modifier>
@@ -1605,6 +1651,9 @@
       </Modifiers>
     </DataContext>
   </DataContext>
+  <OnActivate>
+    <ActionEvent ReferencedAction="~handler_detail_OnActivate" />
+  </OnActivate>
   <OnCreate>
     <ActionEvent ReferencedAction="~handler_detail_OnCreate" />
   </OnCreate>
@@ -1621,11 +1670,10 @@
     </ActionBlock>
     <ActionBlock>
       <Name value="init_detail_form" />
-      <ActionLangBody>
-        <Script><![CDATA[
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[//initial settings
 form.type=enums.type.movie
 form.detailedMovie.rating.seenItWhole=false
-
 
 //visibility
 foreach season in form.detailedMovie.seasons do 
@@ -1646,9 +1694,20 @@ url.updatePageUrl()
 form.actions.get_detail()
 form.actions.hide_buttons()
 
+//update and delete enab/disab
+if hasValue(form.detailedMovie.id) then 
+	form.helpers._update_enable=true
+	form.helpers._del_record_enable=true
+else 
+	form.helpers._update_enable=false
+	form.helpers._del_record_enable=false
+endif
+
 //losing data protection
 globals.before_change=form.toJson()
-globals.data_protection=true]]></Script>
+globals.data_protection=true
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1786,11 +1845,12 @@ form.actions.hide_buttons()]]></Script>
       <Name value="handler_button5_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[
-var new_actor=form.detailedMovie.starring.addItem()
-new_actor.actorName=form.new_actor
-form.new_actor=""
-form.actions.hide_buttons()]]></Script>
+        <Script><![CDATA[if hasValue(form.new_actor) then
+	var new_actor=form.detailedMovie.starring.addItem()
+	new_actor.actorName=form.new_actor
+	form.new_actor=""
+	form.actions.hide_buttons()
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1815,10 +1875,12 @@ form.actions.hide_buttons()]]></Script>
       <Name value="handler_button7_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[var new_genre=form.detailedMovie.genres.addItem()
-new_genre.genre=form.new_genre
-form.new_genre=""
-form.actions.hide_buttons()]]></Script>
+        <Script><![CDATA[if hasValue(form.new_genre) then 
+	var new_genre=form.detailedMovie.genres.addItem()
+	new_genre.genre=form.new_genre
+	form.new_genre=""
+	form.actions.hide_buttons()
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1843,7 +1905,7 @@ form.actions.hide_buttons()]]></Script>
       <Name value="hide_buttons" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[if form.detailedMovie.starring.count() = 0 then 
-	form.starring_delete_vis=false
+	form.starring_delete_vis=false	
 else 
 	form.starring_delete_vis=true
 endif
@@ -1907,11 +1969,11 @@ endfor]]></Script>
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[//when new episode added set checkobox to false ( null protection)
-params.data.new_episode.new_seen_it_whole=false
+//params.data.new_episode.new_seen_it_whole=false
 
 //new episode validation
 if hasValue(params.data.new_episode.new_episode_name) and 
-   hasValue(params.data.new_episode.new_seen_it_whole) and 
+   isTrue(params.data.new_episode.new_seen_it_whole) and 
    hasvAlue(params.data.new_episode.new_score) then 
    
 	var item=params.data.episodes.addItem()
@@ -2113,6 +2175,16 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[form.actions.compare_data()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_detail_OnActivate" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
