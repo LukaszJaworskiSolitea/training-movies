@@ -163,7 +163,22 @@
       <Name value="handler_filtered_OnUserChange" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[navigation.main.detail.go(params.data.filtered.id,params.data.filtered.name)
+        <Script><![CDATA[if params.data.hasValue() then
+	//losing data protection
+	//in case of some changes...
+	if isFalse(globals.data_protection) then 
+		if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
+			//continue
+			navigation.main.detail.go(params.data.filtered.id,params.data.filtered.name)
+		else
+			//go back
+			//do nothing		
+		endif
+	else 
+		//if all good 
+		navigation.main.detail.go(params.data.filtered.id,params.data.filtered.name)
+	endif
+endif
 ]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -174,7 +189,26 @@
       <Name value="handler_breadcrumbs1_OnItemClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[navigation.main.list.go()]]></Script>
+        <Script><![CDATA[//losing data protection
+//in case of some changes...
+if isFalse(globals.data_protection) then 
+	if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
+		//continue
+		navigation.main.list.go()
+	else
+		//go back
+		//do nothing		
+	endif
+else 
+	//if all good 
+	navigation.main.list.go()
+endif
+
+
+
+
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -184,7 +218,23 @@
       <Name value="handler_button1_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[navigation.main.detail.go("","")
+        <Script><![CDATA[//losing data protection
+//in case of some changes...
+if isFalse(globals.data_protection) then 
+	if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
+		//continue
+		navigation.main.detail.go("","")
+		globals.before_change=form.toJson()
+		globals.data_protection=true
+	else
+		//go back
+		//do nothing		
+	endif
+else 
+	//if all good 
+	navigation.main.detail.go("","")
+endif
+
 
 ]]></Script>
       </ActionLangBody>

@@ -1470,6 +1470,9 @@
           <Name value="detailedMovie" />
           <Caption value="Detailed movie" />
           <IsRequired value="True" />
+          <OnUserChange>
+            <ActionEvent ReferencedAction="+UiParts.detail.handler_detailedMovie_OnUserChange" />
+          </OnUserChange>
           <Children>
             <Include>
               <Include reference="+DataEntities.detailed_movie" />
@@ -1618,11 +1621,8 @@
     </ActionBlock>
     <ActionBlock>
       <Name value="init_detail_form" />
-      <ActionLangBody IsValid="True">
+      <ActionLangBody>
         <Script><![CDATA[
-
-
-
 form.type=enums.type.movie
 form.detailedMovie.rating.seenItWhole=false
 
@@ -1646,7 +1646,9 @@ url.updatePageUrl()
 form.actions.get_detail()
 form.actions.hide_buttons()
 
-]]></Script>
+//losing data protection
+globals.before_change=form.toJson()
+globals.data_protection=true]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -2079,6 +2081,38 @@ else
 endif
 
 ]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="compare_data" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[//losing data protection
+
+var after_change=form.toJson()
+
+//in case of some changes...
+if globals.before_change=after_change then 
+	globals.data_protection=true
+	//system.alert("Nothing change")
+else 
+	globals.data_protection=false
+//	system.alert("Data changed")
+endif
+
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_detailedMovie_OnUserChange" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.actions.compare_data()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
