@@ -1718,10 +1718,9 @@ var validation=true
 if form.type=enums.type.movie then 
 	//movie validation
 	if form.isValid() then 
-		//form.actions.update_record()
-		system.alert("all good , going to update movie")
+		form.actions.update_record()
 	else 
-		system.alert("Form is not valid //movie")
+		system.alert("Form is not valid ")
 	endif
 else 
 	//series validation:
@@ -1734,10 +1733,9 @@ else
 	
 	//...and form is valid
 	if (form.isValid()) and isTrue(validation) then 
-		//form.actions.update_record()
-		system.alert("all good, going to update series")
+		form.actions.update_record()
 	else 
-		system.alert("Form is not valid//series")
+		system.alert("Form is not valid")
 	endif
 endif
 
