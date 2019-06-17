@@ -36,7 +36,7 @@
         <UrlRouteCfg identity="UrlRouter.69a71809c45249cbb2999d13bb9100c0">
           <form reference="+UiParts.detail" />
           <masterPage reference="+UiParts.master" />
-          <params value="videos" />
+          <params value="id" />
           <url value="videos" />
         </UrlRouteCfg>
       </routes>

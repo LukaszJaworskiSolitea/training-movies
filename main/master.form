@@ -13,7 +13,7 @@
         <Label>
           <Name value="label1" />
           <Data value="Movies" />
-          <Heading value="h3" />
+          <Heading value="h2" />
           <Panel.Height value="#" />
           <Panel.HorizontalAlignment value="Center" />
           <Panel.Width value="80px" />
@@ -44,6 +44,24 @@
             </CssClassConditional>
           </CssClass>
         </ReferenceLookup>
+        <TextBox>
+          <Name value="textBox1" />
+          <Caption value="Include actor in your search" />
+          <CaptionVAlign value="Middle" />
+          <Panel.Height value="#" />
+          <Panel.HorizontalAlignment value="Center" />
+          <Panel.Width value="300px" />
+          <Bindings>
+            <Binding SourceProperty="Data" Expression="search_by_actor" />
+            <Binding SourceProperty="IsRequiredMarkVisible" Expression="search_by_actor.isRequired()" />
+          </Bindings>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-textbox" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </TextBox>
         <Panel>
           <Name value="panel3" />
           <Orientation value="Horizontal" />
@@ -155,6 +173,13 @@
             </Include>
           </Children>
         </Reference>
+        <Attribute>
+          <Name value="search_by_actor" />
+          <Caption value="Search _ by _ actor" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
       </Children>
     </DataContext>
   </DataContext>
@@ -236,16 +261,6 @@ else
 endif
 
 ]]></Script>
-      </ActionLangBody>
-      <DataContext>
-        <ActionDataContext />
-      </DataContext>
-    </ActionBlock>
-    <ActionBlock>
-      <Name value="handler_button2_OnClick" />
-      <IsPrivate value="True" />
-      <ActionLangBody IsValid="True">
-        <Script><![CDATA[//]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

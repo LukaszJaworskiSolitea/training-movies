@@ -332,6 +332,12 @@
           </DeclaredType>
         </Attribute>
       </Children>
+      <Modifiers>
+        <Modifier>
+          <Name value="modifier_8C33C96E_rating" />
+          <SourcePath value="all_movies.rating" />
+        </Modifier>
+      </Modifiers>
     </DataContext>
   </DataContext>
   <OnCreate>
@@ -353,7 +359,15 @@ else
 	apiobjects.search_codelist.fillFromJson(response.getJsonString())
 endif
 
-globals.busy=false]]></Script>
+globals.busy=false
+
+
+
+
+
+
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
