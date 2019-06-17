@@ -2102,8 +2102,10 @@ if page1.confirm("Are you sure you want to update these data?") then
 	if response.isError() then 
 		system.console(response.getErrorMessage())
 	else 
-		//form.detailedMovie.fromJson(response.getJsonString())	
 		globals.busy=false
+		
+		globals.before_change=form.toJson()
+		globals.data_protection=true
 		system.alert("Update successful")
 	endif
 else 
