@@ -342,6 +342,7 @@
       <Name value="get_list" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
+globals.busy=true
 
 var response = apiobjects.main_server_connection.getAsync("list")
 
@@ -351,7 +352,8 @@ else
 	form.all_movies.fromJson(response.getJsonString())
 	apiobjects.search_codelist.fillFromJson(response.getJsonString())
 endif
-]]></Script>
+
+globals.busy=false]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -370,13 +372,17 @@ endif
     <ActionBlock>
       <Name value="init_list_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.sorting.title=true
+        <Script><![CDATA[
+
+form.sorting.title=true
 form.sorting.year=true
 form.sorting.score=true
+
 
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",false)
 apiobjects.urlRouter1.clearUrl()
+
 
 form.actions.get_list()
 ]]></Script>

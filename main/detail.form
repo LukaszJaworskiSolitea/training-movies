@@ -1656,6 +1656,7 @@ form.actions.hide_buttons()
       <Name value="get_detail" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
+globals.busy=true
 
 var response = apiobjects.main_server_connection.getAsync("record?id="+form.id)
 
@@ -1665,6 +1666,8 @@ else
 	form.detailedMovie.fromJson(response.getJsonString())	
 	form.type=form.detailedMovie.type
 endif
+
+globals.busy=false
 ]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1750,24 +1753,7 @@ endif
       <Name value="handler_button3_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//it is working but don't know why :( :(
-
-
-if isTrue(page1.confirm("You will lose all your data, are you sure?")) then 
-	var data=form.detailedMovie.toJson()
-	
-	var response = apiobjects.main_server_connection.postAsync("delete",data)
-	
-	if response.isError() then 
-		system.console(response.getErrorMessage())
-	else 
-		//form.detailedMovie.fromJson(response.getJsonString())	
-		navigation.main.list.go()
-	endif
-else 
-	//do nothing
-
-endif]]></Script>
+        <Script><![CDATA[form.actions.delete_record()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -2010,11 +1996,14 @@ endif
     <ActionBlock>
       <Name value="create_new_record" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[if page1.confirm("Are you sure you want to create new record?") then
+        <Script><![CDATA[
+
+if page1.confirm("Are you sure you want to create new record?") then
 	form.POSTcreate.fromJson(form.detailedMovie.toJson())
 	form.POSTcreate.type=form.type
 	var data=form.POSTcreate.toJson()
 	
+	globals.busy=true
 	var response = apiobjects.main_server_connection.postAsync("create",data)
 	
 	if response.isError() then 
@@ -2022,10 +2011,11 @@ endif
 	else 
 		navigation.main.list.go()
 	endif
-
+	globals.busy=false
 else 
 	//do nothing
 endif
+
 ]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -2036,23 +2026,59 @@ endif
       <Name value="update_record" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
+
 if page1.confirm("Are you sure you want to update these data?") then 
 	form.POSTupdate.fromJson(form.detailedMovie.toJson())
 	form.POSTupdate.type=form.type
 	var data=form.POSTupdate.toJson()
 	
+	globals.busy=true
 	var response = apiobjects.main_server_connection.postAsync("update",data)
 	
 	if response.isError() then 
 		system.console(response.getErrorMessage())
 	else 
 		//form.detailedMovie.fromJson(response.getJsonString())	
+		globals.busy=false
 		system.alert("Update successful")
 	endif
 else 
 	//do nothing
 
-endif]]></Script>
+endif
+
+]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="delete_record" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[//it is working but don't know why :( :(
+
+
+
+if isTrue(page1.confirm("You will lose all your data, are you sure?")) then 
+	var data=form.detailedMovie.toJson()
+	
+	globals.busy=true
+	var response = apiobjects.main_server_connection.postAsync("delete",data)
+	
+	if response.isError() then 
+		system.console(response.getErrorMessage())
+	else 
+		//form.detailedMovie.fromJson(response.getJsonString())	
+		navigation.main.list.go()
+	endif
+	globals.busy=false
+else 
+	//do nothing
+
+endif
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
