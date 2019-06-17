@@ -1000,8 +1000,8 @@
                                               <Panel.Height value="#" />
                                               <Panel.Width value="80%" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="form.new_episode.new_epizode_name" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.new_episode.new_epizode_name.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.new_episode_name&#xD;&#xA;" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_episode_name&#xD;&#xA;.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1030,8 +1030,8 @@
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="form.new_episode.new_date_of_watching" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.new_episode.new_date_of_watching.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.new_date_of_watching" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_date_of_watching.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1060,8 +1060,8 @@
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="form.new_episode.new_seen_it_whole" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.new_episode.new_seen_it_whole.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.new_seen_it_whole" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_seen_it_whole.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1092,8 +1092,8 @@
                                               <Panel.Width value="150px" />
                                               <TextAlign value="Right" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="form.new_episode.new_score" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.new_episode.new_score.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.new_score" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_score.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1558,50 +1558,6 @@
             </AttributeType>
           </DeclaredType>
         </Attribute>
-        <Complex>
-          <Name value="new_episode" />
-          <Caption value="New _ episode" />
-          <Children>
-            <Attribute>
-              <Name value="new_epizode_name" />
-              <Caption value="New _ epizode _ name" />
-              <DeclaredType>
-                <AttributeType />
-              </DeclaredType>
-            </Attribute>
-            <Attribute>
-              <Name value="new_date_of_watching" />
-              <Caption value="New _ date _ of _ watching" />
-              <DeclaredType>
-                <AttributeType>
-                  <BaseType value="Date" />
-                  <DateAllowFuture value="False" />
-                </AttributeType>
-              </DeclaredType>
-            </Attribute>
-            <Attribute>
-              <Name value="new_seen_it_whole" />
-              <Caption value="New _ seen _ it _ whole" />
-              <DeclaredType>
-                <AttributeType>
-                  <BaseType value="Bool" />
-                </AttributeType>
-              </DeclaredType>
-            </Attribute>
-            <Attribute>
-              <Name value="new_score" />
-              <Caption value="New _ score" />
-              <IsRequired value="True" />
-              <DeclaredType>
-                <AttributeType>
-                  <BaseType value="Integer" />
-                  <IntMax value="5" />
-                  <IntMin value="1" />
-                </AttributeType>
-              </DeclaredType>
-            </Attribute>
-          </Children>
-        </Complex>
         <Attribute>
           <Name value="type" />
           <Caption value="Type" />
@@ -1663,16 +1619,18 @@
     <ActionBlock>
       <Name value="init_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//this is her for validation purpose only 
-form.new_episode.new_seen_it_whole=false
+        <Script><![CDATA[
 
 
 
 form.type=enums.type.movie
 form.detailedMovie.rating.seenItWhole=false
+
+
 //visibility
 foreach season in form.detailedMovie.seasons do 
 	season.delete_vis=true
+	season.new_episode.new_seen_it_whole=false
 endfor
 form.starring_delete_vis=true
 form.genre_delete_vis=true
@@ -1756,23 +1714,35 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
-if page1.confirm("Are you sure you want to update these data?") then 
-	form.POSTupdate.fromJson(form.detailedMovie.toJson())
-	form.POSTupdate.type=form.type
-	var data=form.POSTupdate.toJson()
-	
-	var response = apiobjects.main_server_connection.postAsync("update",data)
-	
-	if response.isError() then 
-		system.console(response.getErrorMessage())
+var validation=true
+if form.type=enums.type.movie then 
+	//movie validation
+	if form.isValid() then 
+		//form.actions.update_record()
+		system.alert("all good , going to update movie")
 	else 
-		//form.detailedMovie.fromJson(response.getJsonString())	
-		system.alert("Update successful")
+		system.alert("Form is not valid //movie")
 	endif
 else 
-	//do nothing
+	//series validation:
+	//make sure every seasons has at leasta one episode...
+	foreach season in form.detailedMovie.seasons do 
+		if not (season.episodes.count()>0) then
+			validation=false
+		endif	
+	endfor 
+	
+	//...and form is valid
+	if (form.isValid()) and isTrue(validation) then 
+		//form.actions.update_record()
+		system.alert("all good, going to update series")
+	else 
+		system.alert("Form is not valid//series")
+	endif
+endif
 
-endif]]></Script>
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1930,14 +1900,17 @@ endfor]]></Script>
       <Name value="create_new_season" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
-form.new_episode.new_seen_it_whole=false
+
 
 var seasons_amount=form.detailedMovie.seasons.count()
 
 var item=form.detailedMovie.seasons.addItem()
 	item.number=seasons_amount+1
 	
-]]></Script>
+
+foreach season in form.detailedMovie.seasons do 
+	season.new_episode.new_seen_it_whole=false
+endfor]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1947,19 +1920,29 @@ var item=form.detailedMovie.seasons.addItem()
       <Name value="handler_button10_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[
-if hasValue(form.new_episode.new_epizode_name) then 
+        <Script><![CDATA[//when new episode added set checkobox to false ( null protection)
+params.data.new_episode.new_seen_it_whole=false
+
+//new episode validation
+if hasValue(params.data.new_episode.new_episode_name) and 
+   hasValue(params.data.new_episode.new_seen_it_whole) and 
+   hasvAlue(params.data.new_episode.new_score) then 
+   
 	var item=params.data.episodes.addItem()
-	item.episodeName=form.new_episode.new_epizode_name
-	item.rating.dateOfWatching=form.new_episode.new_date_of_watching
-	item.rating.seenItWhole=form.new_episode.new_seen_it_whole
-	item.rating.score=form.new_episode.new_score
+	item.episodeName=params.data.new_episode.new_episode_name
+	item.rating.dateOfWatching=params.data.new_episode.new_date_of_watching
+	item.rating.seenItWhole=params.data.new_episode.new_seen_it_whole
+	item.rating.score=params.data.new_episode.new_score
+	
+	params.data.new_episode.new_episode_name=defaultFromValue(params.data.new_episode.new_episode_name)
+	params.data.new_episode.new_date_of_watching=defaultFromValue(params.data.new_episode.new_date_of_watching)
+	params.data.new_episode.new_seen_it_whole=defaultFromValue(params.data.new_episode.new_seen_it_whole)
+	params.data.new_episode.new_score=defaultFromValue(params.data.new_episode.new_score)
+else 
+	system.alert("Name, score and seen it whole fields must be present")
 endif
 
-form.new_episode.new_epizode_name=defaultFromValue(form.new_episode.new_epizode_name)
-form.new_episode.new_date_of_watching=defaultFromValue(form.new_episode.new_date_of_watching)
-form.new_episode.new_seen_it_whole=defaultFromValue(form.new_episode.new_seen_it_whole)
-form.new_episode.new_score=defaultFromValue(form.new_episode.new_score)
+
 
 form.actions.hide_buttons()
 
@@ -2046,6 +2029,32 @@ else
 	//do nothing
 endif
 ]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="update_record" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[
+if page1.confirm("Are you sure you want to update these data?") then 
+	form.POSTupdate.fromJson(form.detailedMovie.toJson())
+	form.POSTupdate.type=form.type
+	var data=form.POSTupdate.toJson()
+	
+	var response = apiobjects.main_server_connection.postAsync("update",data)
+	
+	if response.isError() then 
+		system.console(response.getErrorMessage())
+	else 
+		//form.detailedMovie.fromJson(response.getJsonString())	
+		system.alert("Update successful")
+	endif
+else 
+	//do nothing
+
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

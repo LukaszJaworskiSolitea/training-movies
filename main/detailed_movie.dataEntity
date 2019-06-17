@@ -201,6 +201,49 @@
             </Complex>
           </Children>
         </Collection>
+        <Complex>
+          <Name value="new_episode" />
+          <Caption value="New _ episode" />
+          <Children>
+            <Attribute>
+              <Name value="new_episode_name" />
+              <Caption value="New _ episode _ name" />
+              <DeclaredType>
+                <AttributeType />
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="new_date_of_watching" />
+              <Caption value="New _ date _ of _ watching" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Date" />
+                  <DateAllowFuture value="False" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="new_seen_it_whole" />
+              <Caption value="New _ seen _ it _ whole" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="new_score" />
+              <Caption value="New _ score" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Integer" />
+                  <IntMax value="5" />
+                  <IntMin value="1" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Complex>
       </Children>
     </Collection>
   </Children>
