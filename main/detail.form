@@ -1858,6 +1858,7 @@ form.actions.hide_buttons()]]></Script>
 	new_actor.actorName=form.new_actor
 	form.new_actor=""
 	form.actions.hide_buttons()
+	form.actions.compare_data()
 endif]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1873,7 +1874,8 @@ endif]]></Script>
 		item.removeMe()
 	endif
 endfor
-form.actions.hide_buttons()]]></Script>
+form.actions.hide_buttons()
+form.actions.compare_data()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1888,6 +1890,7 @@ form.actions.hide_buttons()]]></Script>
 	new_genre.genre=form.new_genre
 	form.new_genre=""
 	form.actions.hide_buttons()
+	form.actions.compare_data()
 endif]]></Script>
       </ActionLangBody>
       <DataContext>
@@ -1903,7 +1906,8 @@ endif]]></Script>
 		item.removeMe()
 	endif
 endfor
-form.actions.hide_buttons()]]></Script>
+form.actions.hide_buttons()
+form.actions.compare_data()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
