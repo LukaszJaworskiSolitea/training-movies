@@ -17,7 +17,7 @@
           <Panel.HorizontalAlignment value="Center" />
           <Panel.Width value="80px" />
           <Bindings>
-            <Binding SourceProperty="Data" Expression="globals.data_protection" />
+            <Binding SourceProperty="Data" Expression="globals.helpfull" />
           </Bindings>
           <CssClass>
             <CssClassConditional>

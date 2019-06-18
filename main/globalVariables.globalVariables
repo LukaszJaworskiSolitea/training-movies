@@ -35,5 +35,15 @@
         <AttributeType />
       </DeclaredType>
     </Attribute>
+    <Computed>
+      <Name value="helpfull" />
+      <Caption value="Helpfull" />
+      <Expression IsValid="True">
+        <ExpressionText><![CDATA["Safe?:"+toString(globals.data_protection)]]></ExpressionText>
+        <ResultType>
+          <BaseType value="String" />
+        </ResultType>
+      </Expression>
+    </Computed>
   </Children>
 </GlobalVariables>

@@ -1685,7 +1685,6 @@ form.detailedMovie.rating.seenItWhole=false
 form.search_by_actor=defaultFromValue(form.search_by_actor)
 
 
-
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",true)
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("detail",form.name,"","",false)
@@ -1695,9 +1694,6 @@ url.addString("id",form.id)
 url.updatePageUrl()
 
 form.actions.get_detail()
-form.actions.hide_buttons()
-
-
 
 //update and delete enab/disab
 if hasValue(form.detailedMovie.id) then 
@@ -1709,6 +1705,7 @@ else
 	form.helpers._del_record_enable=false
 endif
 
+form.actions.activate_detail_form()
 
 
 
@@ -1855,6 +1852,7 @@ form.actions.hide_buttons()]]></Script>
         <Script><![CDATA[if hasValue(form.new_actor) then
 	var new_actor=form.detailedMovie.starring.addItem()
 	new_actor.actorName=form.new_actor
+
 	form.new_actor=""
 	form.actions.hide_buttons()
 	form.actions.compare_data()
@@ -1887,6 +1885,7 @@ form.actions.compare_data()]]></Script>
         <Script><![CDATA[if hasValue(form.new_genre) then 
 	var new_genre=form.detailedMovie.genres.addItem()
 	new_genre.genre=form.new_genre
+	new_genre._delete=false
 	form.new_genre=""
 	form.actions.hide_buttons()
 	form.actions.compare_data()
@@ -2166,7 +2165,7 @@ endif
       <ActionLangBody IsValid="True">
         <Script><![CDATA[//losing data protection
 
-globals.after_change=form.toJson()
+globals.after_change=form.detailedMovie.toJson()
 
 //in case of some changes...
 if globals.before_change=globals.after_change then 
@@ -2197,6 +2196,15 @@ endif
       <Name value="handler_detail_OnActivate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.actions.activate_detail_form()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="activate_detail_form" />
+      <ActionLangBody IsValid="True">
         <Script><![CDATA[//visibility
 foreach season in form.detailedMovie.seasons do 
 	season.delete_vis=true
@@ -2207,7 +2215,7 @@ form.genre_delete_vis=false
 form.add_season_vis=false
 
 //losing data protection
-globals.before_change=form.toJson()
+globals.before_change=form.detailedMovie.toJson()
 globals.data_protection=true
 
 form.actions.hide_buttons()]]></Script>
