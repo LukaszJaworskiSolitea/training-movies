@@ -417,7 +417,7 @@ globals.busy=false
       <Name value="init_list_form" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
-
+globals.data_protection=true
 form.sorting.title=true
 form.sorting.year=true
 form.sorting.score=true

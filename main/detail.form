@@ -1677,18 +1677,14 @@
     <ActionBlock>
       <Name value="init_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//initial settings
+        <Script><![CDATA[
+
+//initial settings
 form.type=enums.type.movie
 form.detailedMovie.rating.seenItWhole=false
 form.search_by_actor=defaultFromValue(form.search_by_actor)
 
-//visibility
-foreach season in form.detailedMovie.seasons do 
-	season.delete_vis=true
-	season.new_episode.new_seen_it_whole=false
-endfor
-form.starring_delete_vis=true
-form.genre_delete_vis=true
+
 
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",true)
@@ -1701,6 +1697,8 @@ url.updatePageUrl()
 form.actions.get_detail()
 form.actions.hide_buttons()
 
+
+
 //update and delete enab/disab
 if hasValue(form.detailedMovie.id) then 
 	form.helpers._update_enable=true
@@ -1711,9 +1709,10 @@ else
 	form.helpers._del_record_enable=false
 endif
 
-//losing data protection
-globals.before_change=form.toJson()
-globals.data_protection=true
+
+
+
+
 
 ]]></Script>
       </ActionLangBody>
@@ -2167,10 +2166,10 @@ endif
       <ActionLangBody IsValid="True">
         <Script><![CDATA[//losing data protection
 
-var after_change=form.toJson()
+globals.after_change=form.toJson()
 
 //in case of some changes...
-if globals.before_change=after_change then 
+if globals.before_change=globals.after_change then 
 	globals.data_protection=true
 	//system.alert("Nothing change")
 else 
@@ -2198,7 +2197,20 @@ endif
       <Name value="handler_detail_OnActivate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.actions.hide_buttons()]]></Script>
+        <Script><![CDATA[//visibility
+foreach season in form.detailedMovie.seasons do 
+	season.delete_vis=true
+	season.new_episode.new_seen_it_whole=false
+endfor
+form.starring_delete_vis=false
+form.genre_delete_vis=false
+form.add_season_vis=false
+
+//losing data protection
+globals.before_change=form.toJson()
+globals.data_protection=true
+
+form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

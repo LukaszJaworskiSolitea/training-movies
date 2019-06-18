@@ -28,5 +28,12 @@
         </AttributeType>
       </DeclaredType>
     </Attribute>
+    <Attribute>
+      <Name value="after_change" />
+      <Caption value="After _ change" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
   </Children>
 </GlobalVariables>

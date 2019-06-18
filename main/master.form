@@ -12,11 +12,13 @@
       <Children>
         <Label>
           <Name value="label1" />
-          <Data value="Movies" />
           <Heading value="h2" />
           <Panel.Height value="#" />
           <Panel.HorizontalAlignment value="Center" />
           <Panel.Width value="80px" />
+          <Bindings>
+            <Binding SourceProperty="Data" Expression="globals.data_protection" />
+          </Bindings>
           <CssClass>
             <CssClassConditional>
               <ClassName value="{theme}-label" />
@@ -280,13 +282,6 @@
             </AttributeType>
           </DeclaredType>
         </Attribute>
-        <Attribute>
-          <Name value="attribute1" />
-          <Caption value="Attribute 1" />
-          <DeclaredType>
-            <AttributeType />
-          </DeclaredType>
-        </Attribute>
       </Children>
     </DataContext>
   </DataContext>
@@ -332,16 +327,13 @@ if isFalse(globals.data_protection) then
 		navigation.main.list.go(form.search_by_actor)
 	else
 		//go back
+		
 		//do nothing		
 	endif
 else 
 	//if all good 
 	navigation.main.list.go(form.search_by_actor)
 endif
-
-
-
-
 
 ]]></Script>
       </ActionLangBody>
@@ -355,19 +347,25 @@ endif
       <ActionLangBody IsValid="True">
         <Script><![CDATA[//losing data protection
 //in case of some changes...
+//you should consider two cases here 
+
 
 if isFalse(globals.data_protection) then 
 	if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
 		//continue
-		navigation.main.detail.go("","")
-		globals.before_change=form.toJson()
+		
 		globals.data_protection=true
+		navigation.main.detail.go("","")
+		
 	else
-		//go back
+		//go back	
+		
 		//do nothing		
 	endif
 else 
 	//if all good 
+
+	globals.data_protection=true
 	navigation.main.detail.go("","")
 endif
 
