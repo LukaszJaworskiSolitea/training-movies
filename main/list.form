@@ -382,9 +382,10 @@ else
 	form.all_movies.fromJson(response.getJsonString())
 	apiobjects.search_codelist.fillFromJson(response.getJsonString())
 	//in case of search_by_actor
+	
 	if hasValue(form.search_by_actor) then
-		var filtered=form.all_movies.where(current.starring.exists(var actor => actor.actorName=
-		form.search_by_actor)=true).toJson()	
+		var filtered=form.all_movies.where(current.starring.exists(var actor => 
+		indexOf(actor.actorName,form.search_by_actor)>0)).toJson()
 		
 		form.all_movies.fromJson(filtered)
 	endif
