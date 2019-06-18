@@ -329,14 +329,14 @@ endif
 if isFalse(globals.data_protection) then 
 	if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
 		//continue
-		navigation.main.list.go()
+		navigation.main.list.go(form.search_by_actor)
 	else
 		//go back
 		//do nothing		
 	endif
 else 
 	//if all good 
-	navigation.main.list.go()
+	navigation.main.list.go(form.search_by_actor)
 endif
 
 
@@ -381,7 +381,8 @@ endif
       <Name value="handler_master_OnCreate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.advanced_search_vis=false]]></Script>
+        <Script><![CDATA[form.advanced_search_vis=false
+form.search_by_actor=defaultFromValue(form.search_by_actor)]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -405,9 +406,8 @@ endif]]></Script>
       <Name value="handler_button2_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//find "Nathan Fillion
-//send actor name to form list here
-//set input required in form list]]></Script>
+        <Script><![CDATA[
+navigation.main.list.go(form.search_by_actor)]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

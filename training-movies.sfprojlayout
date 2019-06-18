@@ -99,9 +99,9 @@
       </ToolWindowContainer>
     </AutoHideTabStrip>
   </AutoHideHost>
-  <Content xsi:type="SplitContainer" AutoHideSize="1505.8,699.44" DockedSize="1505.8,699.44" DocumentSize="1505.8,699.44" FloatingSize="1505.8,699.44" Size="1505.8,699.44" Orientation="Horizontal">
+  <Content xsi:type="SplitContainer" AutoHideSize="1505.8,699.44" DockedSize="1499.4,691.44" DocumentSize="1505.8,699.44" FloatingSize="1505.8,699.44" Size="1499.4,691.44" Orientation="Horizontal">
     <UIElement xsi:type="ToolWindowContainer" AutoHideSize="220,200" DockedSize="220,200" DocumentSize="220,200" FloatingSize="220,200" Size="220,200" />
-    <UIElement xsi:type="ToolWindowContainer" AutoHideSize="300,699.44" DockedSize="300,699.44" DocumentSize="300,699.44" FloatingSize="300,699.44" Size="300,699.44" SelectedWindowUniqueId="8a46a2d9-fc8c-4c13-88e5-5692c2c135ec">
+    <UIElement xsi:type="ToolWindowContainer" AutoHideSize="300,699.44" DockedSize="300,691.44" DocumentSize="300,699.44" FloatingSize="300,699.44" Size="300,691.44" SelectedWindowUniqueId="8bc02417-1ba7-4174-8f84-8ca25eea2ae9">
       <UIElement xsi:type="ToolWindowRef" UniqueId="8bc02417-1ba7-4174-8f84-8ca25eea2ae9">
         <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.ProjectDesigner.ProjectDesignerControl">
           <Data>
@@ -113,9 +113,9 @@
         <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.DataContextDesigner.VariablesTool" />
       </UIElement>
     </UIElement>
-    <UIElement xsi:type="Workspace" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44">
+    <UIElement xsi:type="Workspace" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="956.6,691.44" FloatingSize="895.8,699.44" Size="956.6,691.44">
       <Content xsi:type="TabbedMdiHost">
-        <Content xsi:type="TabbedMdiContainer" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" SelectedWindowUniqueId="9bc3202a-3b70-4780-85cd-288c8b4e5bf8">
+        <Content xsi:type="TabbedMdiContainer" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="956.6,691.44" FloatingSize="895.8,699.44" Size="956.6,691.44" SelectedWindowUniqueId="2c1dd4e6-da4b-4f8d-befd-f4c2d835b4e5">
           <UIElement xsi:type="Track" UniqueId="65c9eeb3-5368-43b4-a6c8-493d80a96c76" />
           <UIElement xsi:type="Track" UniqueId="3d69818d-a29c-45df-a5b5-a2af4602476e" />
           <UIElement xsi:type="Track" UniqueId="1a8e3817-2cff-40ad-a213-2f695ed67155" />
@@ -257,40 +257,7 @@
           </UIElement>
           <UIElement xsi:type="Track" UniqueId="a9ceeaba-246d-4bfc-96e6-4ff5d9b71add" />
           <UIElement xsi:type="Track" UniqueId="ed4507a2-434d-4e4f-ac58-20240cf277a2" />
-          <UIElement xsi:type="DocumentWindowRef" UniqueId="8011adee-0096-48f3-801b-866b6e851bd7">
-            <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.master.handler_button2_OnClick">
-              <Data>
-                <State>
-                  <ToolsStates>
-                    <State Tool="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool">
-                      <State DefaultExpanded="true" />
-                    </State>
-                    <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
-                      <State DefaultExpanded="true" />
-                    </State>
-                    <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
-                      <Variables>
-                        <State IsEditMode="false" DefaultExpanded="false">
-                          <SavedPathStates>
-                            <Item>Action parameters</Item>
-                            <Item>Form variables</Item>
-                            <Item>Global variables</Item>
-                            <Item>Form variables/filtered</Item>
-                          </SavedPathStates>
-                        </State>
-                        <Headers>
-                          <Header Width="300" Caption="Name" />
-                          <Header Width="90" Caption="Type" />
-                          <Header Width="120" Caption="Flags" />
-                        </Headers>
-                      </Variables>
-                    </State>
-                  </ToolsStates>
-                </State>
-              </Data>
-            </Tag>
-          </UIElement>
-          <UIElement xsi:type="DocumentWindowRef" UniqueId="9bc3202a-3b70-4780-85cd-288c8b4e5bf8">
+          <UIElement xsi:type="DocumentWindowRef" UniqueId="2c1dd4e6-da4b-4f8d-befd-f4c2d835b4e5">
             <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.list.get_list">
               <Data>
                 <State>
@@ -299,7 +266,11 @@
                       <State DefaultExpanded="true" />
                     </State>
                     <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
-                      <State DefaultExpanded="true" />
+                      <State DefaultExpanded="true">
+                        <SelectedPaths>
+                          <Item>/form actions (list)/get_list</Item>
+                        </SelectedPaths>
+                      </State>
                     </State>
                     <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
                       <Variables>
@@ -310,7 +281,6 @@
                             <Item>Form variables/all_movies</Item>
                             <Item>Form variables/sorting</Item>
                             <Item>Form variables/all_movies/rating</Item>
-                            <Item>Form variables/all_movies/starring</Item>
                           </SavedPathStates>
                         </State>
                         <Headers>
@@ -328,13 +298,13 @@
         </Content>
       </Content>
     </UIElement>
-    <UIElement xsi:type="SplitContainer" AutoHideSize="300,699.44" DockedSize="300,699.44" DocumentSize="300,699.44" FloatingSize="300,699.44" Size="300,699.44" Orientation="Vertical">
-      <UIElement xsi:type="ToolWindowContainer" AutoHideSize="300,516.606453265045" DockedSize="300,462.206453265045" DocumentSize="300,516.606453265045" FloatingSize="300,516.606453265045" Size="300,462.206453265045" SelectedWindowUniqueId="d2fcec03-1eae-441c-a7d6-64552c16e3fa">
+    <UIElement xsi:type="SplitContainer" AutoHideSize="300,699.44" DockedSize="232.8,691.44" DocumentSize="300,699.44" FloatingSize="300,699.44" Size="232.8,691.44" Orientation="Vertical">
+      <UIElement xsi:type="ToolWindowContainer" AutoHideSize="300,516.606453265045" DockedSize="232.8,456.881800845656" DocumentSize="300,516.606453265045" FloatingSize="300,516.606453265045" Size="232.8,456.881800845656" SelectedWindowUniqueId="d2fcec03-1eae-441c-a7d6-64552c16e3fa">
         <UIElement xsi:type="ToolWindowRef" UniqueId="d2fcec03-1eae-441c-a7d6-64552c16e3fa">
           <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.ToolWindows.PropertyGridTool" />
         </UIElement>
       </UIElement>
-      <UIElement xsi:type="ToolWindowContainer" AutoHideSize="300,177.833546734955" DockedSize="300,232.233546734955" DocumentSize="300,177.833546734955" FloatingSize="300,177.833546734955" Size="300,232.233546734955" SelectedWindowUniqueId="7c70b421-eed5-40ba-a473-c03842ddd185">
+      <UIElement xsi:type="ToolWindowContainer" AutoHideSize="300,177.833546734955" DockedSize="232.8,229.558199154344" DocumentSize="300,177.833546734955" FloatingSize="300,177.833546734955" Size="232.8,229.558199154344" SelectedWindowUniqueId="7c70b421-eed5-40ba-a473-c03842ddd185">
         <UIElement xsi:type="ToolWindowRef" UniqueId="7c70b421-eed5-40ba-a473-c03842ddd185">
           <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
             <Data>
@@ -349,7 +319,7 @@
     </UIElement>
   </Content>
   <DocumentWindows>
-    <DocumentWindow UniqueId="88114fea-1443-4707-b4be-8e5eb3759a3d" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
+    <DocumentWindow UniqueId="88114fea-1443-4707-b4be-8e5eb3759a3d" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="956.6,691.44" FloatingSize="895.8,699.44" Size="956.6,691.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.FormDesigner.FormDocumentEditor" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.list">
         <Data>
           <State Split="0">
@@ -393,7 +363,7 @@
         </Data>
       </Tag>
     </DocumentWindow>
-    <DocumentWindow UniqueId="a7613259-b25a-4f5b-a3e8-9e069f435eba" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
+    <DocumentWindow UniqueId="a7613259-b25a-4f5b-a3e8-9e069f435eba" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="956.6,691.44" FloatingSize="895.8,699.44" Size="956.6,691.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.FormDesigner.FormDocumentEditor" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.master">
         <Data>
           <State Split="*">
@@ -435,7 +405,7 @@
         </Data>
       </Tag>
     </DocumentWindow>
-    <DocumentWindow UniqueId="0abb62b5-b0e5-4dd0-8817-8a0efa4a4c68" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
+    <DocumentWindow UniqueId="0abb62b5-b0e5-4dd0-8817-8a0efa4a4c68" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="956.6,691.44" FloatingSize="895.8,699.44" Size="956.6,691.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.FormDesigner.FormDocumentEditor" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.detail">
         <Data>
           <State Split="0">
@@ -482,40 +452,7 @@
         </Data>
       </Tag>
     </DocumentWindow>
-    <DocumentWindow UniqueId="8011adee-0096-48f3-801b-866b6e851bd7" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
-      <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.master.handler_button2_OnClick">
-        <Data>
-          <State>
-            <ToolsStates>
-              <State Tool="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool">
-                <State DefaultExpanded="true" />
-              </State>
-              <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
-                <State DefaultExpanded="true" />
-              </State>
-              <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
-                <Variables>
-                  <State IsEditMode="false" DefaultExpanded="false">
-                    <SavedPathStates>
-                      <Item>Action parameters</Item>
-                      <Item>Form variables</Item>
-                      <Item>Global variables</Item>
-                      <Item>Form variables/filtered</Item>
-                    </SavedPathStates>
-                  </State>
-                  <Headers>
-                    <Header Width="300" Caption="Name" />
-                    <Header Width="90" Caption="Type" />
-                    <Header Width="120" Caption="Flags" />
-                  </Headers>
-                </Variables>
-              </State>
-            </ToolsStates>
-          </State>
-        </Data>
-      </Tag>
-    </DocumentWindow>
-    <DocumentWindow UniqueId="9bc3202a-3b70-4780-85cd-288c8b4e5bf8" AutoHideSize="895.8,699.44" DockedSize="895.8,699.44" DocumentSize="895.8,699.44" FloatingSize="895.8,699.44" Size="895.8,699.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
+    <DocumentWindow UniqueId="2c1dd4e6-da4b-4f8d-befd-f4c2d835b4e5" AutoHideSize="956.6,691.44" DockedSize="956.6,691.44" DocumentSize="956.6,691.44" FloatingSize="956.6,691.44" Size="956.6,691.44" IsOpen="true" LastState="Document" StandardMdiBounds="0,0,300,200" State="Document">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionScriptDesigner.ActionScriptEditorControl" ObjectId="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.list.get_list">
         <Data>
           <State>
@@ -524,7 +461,11 @@
                 <State DefaultExpanded="true" />
               </State>
               <State Tool="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
-                <State DefaultExpanded="true" />
+                <State DefaultExpanded="true">
+                  <SelectedPaths>
+                    <Item>/form actions (list)/get_list</Item>
+                  </SelectedPaths>
+                </State>
               </State>
               <State Tool="ScreenFactory.Client.DataContextDesigner.VariablesTool">
                 <Variables>
@@ -535,7 +476,6 @@
                       <Item>Form variables/all_movies</Item>
                       <Item>Form variables/sorting</Item>
                       <Item>Form variables/all_movies/rating</Item>
-                      <Item>Form variables/all_movies/starring</Item>
                     </SavedPathStates>
                   </State>
                   <Headers>
@@ -632,7 +572,7 @@
         </Data>
       </Tag>
     </ToolWindow>
-    <ToolWindow UniqueId="d2fcec03-1eae-441c-a7d6-64552c16e3fa" AutoHideSize="300,516.606453265045" DockedSize="300,462.206453265045" DocumentSize="300,516.606453265045" FloatingSize="300,516.606453265045" Size="300,462.206453265045" IsOpen="true" LastState="Docked" Name="ScreenFactory_Client_ToolWindows_PropertyGridTool" StandardMdiBounds="0,0,300,200" State="Docked">
+    <ToolWindow UniqueId="d2fcec03-1eae-441c-a7d6-64552c16e3fa" AutoHideSize="300,516.606453265045" DockedSize="300,456.881800845656" DocumentSize="300,516.606453265045" FloatingSize="300,516.606453265045" Size="300,456.881800845656" IsOpen="true" LastState="Docked" Name="ScreenFactory_Client_ToolWindows_PropertyGridTool" StandardMdiBounds="0,0,300,200" State="Docked">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.ToolWindows.PropertyGridTool" />
     </ToolWindow>
     <ToolWindow UniqueId="8bc02417-1ba7-4174-8f84-8ca25eea2ae9" AutoHideSize="300,300" DockedSize="300,699.44" DocumentSize="300,300" FloatingSize="300,300" Size="300,699.44" IsOpen="true" LastState="Docked" Name="ScreenFactory_Client_ProjectDesigner_ProjectDesignerControl" StandardMdiBounds="0,0,300,200" State="Docked">
@@ -645,10 +585,10 @@
     <ToolWindow UniqueId="5d793a76-2f59-4a34-b899-7c388437d425" AutoHideSize="150,0" DockedSize="300,300" DocumentSize="150,0" FloatingSize="150,0" Size="150,0" IsOpen="true" LastState="Docked" Name="ScreenFactory_Client_ToolWindows_ToolboxControl" StandardMdiBounds="0,0,300,200" State="AutoHide">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.ToolWindows.ToolboxControl" />
     </ToolWindow>
-    <ToolWindow UniqueId="ddfbc06f-5b42-4b30-9369-ac2869be48e3" AutoHideSize="300,177.833546734955" DockedSize="300,232.233546734955" DocumentSize="300,177.833546734955" FloatingSize="300,177.833546734955" Size="300,232.233546734955" IsOpen="true" LastState="AutoHide" Name="ScreenFactory_Client_ApiObjectsDesigner_FormApiObjectsTool" StandardMdiBounds="0,0,300,200" State="Docked">
+    <ToolWindow UniqueId="ddfbc06f-5b42-4b30-9369-ac2869be48e3" AutoHideSize="300,177.833546734955" DockedSize="300,229.558199154344" DocumentSize="300,177.833546734955" FloatingSize="300,177.833546734955" Size="300,229.558199154344" IsOpen="true" LastState="AutoHide" Name="ScreenFactory_Client_ApiObjectsDesigner_FormApiObjectsTool" StandardMdiBounds="0,0,300,200" State="Docked">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.ApiObjectsDesigner.FormApiObjectsTool" />
     </ToolWindow>
-    <ToolWindow UniqueId="7c70b421-eed5-40ba-a473-c03842ddd185" AutoHideSize="0,200" DockedSize="300,232.233546734955" DocumentSize="0,200" FloatingSize="0,200" Size="300,232.233546734955" IsOpen="true" LastState="AutoHide" Name="ScreenFactory_Client_Designers_ActionsDesigner_FormActionsTool" StandardMdiBounds="0,0,300,200" State="Docked">
+    <ToolWindow UniqueId="7c70b421-eed5-40ba-a473-c03842ddd185" AutoHideSize="0,200" DockedSize="300,229.558199154344" DocumentSize="0,200" FloatingSize="0,200" Size="300,229.558199154344" IsOpen="true" LastState="AutoHide" Name="ScreenFactory_Client_Designers_ActionsDesigner_FormActionsTool" StandardMdiBounds="0,0,300,200" State="Docked">
       <Tag xsi:type="LayoutData" ToolType="ScreenFactory.Client.Designers.ActionsDesigner.FormActionsTool">
         <Data>
           <Options ShowEvents="true" />

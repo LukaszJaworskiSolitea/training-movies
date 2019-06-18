@@ -1616,6 +1616,13 @@
             </Attribute>
           </Children>
         </Complex>
+        <Attribute>
+          <Name value="search_by_actor" />
+          <Caption value="Search _ by _ actor" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
       </Children>
       <Modifiers>
         <Modifier>
@@ -1674,6 +1681,7 @@
         <Script><![CDATA[//initial settings
 form.type=enums.type.movie
 form.detailedMovie.rating.seenItWhole=false
+form.search_by_actor=defaultFromValue(form.search_by_actor)
 
 //visibility
 foreach season in form.detailedMovie.seasons do 
@@ -2073,7 +2081,7 @@ if page1.confirm("Are you sure you want to create new record?") then
 	if response.isError() then 
 		system.console(response.getErrorMessage())
 	else 
-		navigation.main.list.go()
+		navigation.main.list.go(form.search_by_actor)
 	endif
 	globals.busy=false
 else 
@@ -2122,12 +2130,12 @@ endif
     <ActionBlock>
       <Name value="delete_record" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//it is working but don't know why :( :(
-
-
+        <Script><![CDATA[
 
 if isTrue(page1.confirm("You will lose all your data, are you sure?")) then 
+//var data="{\"id\"="+toString(form.detailedMovie.id)+"\"}"
 	var data=form.detailedMovie.toJson()
+	
 	
 	globals.busy=true
 	var response = apiobjects.main_server_connection.postAsync("delete",data)
@@ -2136,9 +2144,10 @@ if isTrue(page1.confirm("You will lose all your data, are you sure?")) then
 		system.console(response.getErrorMessage())
 	else 
 		//form.detailedMovie.fromJson(response.getJsonString())	
-		navigation.main.list.go()
+		navigation.main.list.go(form.search_by_actor)
 	endif
 	globals.busy=false
+	
 else 
 	//do nothing
 

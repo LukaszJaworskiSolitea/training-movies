@@ -345,6 +345,15 @@
             <AttributeType />
           </DeclaredType>
         </Attribute>
+        <Attribute>
+          <Name value="search_by_actor" />
+          <Caption value="Search _ by _ actor" />
+          <DataContextParameter.IsInput value="True" />
+          <DataContextParameter.IsInputRequired value="True" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
       </Children>
       <Modifiers>
         <Modifier>
@@ -361,7 +370,8 @@
     <ActionBlock>
       <Name value="get_list" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[var filtered=""
+        <Script><![CDATA[
+
 globals.busy=true
 
 var response = apiobjects.main_server_connection.getAsync("list")
@@ -371,20 +381,13 @@ if response.isError() then
 else 
 	form.all_movies.fromJson(response.getJsonString())
 	apiobjects.search_codelist.fillFromJson(response.getJsonString())
-	
-	//place for condition when search_by_actor present
-	
-		//filtered=form.all_movies.where(current.starring.where(         //that doesn't work
+	//in case of search_by_actor
+	if hasValue(form.search_by_actor) then
+		var filtered=form.all_movies.where(current.starring.exists(var actor => actor.actorName=
+		form.search_by_actor)=true).toJson()	
 		
-		//foreach movie in form.all_movies do 
-		//	filtered=movie.starring.where(current.actorName="Nathan Fillion").toJson()	
-		//	system.alert(filtered)
-	//	endfor
-		
-		
-	//	form.all_movies.fromJson(filtered)
-	//place for condition when search_by_actor present
-	
+		form.all_movies.fromJson(filtered)
+	endif
 endif
 
 globals.busy=false
