@@ -42,7 +42,9 @@
           <Name value="score" />
           <Caption value="Score" />
           <DeclaredType>
-            <AttributeType />
+            <AttributeType>
+              <BaseType value="Integer" />
+            </AttributeType>
           </DeclaredType>
         </Attribute>
       </Children>

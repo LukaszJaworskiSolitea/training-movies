@@ -24,44 +24,135 @@
             </CssClassConditional>
           </CssClass>
         </Label>
-        <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
-          <Name value="referenceLookup1" />
-          <Caption value="Search" />
-          <CaptionLength value="60px" />
-          <DataApiObject reference="+GlobalApiObjects.search_codelist" />
-          <DisplayMember value="name" />
-          <immediateUpdate value="True" />
+        <Panel>
+          <Name value="panel6" />
+          <Orientation value="Vertical" />
           <Panel.Height value="#" />
-          <Panel.HorizontalAlignment value="Center" />
-          <Panel.Width value="500px" />
-          <Bindings>
-            <Binding SourceProperty="Data" Expression="filtered" />
-          </Bindings>
+          <Panel.Width value="*" />
+          <Children>
+            <Panel>
+              <Name value="panel7" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Right" />
+              <Panel.Width value="70%" />
+              <Children>
+                <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
+                  <Name value="referenceLookup1" />
+                  <Caption value="Search" />
+                  <CaptionLength value="60px" />
+                  <DataApiObject reference="+GlobalApiObjects.search_codelist" />
+                  <DisplayMember value="name" />
+                  <immediateUpdate value="True" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Center" />
+                  <Panel.Width value="400px" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="filtered" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-referencelookup" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </ReferenceLookup>
+                <HyperLink>
+                  <Name value="hyperLink1" />
+                  <Data value="Advanced search" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.Width value="150px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_hyperLink1_OnClick" />
+                  </OnClick>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-hyperlink" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </HyperLink>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+          </Children>
           <CssClass>
             <CssClassConditional>
-              <ClassName value="{theme}-referencelookup" />
+              <ClassName value="{theme}-panel" />
               <IsThemedStyle value="True" />
             </CssClassConditional>
           </CssClass>
-        </ReferenceLookup>
-        <TextBox>
-          <Name value="textBox1" />
-          <Caption value="Include actor in your search" />
-          <CaptionVAlign value="Middle" />
+        </Panel>
+        <Panel>
+          <Name value="panel4" />
+          <Orientation value="Vertical" />
           <Panel.Height value="#" />
-          <Panel.HorizontalAlignment value="Center" />
-          <Panel.Width value="300px" />
+          <Panel.Width value="*" />
           <Bindings>
-            <Binding SourceProperty="Data" Expression="search_by_actor" />
-            <Binding SourceProperty="IsRequiredMarkVisible" Expression="search_by_actor.isRequired()" />
+            <Binding SourceProperty="IsVisible" Expression="form.advanced_search_vis" />
           </Bindings>
+          <Children>
+            <Panel>
+              <Name value="panel5" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Right" />
+              <Panel.Width value="68%" />
+              <Children>
+                <TextBox>
+                  <Name value="textBox1" />
+                  <CaptionVAlign value="Middle" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Center" />
+                  <Panel.Width value="300px" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="search_by_actor" />
+                    <Binding SourceProperty="IsRequiredMarkVisible" Expression="search_by_actor.isRequired()" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-textbox" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </TextBox>
+                <Button>
+                  <Name value="button2" />
+                  <Caption value="Search actors" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="110px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_button2_OnClick" />
+                  </OnClick>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-button" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Button>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+          </Children>
           <CssClass>
             <CssClassConditional>
-              <ClassName value="{theme}-textbox" />
+              <ClassName value="{theme}-panel" />
               <IsThemedStyle value="True" />
             </CssClassConditional>
           </CssClass>
-        </TextBox>
+        </Panel>
         <Panel>
           <Name value="panel3" />
           <Orientation value="Horizontal" />
@@ -180,9 +271,28 @@
             <AttributeType />
           </DeclaredType>
         </Attribute>
+        <Attribute>
+          <Name value="advanced_search_vis" />
+          <Caption value="Advanced _ search _ vis" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
+        <Attribute>
+          <Name value="attribute1" />
+          <Caption value="Attribute 1" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
       </Children>
     </DataContext>
   </DataContext>
+  <OnCreate>
+    <ActionEvent ReferencedAction="~handler_master_OnCreate" />
+  </OnCreate>
   <Actions>
     <ActionBlock>
       <Name value="handler_filtered_OnUserChange" />
@@ -245,6 +355,7 @@ endif
       <ActionLangBody IsValid="True">
         <Script><![CDATA[//losing data protection
 //in case of some changes...
+
 if isFalse(globals.data_protection) then 
 	if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
 		//continue
@@ -261,6 +372,42 @@ else
 endif
 
 ]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_master_OnCreate" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.advanced_search_vis=false]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_hyperLink1_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[if isTrue(form.advanced_search_vis) then 
+	form.advanced_search_vis=false
+else 
+	form.advanced_search_vis=true
+endif]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_button2_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[//find "Nathan Fillion
+//send actor name to form list here
+//set input required in form list]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

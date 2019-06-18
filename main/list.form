@@ -281,6 +281,20 @@
             <Include>
               <Include reference="+DataEntities.movie" />
             </Include>
+            <Include />
+            <Collection>
+              <Name value="starring" />
+              <Caption value="Starring" />
+              <Children>
+                <Attribute>
+                  <Name value="actorName" />
+                  <Caption value="Actor name" />
+                  <DeclaredType>
+                    <AttributeType />
+                  </DeclaredType>
+                </Attribute>
+              </Children>
+            </Collection>
           </Children>
         </Collection>
         <Complex>
@@ -347,7 +361,7 @@
     <ActionBlock>
       <Name value="get_list" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[
+        <Script><![CDATA[var filtered=""
 globals.busy=true
 
 var response = apiobjects.main_server_connection.getAsync("list")
@@ -357,11 +371,23 @@ if response.isError() then
 else 
 	form.all_movies.fromJson(response.getJsonString())
 	apiobjects.search_codelist.fillFromJson(response.getJsonString())
+	
+	//place for condition when search_by_actor present
+	
+		//filtered=form.all_movies.where(current.starring.where(         //that doesn't work
+		
+		//foreach movie in form.all_movies do 
+		//	filtered=movie.starring.where(current.actorName="Nathan Fillion").toJson()	
+		//	system.alert(filtered)
+	//	endfor
+		
+		
+	//	form.all_movies.fromJson(filtered)
+	//place for condition when search_by_actor present
+	
 endif
 
 globals.busy=false
-
-
 
 
 
