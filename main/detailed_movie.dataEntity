@@ -278,5 +278,12 @@
         </Complex>
       </Children>
     </Collection>
+    <Attribute>
+      <Name value="id" />
+      <Caption value="Id" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
   </Children>
 </DataEntity>

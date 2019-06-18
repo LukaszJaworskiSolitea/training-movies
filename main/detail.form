@@ -1499,13 +1499,6 @@
             <Include>
               <Include reference="+DataEntities.detailed_movie" />
             </Include>
-            <Attribute>
-              <Name value="id" />
-              <Caption value="Id" />
-              <DeclaredType>
-                <AttributeType />
-              </DeclaredType>
-            </Attribute>
           </Children>
         </Complex>
         <Complex>
@@ -1524,13 +1517,6 @@
             <Include>
               <Include reference="+DataEntities.detailed_movie" />
             </Include>
-            <Attribute>
-              <Name value="id" />
-              <Caption value="Id" />
-              <DeclaredType>
-                <AttributeType />
-              </DeclaredType>
-            </Attribute>
           </Children>
         </Complex>
         <Attribute>
@@ -1623,6 +1609,19 @@
             <AttributeType />
           </DeclaredType>
         </Attribute>
+        <Complex>
+          <Name value="delete_id" />
+          <Caption value="Delete _ id" />
+          <Children>
+            <Attribute>
+              <Name value="id" />
+              <Caption value="Id" />
+              <DeclaredType>
+                <AttributeType />
+              </DeclaredType>
+            </Attribute>
+          </Children>
+        </Complex>
       </Children>
       <Modifiers>
         <Modifier>
@@ -1706,6 +1705,7 @@ form.actions.hide_buttons()
 if hasValue(form.detailedMovie.id) then 
 	form.helpers._update_enable=true
 	form.helpers._del_record_enable=true
+	form.delete_id.id=form.detailedMovie.id
 else 
 	form.helpers._update_enable=false
 	form.helpers._del_record_enable=false
@@ -2133,10 +2133,9 @@ endif
         <Script><![CDATA[
 
 if isTrue(page1.confirm("You will lose all your data, are you sure?")) then 
-//var data="{\"id\"="+toString(form.detailedMovie.id)+"\"}"
-	var data=form.detailedMovie.toJson()
-	
-	
+
+	var data=form.delete_id.toJson()
+
 	globals.busy=true
 	var response = apiobjects.main_server_connection.postAsync("delete",data)
 	
