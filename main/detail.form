@@ -1599,6 +1599,15 @@
                 </AttributeType>
               </DeclaredType>
             </Attribute>
+            <Attribute>
+              <Name value="season_counter" />
+              <Caption value="Season _ counter" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Integer" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
           </Children>
         </Complex>
         <Attribute>
@@ -1630,6 +1639,15 @@
             </Include>
           </Children>
         </Collection>
+        <Attribute>
+          <Name value="recurrent_val" />
+          <Caption value="Recurrent _ val" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Integer" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
       </Children>
       <Modifiers>
         <Modifier>
@@ -1979,18 +1997,21 @@ endfor]]></Script>
     <ActionBlock>
       <Name value="create_new_season" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[
+        <Script><![CDATA[form.recurrent_val=1
 
 
-var seasons_amount=form.detailedMovie.seasons.count()
+form.actions.find_lowest_missing()
+var counter=form.helpers.season_counter
 
-var item=form.detailedMovie.seasons.addItem()
-	item.number=seasons_amount+1
+var item=form.detailedMovie.seasons.insertItemAt(counter)
+	item.number=counter
 	
 
 foreach season in form.detailedMovie.seasons do 
 	season.new_episode.new_seen_it_whole=false
-endfor]]></Script>
+endfor
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -2056,6 +2077,8 @@ endfor
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
 params.data.removeMe()
+
+form.helpers.season_counter=params.data.number
 form.actions.compare_data()
 ]]></Script>
       </ActionLangBody>
@@ -2231,7 +2254,8 @@ endif
     <ActionBlock>
       <Name value="activate_detail_form" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//visibility
+        <Script><![CDATA[
+//visibility
 foreach season in form.detailedMovie.seasons do 
 	season.delete_vis=true
 	season.new_episode.new_seen_it_whole=false
@@ -2248,6 +2272,27 @@ globals.data_protection=true
 form.all_data.fromJson(globals.all_data_json)
 
 form.actions.hide_buttons()]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="find_lowest_missing" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[var length=form.detailedMovie.seasons.count()
+
+if length=0 then
+	form.helpers.season_counter=1
+else
+	if form.detailedMovie.seasons.exists(current.number=form.recurrent_val) then 
+		form.recurrent_val=form.recurrent_val+1
+		form.actions.find_lowest_missing()
+	else 
+		form.helpers.season_counter=form.recurrent_val
+	endif
+
+endif]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
