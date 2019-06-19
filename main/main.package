@@ -14,6 +14,6 @@
     <ResourceItem ResourceName="styles.css" LinkerAction="Css" OutputFileName="styles.css" Src="styles.css" />
     <PackageItem Src="globalActions.globalActions" />
     <PackageItem Src="globalVariables.globalVariables" />
-    <ResourceItem ResourceName="pleaseWait.gif" LinkerAction="Favicon" OutputFileName="pleaseWait.gif" Src="pleaseWait.gif" />
+    <ResourceItem ResourceName="pleaseWait.gif" OutputFileName="pleaseWait.gif" Src="pleaseWait.gif" />
   </Items>
 </Package>

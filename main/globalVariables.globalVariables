@@ -45,5 +45,12 @@
         </ResultType>
       </Expression>
     </Computed>
+    <Attribute>
+      <Name value="all_data_json" />
+      <Caption value="All _ data _ json" />
+      <DeclaredType>
+        <AttributeType />
+      </DeclaredType>
+    </Attribute>
   </Children>
 </GlobalVariables>

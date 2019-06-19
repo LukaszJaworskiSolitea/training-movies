@@ -378,6 +378,8 @@ else
 	endif
 endif
 
+
+globals.all_data_json=form.all_movies.toJson()
 globals.busy=false
 
 
@@ -426,9 +428,7 @@ form.actions.get_list()
       <Name value="handler_dataTable1_OnRowActivate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[navigation.main.detail.go(params.data.id,params.data.name)
-
-//navigation.main.detail.withAll_movies(form.all_movies).go(params.data.id,params.data.name)]]></Script>
+        <Script><![CDATA[navigation.main.detail.go(params.data.id,params.data.name)]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

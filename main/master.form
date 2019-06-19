@@ -212,7 +212,7 @@
                 </Button>
                 <BusyIndicator identity="busyIndicator.4a8ce8836eb04d7bbc155c7119f0193e">
                   <Name value="busyIndicator1" />
-                  <LoadingImageSource value="pleaseWait.gif" />
+                  <LoadingImageSource value="resources/pleaseWait.gif" />
                   <Panel.Height value="#" />
                   <Panel.Width value="*" />
                   <StatusText value="Please wait..." />

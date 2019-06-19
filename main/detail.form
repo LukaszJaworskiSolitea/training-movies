@@ -1622,9 +1622,8 @@
           </Children>
         </Complex>
         <Collection>
-          <Name value="all_movies" />
-          <Caption value="All _ movies" />
-          <DataContextParameter.IsInput value="True" />
+          <Name value="all_data" />
+          <Caption value="All _ data" />
           <Children>
             <Include>
               <Include reference="+DataEntities.movie" />
@@ -1752,39 +1751,42 @@ globals.busy=false
       <Name value="handler_button1_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[//add some checking if movie exist 
-
-
+        <Script><![CDATA[
 var validation=true
-if form.type=enums.type.movie then 
-	//movie validation
-	if form.isValid() then 
-		form.actions.create_new_record()
-	else 
-		system.alert("Form is not valid")
-	endif
-else 
-	//if there is at least one season present	
-	if form.detailedMovie.seasons.count()=0 then
-		validation=false
-		system.alert("At least one season in series has to be present ")
-	else 
-		//series validation:
-		//make sure every seasons has at leasta one episode...
-		foreach season in form.detailedMovie.seasons do 
-			if not (season.episodes.count()>0) then
-				validation=false
-			endif	
-		endfor 
-		//...and form is valid
-		if (form.isValid()) and isTrue(validation) then 
+//check if movie exist 
+var already_exist=form.all_data.exists(current.name=form.detailedMovie.name)
+if isFalse(already_exist) then
+	if form.type=enums.type.movie then 
+		//movie validation
+		if form.isValid() then 
 			form.actions.create_new_record()
 		else 
 			system.alert("Form is not valid")
 		endif
+	else 
+		//series validation:
+		//if there is at least one season present	
+		if form.detailedMovie.seasons.count()=0 then
+			validation=false
+			system.alert("At least one season in series has to be present ")
+		else 	
+			//make sure every seasons has at leasta one episode...
+			foreach season in form.detailedMovie.seasons do 
+				if not (season.episodes.count()>0) then
+					validation=false
+				endif	
+			endfor 
+			//...and form is valid
+			if (form.isValid()) and isTrue(validation) then 
+				form.actions.create_new_record()
+			else 
+				system.alert("Form is not valid")
+			endif
+		endif
 	endif
+else
+	system.alert("That title already exist")
 endif
-
 
 
 ]]></Script>
@@ -2241,6 +2243,9 @@ form.add_season_vis=false
 //losing data protection
 globals.before_change=form.detailedMovie.toJson()
 globals.data_protection=true
+
+
+form.all_data.fromJson(globals.all_data_json)
 
 form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
