@@ -12,13 +12,11 @@
       <Children>
         <Label>
           <Name value="label1" />
+          <Data value="Movies" />
           <Heading value="h2" />
           <Panel.Height value="#" />
           <Panel.HorizontalAlignment value="Center" />
           <Panel.Width value="80px" />
-          <Bindings>
-            <Binding SourceProperty="Data" Expression="globals.helpfull" />
-          </Bindings>
           <CssClass>
             <CssClassConditional>
               <ClassName value="{theme}-label" />
@@ -195,7 +193,7 @@
               <Children>
                 <Button>
                   <Name value="button1" />
-                  <Caption value="Add new record" />
+                  <Caption value="Create new record" />
                   <Panel.Height value="#" />
                   <Panel.HorizontalAlignment value="Right" />
                   <Panel.VerticalAlignment value="Middle" />
