@@ -1849,7 +1849,10 @@ form.actions.hide_buttons()]]></Script>
       <Name value="handler_button5_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[if hasValue(form.new_actor) then
+        <Script><![CDATA[
+
+var already_exist=form.detailedMovie.starring.exists(current.actorName=form.new_actor)
+if hasValue(form.new_actor) and isFalse(already_exist) then
 	var new_actor=form.detailedMovie.starring.addItem()
 	new_actor.actorName=form.new_actor
 
@@ -1882,7 +1885,8 @@ form.actions.compare_data()]]></Script>
       <Name value="handler_button7_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[if hasValue(form.new_genre) then 
+        <Script><![CDATA[var already_exist=form.detailedMovie.genres.exists(current.genre=form.new_genre)
+if hasValue(form.new_genre) and isFalse(already_exist) then 
 	var new_genre=form.detailedMovie.genres.addItem()
 	new_genre.genre=form.new_genre
 	new_genre._delete=false
