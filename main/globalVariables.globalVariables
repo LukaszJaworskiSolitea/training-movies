@@ -39,7 +39,7 @@
       <Name value="helpfull" />
       <Caption value="Helpfull" />
       <Expression IsValid="True">
-        <ExpressionText><![CDATA["Safe?:"+toString(globals.data_protection)]]></ExpressionText>
+        <ExpressionText><![CDATA["Safe excape?:"+toString(globals.data_protection)]]></ExpressionText>
         <ResultType>
           <BaseType value="String" />
         </ResultType>

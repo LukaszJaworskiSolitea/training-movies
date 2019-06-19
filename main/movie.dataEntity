@@ -49,5 +49,18 @@
         </Attribute>
       </Children>
     </Complex>
+    <Collection>
+      <Name value="starring" />
+      <Caption value="Starring" />
+      <Children>
+        <Attribute>
+          <Name value="actorName" />
+          <Caption value="Actor name" />
+          <DeclaredType>
+            <AttributeType />
+          </DeclaredType>
+        </Attribute>
+      </Children>
+    </Collection>
   </Children>
 </DataEntity>

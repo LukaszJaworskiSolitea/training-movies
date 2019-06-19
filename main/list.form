@@ -282,19 +282,6 @@
               <Include reference="+DataEntities.movie" />
             </Include>
             <Include />
-            <Collection>
-              <Name value="starring" />
-              <Caption value="Starring" />
-              <Children>
-                <Attribute>
-                  <Name value="actorName" />
-                  <Caption value="Actor name" />
-                  <DeclaredType>
-                    <AttributeType />
-                  </DeclaredType>
-                </Attribute>
-              </Children>
-            </Collection>
           </Children>
         </Collection>
         <Complex>
@@ -439,7 +426,9 @@ form.actions.get_list()
       <Name value="handler_dataTable1_OnRowActivate" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[navigation.main.detail.go(params.data.id,params.data.name)]]></Script>
+        <Script><![CDATA[navigation.main.detail.go(params.data.id,params.data.name)
+
+//navigation.main.detail.withAll_movies(form.all_movies).go(params.data.id,params.data.name)]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

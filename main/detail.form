@@ -666,7 +666,6 @@
                   <Name value="datePicker1" />
                   <Panel.Height value="#" />
                   <Panel.Width value="300px" />
-                  <TimePrecision value="NoTime" />
                   <Bindings>
                     <Binding SourceProperty="Data" Expression="detailedMovie.rating.dateOfWatching" />
                     <Binding SourceProperty="IsRequiredMarkVisible" Expression="detailedMovie.rating.dateOfWatching.isRequired()" />
@@ -1331,7 +1330,7 @@
               <Children>
                 <Button>
                   <Name value="button1" />
-                  <Caption value="Add new" />
+                  <Caption value="Save new" />
                   <Panel.Height value="#" />
                   <Panel.Width value="150px" />
                   <OnClick>
@@ -1622,6 +1621,16 @@
             </Attribute>
           </Children>
         </Complex>
+        <Collection>
+          <Name value="all_movies" />
+          <Caption value="All _ movies" />
+          <DataContextParameter.IsInput value="True" />
+          <Children>
+            <Include>
+              <Include reference="+DataEntities.movie" />
+            </Include>
+          </Children>
+        </Collection>
       </Children>
       <Modifiers>
         <Modifier>
@@ -1743,7 +1752,9 @@ globals.busy=false
       <Name value="handler_button1_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[
+        <Script><![CDATA[//add some checking if movie exist 
+
+
 var validation=true
 if form.type=enums.type.movie then 
 	//movie validation
@@ -1753,19 +1764,24 @@ if form.type=enums.type.movie then
 		system.alert("Form is not valid")
 	endif
 else 
-	//series validation:
-	//make sure every seasons has at leasta one episode...
-	foreach season in form.detailedMovie.seasons do 
-		if not (season.episodes.count()>0) then
-			validation=false
-		endif	
-	endfor 
-	
-	//...and form is valid
-	if (form.isValid()) and isTrue(validation) then 
-		form.actions.create_new_record()
+	//if there is at least one season present	
+	if form.detailedMovie.seasons.count()=0 then
+		validation=false
+		system.alert("At least one season in series has to be present ")
 	else 
-		system.alert("Form is not valid")
+		//series validation:
+		//make sure every seasons has at leasta one episode...
+		foreach season in form.detailedMovie.seasons do 
+			if not (season.episodes.count()>0) then
+				validation=false
+			endif	
+		endfor 
+		//...and form is valid
+		if (form.isValid()) and isTrue(validation) then 
+			form.actions.create_new_record()
+		else 
+			system.alert("Form is not valid")
+		endif
 	endif
 endif
 
@@ -1986,7 +2002,8 @@ endfor]]></Script>
 //params.data.new_episode.new_seen_it_whole=false
 
 //new episode validation
-if hasValue(params.data.new_episode.new_episode_name) and 
+var already_exist=params.data.episodes.exists(current.episodeName=params.data.new_episode.new_episode_name)
+if hasValue(params.data.new_episode.new_episode_name) and isFalse(already_exist) and
    isTrue(params.data.new_episode.new_seen_it_whole) and 
    hasvAlue(params.data.new_episode.new_score) then 
    
@@ -2001,7 +2018,7 @@ if hasValue(params.data.new_episode.new_episode_name) and
 	params.data.new_episode.new_seen_it_whole=defaultFromValue(params.data.new_episode.new_seen_it_whole)
 	params.data.new_episode.new_score=defaultFromValue(params.data.new_episode.new_score)
 else 
-	system.alert("Name, score and seen it whole fields must be present")
+	system.alert("Incorrect data")
 endif
 
 
@@ -2035,7 +2052,10 @@ endfor
       <Name value="handler_hyperLink1_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[params.data.removeMe()]]></Script>
+        <Script><![CDATA[
+params.data.removeMe()
+form.actions.compare_data()
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
