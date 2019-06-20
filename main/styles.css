@@ -1,3 +1,13 @@
 .navbar {
-	background-color:lightblue;
+
+	color:white
+}
+.my_footer{
+	background-color:black;
+	color:white;
+}
+.header {
+	background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/artistic-abstract/colored-flare-beams-abstract-art-web-header.jpg");
+	color:white;
+	
 }

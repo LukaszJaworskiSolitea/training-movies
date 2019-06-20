@@ -372,7 +372,7 @@ else
 	
 	if hasValue(form.search_by_actor) then
 		var filtered=form.all_movies.where(current.starring.exists(var actor => 
-		indexOf(actor.actorName,form.search_by_actor)>0)).toJson()
+		indexOf(toUpper(actor.actorName),toUpper(form.search_by_actor))>0)).toJson()
 		
 		form.all_movies.fromJson(filtered)
 	endif
@@ -381,7 +381,6 @@ endif
 
 globals.all_data_json=form.all_movies.toJson()
 globals.busy=false
-
 
 
 

@@ -3,6 +3,7 @@
 <ProjectRoot>
   <CreatedOn value="2019-06-12T14:04:43.3487926+02:00" />
   <GeneratorParametersJSON value="{ &quot;plainCodelists&quot;: true }" />
+  <Language value="en" />
   <ProjectName value="training-movies" />
   <StartupForm reference="/(main.1f6002db48b249e398f369ed6da70d59)+UiParts.master" />
   <MainForm>
@@ -11,6 +12,7 @@
   <Options>
     <ProjectOptions>
       <AlternativeActionsTool value="False" />
+      <LocalizationEnabled value="True" />
       <ManageFolderContent value="False" />
       <DataToForm>
         <DataToFormConfiguration BoolEditor="Sf.LibraryOne.CheckBox" CollectionEditor="Repeater" ComputedText="Sf.LibraryOne.Label" DateEditor="Sf.LibraryOne.DatePicker" DateTimeEditor="Sf.LibraryOne.DatePicker" DecimalEditor="ScreenFactory.Data.Model.Ui.TextBox" EnumEditor="ScreenFactory.Data.Model.Ui.EnumCombo" IntegerEditor="ScreenFactory.Data.Model.Ui.TextBox" ReferenceEditor="Sf.LibraryOne.ReferenceCombo" StringEditor="ScreenFactory.Data.Model.Ui.TextBox" />
@@ -22,6 +24,9 @@
       </Theme>
     </ProjectOptions>
   </Options>
+  <Languages>
+    <ProjectLanguageItem Language="en" />
+  </Languages>
   <PackageReferences>
     <PackageReference Alias="CorePackage" IsComponentLib="True" IsReadOnly="True" IsSystem="True" Origin="system://CorePackage/CorePackage.package">
       <ReferencedIdentity value="CorePackage.5f000000000045f00000000000000000" />

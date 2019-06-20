@@ -10,171 +10,208 @@
       <Panel.Height value="#" />
       <Panel.Width value="*" />
       <Children>
-        <Label>
-          <Name value="label1" />
-          <Data value="Movies" />
-          <Heading value="h2" />
-          <Panel.Height value="#" />
-          <Panel.HorizontalAlignment value="Center" />
-          <Panel.Width value="80px" />
-          <CssClass>
-            <CssClassConditional>
-              <ClassName value="{theme}-label" />
-              <IsThemedStyle value="True" />
-            </CssClassConditional>
-          </CssClass>
-        </Label>
         <Panel>
-          <Name value="panel6" />
+          <Name value="panel8" />
           <Orientation value="Vertical" />
           <Panel.Height value="#" />
           <Panel.Width value="*" />
           <Children>
-            <Panel>
-              <Name value="panel7" />
-              <Orientation value="Horizontal" />
+            <Label>
+              <Name value="label1" />
+              <Data value="Movies" />
+              <Heading value="h2" />
               <Panel.Height value="#" />
-              <Panel.HorizontalAlignment value="Right" />
-              <Panel.Width value="70%" />
-              <Children>
-                <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
-                  <Name value="referenceLookup1" />
-                  <Caption value="Search" />
-                  <CaptionLength value="60px" />
-                  <DataApiObject reference="+GlobalApiObjects.search_codelist" />
-                  <DisplayMember value="name" />
-                  <immediateUpdate value="True" />
-                  <Panel.Height value="#" />
-                  <Panel.HorizontalAlignment value="Center" />
-                  <Panel.Width value="400px" />
-                  <Bindings>
-                    <Binding SourceProperty="Data" Expression="filtered" />
-                  </Bindings>
-                  <CssClass>
-                    <CssClassConditional>
-                      <ClassName value="{theme}-referencelookup" />
-                      <IsThemedStyle value="True" />
-                    </CssClassConditional>
-                  </CssClass>
-                </ReferenceLookup>
-                <HyperLink>
-                  <Name value="hyperLink1" />
-                  <Data value="Advanced search" />
-                  <Panel.Height value="#" />
-                  <Panel.HorizontalAlignment value="Right" />
-                  <Panel.Width value="150px" />
-                  <OnClick>
-                    <ActionEvent ReferencedAction="~handler_hyperLink1_OnClick" />
-                  </OnClick>
-                  <CssClass>
-                    <CssClassConditional>
-                      <ClassName value="{theme}-hyperlink" />
-                      <IsThemedStyle value="True" />
-                    </CssClassConditional>
-                  </CssClass>
-                </HyperLink>
-              </Children>
+              <Panel.HorizontalAlignment value="Center" />
+              <Panel.Width value="80px" />
               <CssClass>
                 <CssClassConditional>
-                  <ClassName value="{theme}-panel" />
+                  <ClassName value="{theme}-label" />
                   <IsThemedStyle value="True" />
                 </CssClassConditional>
               </CssClass>
-            </Panel>
-          </Children>
-          <CssClass>
-            <CssClassConditional>
-              <ClassName value="{theme}-panel" />
-              <IsThemedStyle value="True" />
-            </CssClassConditional>
-          </CssClass>
-        </Panel>
-        <Panel>
-          <Name value="panel4" />
-          <Orientation value="Vertical" />
-          <Panel.Height value="#" />
-          <Panel.Width value="*" />
-          <Bindings>
-            <Binding SourceProperty="IsVisible" Expression="form.advanced_search_vis" />
-          </Bindings>
-          <Children>
+            </Label>
             <Panel>
-              <Name value="panel5" />
-              <Orientation value="Horizontal" />
-              <Panel.Height value="#" />
-              <Panel.HorizontalAlignment value="Right" />
-              <Panel.Width value="68%" />
-              <Children>
-                <TextBox>
-                  <Name value="textBox1" />
-                  <CaptionVAlign value="Middle" />
-                  <Panel.Height value="#" />
-                  <Panel.HorizontalAlignment value="Center" />
-                  <Panel.Width value="300px" />
-                  <Bindings>
-                    <Binding SourceProperty="Data" Expression="search_by_actor" />
-                    <Binding SourceProperty="IsRequiredMarkVisible" Expression="search_by_actor.isRequired()" />
-                  </Bindings>
-                  <CssClass>
-                    <CssClassConditional>
-                      <ClassName value="{theme}-textbox" />
-                      <IsThemedStyle value="True" />
-                    </CssClassConditional>
-                  </CssClass>
-                </TextBox>
-                <Button>
-                  <Name value="button2" />
-                  <Caption value="Search actors" />
-                  <Panel.Height value="#" />
-                  <Panel.Width value="110px" />
-                  <OnClick>
-                    <ActionEvent ReferencedAction="~handler_button2_OnClick" />
-                  </OnClick>
-                  <CssClass>
-                    <CssClassConditional>
-                      <ClassName value="{theme}-button" />
-                      <IsThemedStyle value="True" />
-                    </CssClassConditional>
-                  </CssClass>
-                </Button>
-              </Children>
-              <CssClass>
-                <CssClassConditional>
-                  <ClassName value="{theme}-panel" />
-                  <IsThemedStyle value="True" />
-                </CssClassConditional>
-              </CssClass>
-            </Panel>
-          </Children>
-          <CssClass>
-            <CssClassConditional>
-              <ClassName value="{theme}-panel" />
-              <IsThemedStyle value="True" />
-            </CssClassConditional>
-          </CssClass>
-        </Panel>
-        <Panel>
-          <Name value="panel3" />
-          <Orientation value="Horizontal" />
-          <Panel.Height value="#" />
-          <Panel.Width value="*" />
-          <Children>
-            <Breadcrumbs identity="Breadcrumbs.4d3eeadca3c54f1caa1d677db7e07acb">
-              <Name value="breadcrumbs1" />
-              <controller reference="+GlobalApiObjects.breadcrumbsCtrl1" />
+              <Name value="panel6" />
+              <Orientation value="Vertical" />
               <Panel.Height value="#" />
               <Panel.Width value="*" />
-              <OnItemClick>
-                <ActionEvent ReferencedAction="~handler_breadcrumbs1_OnItemClick" />
-              </OnItemClick>
-            </Breadcrumbs>
+              <Children>
+                <Panel>
+                  <Name value="panel7" />
+                  <Orientation value="Horizontal" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.Width value="70%" />
+                  <Children>
+                    <ReferenceLookup identity="referenceLookup.10b2d4db46e641b5bba23b33e3568c2e">
+                      <Name value="referenceLookup1" />
+                      <Caption value="Search" />
+                      <CaptionLength value="60px" />
+                      <DataApiObject reference="+GlobalApiObjects.search_codelist" />
+                      <DisplayMember value="name" />
+                      <immediateUpdate value="True" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Center" />
+                      <Panel.Width value="400px" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="filtered" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-referencelookup" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </ReferenceLookup>
+                    <HyperLink>
+                      <Name value="hyperLink1" />
+                      <Data value="Advanced search" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Right" />
+                      <Panel.Width value="150px" />
+                      <OnClick>
+                        <ActionEvent ReferencedAction="~handler_hyperLink1_OnClick" />
+                      </OnClick>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-hyperlink" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </HyperLink>
+                  </Children>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-panel" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Panel>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+            <Panel>
+              <Name value="panel5" />
+              <Orientation value="Vertical" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Center" />
+              <Panel.Width value="*" />
+              <Bindings>
+                <Binding SourceProperty="IsVisible" Expression="form.advanced_search_vis" />
+              </Bindings>
+              <Children>
+                <Panel>
+                  <Name value="panel9" />
+                  <Orientation value="Vertical" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="*" />
+                  <Children>
+                    <Panel>
+                      <Name value="panel4" />
+                      <Orientation value="Horizontal" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Right" />
+                      <Panel.Width value="60%" />
+                      <Children>
+                        <TextBox>
+                          <Name value="textBox1" />
+                          <CaptionLength value="0px" />
+                          <CaptionVAlign value="Middle" />
+                          <Panel.Height value="#" />
+                          <Panel.HorizontalAlignment value="Center" />
+                          <Panel.Width value="35%" />
+                          <Bindings>
+                            <Binding SourceProperty="Data" Expression="search_by_actor" />
+                            <Binding SourceProperty="IsRequiredMarkVisible" Expression="search_by_actor.isRequired()" />
+                          </Bindings>
+                          <CssClass>
+                            <CssClassConditional>
+                              <ClassName value="{theme}-textbox" />
+                              <IsThemedStyle value="True" />
+                            </CssClassConditional>
+                          </CssClass>
+                        </TextBox>
+                        <Button>
+                          <Name value="button2" />
+                          <Caption value="Search actors" />
+                          <Panel.Height value="#" />
+                          <Panel.Width value="110px" />
+                          <OnClick>
+                            <ActionEvent ReferencedAction="~handler_button2_OnClick" />
+                          </OnClick>
+                          <CssClass>
+                            <CssClassConditional>
+                              <ClassName value="{theme}-button" />
+                              <IsThemedStyle value="True" />
+                            </CssClassConditional>
+                          </CssClass>
+                        </Button>
+                      </Children>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-panel" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Panel>
+                  </Children>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-panel" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Panel>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+            <Panel>
+              <Name value="panel3" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.Width value="*" />
+              <Children>
+                <Breadcrumbs identity="Breadcrumbs.4d3eeadca3c54f1caa1d677db7e07acb">
+                  <Name value="breadcrumbs1" />
+                  <controller reference="+GlobalApiObjects.breadcrumbsCtrl1" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="*" />
+                  <OnItemClick>
+                    <ActionEvent ReferencedAction="~handler_breadcrumbs1_OnItemClick" />
+                  </OnItemClick>
+                </Breadcrumbs>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                </CssClassConditional>
+                <CssClassConditional>
+                  <ClassName value="navbar" />
+                </CssClassConditional>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
           </Children>
           <CssClass>
             <CssClassConditional>
               <ClassName value="{theme}-panel" />
             </CssClassConditional>
             <CssClassConditional>
-              <ClassName value="navbar" />
+              <ClassName value="header" />
+              <Condition value="False" />
             </CssClassConditional>
           </CssClass>
         </Panel>
@@ -291,13 +328,13 @@
       <Name value="handler_filtered_OnUserChange" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[if params.data.hasValue() then
+        <Script><![CDATA[if params.data.filtered.hasValue() then
 	//losing data protection
 	//in case of some changes...
 	if isFalse(globals.data_protection) then 
 		if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
 			//continue
-			navigation.main.detail.go(params.data.filtered.id,params.data.filtered.name)
+			navigation.main.detail.go(params.data.filtered.id,params.data.filtered.name)		
 		else
 			//go back
 			//do nothing		
@@ -306,6 +343,8 @@
 		//if all good 
 		navigation.main.detail.go(params.data.filtered.id,params.data.filtered.name)
 	endif
+else 
+	navigation.main.list.go(form.search_by_actor)
 endif
 ]]></Script>
       </ActionLangBody>
@@ -350,11 +389,9 @@ endif
 
 if isFalse(globals.data_protection) then 
 	if isTrue(page1.confirm("You will lose some data. Continue?" )) then 
-		//continue
-		
+		//continue	
 		globals.data_protection=true
-		navigation.main.detail.go("","")
-		
+		navigation.main.detail.go("","")	
 	else
 		//go back	
 		

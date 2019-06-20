@@ -83,24 +83,6 @@
                             </CssClassConditional>
                           </CssClass>
                         </EnumCombo>
-                        <Button>
-                          <Name value="button9" />
-                          <Caption value="Add season" />
-                          <Panel.Height value="#" />
-                          <Panel.Width value="150px" />
-                          <OnClick>
-                            <ActionEvent ReferencedAction="~handler_button9_OnClick" />
-                          </OnClick>
-                          <Bindings>
-                            <Binding SourceProperty="IsVisible" Expression="form.add_season_vis" />
-                          </Bindings>
-                          <CssClass>
-                            <CssClassConditional>
-                              <ClassName value="{theme}-button" />
-                              <IsThemedStyle value="True" />
-                            </CssClassConditional>
-                          </CssClass>
-                        </Button>
                       </Children>
                       <CssClass>
                         <CssClassConditional>
@@ -553,7 +535,7 @@
                                   <CaptionLength value="0px" />
                                   <Margin value="6, 6, 6, 10 px" />
                                   <Panel.Height value="#" />
-                                  <Panel.Width value="200px" />
+                                  <Panel.Width value="300px" />
                                   <Bindings>
                                     <Binding SourceProperty="Data" Expression="new_genre" />
                                     <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_genre.isRequired()" />
@@ -1301,6 +1283,25 @@
             </CssClassConditional>
           </CssClass>
         </Repeater>
+        <Button>
+          <Name value="button9" />
+          <Caption value="Add season" />
+          <Panel.Height value="#" />
+          <Panel.HorizontalAlignment value="Right" />
+          <Panel.Width value="150px" />
+          <OnClick>
+            <ActionEvent ReferencedAction="~handler_button9_OnClick" />
+          </OnClick>
+          <Bindings>
+            <Binding SourceProperty="IsVisible" Expression="form.add_season_vis" />
+          </Bindings>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-button" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Button>
         <CustomHtml>
           <Name value="customHtml2" />
           <HtmlMarkup><![CDATA[<hr>]]></HtmlMarkup>
@@ -1316,6 +1317,38 @@
             </CssClassConditional>
           </CssClass>
         </CustomHtml>
+        <Panel>
+          <Name value="panel47" />
+          <Orientation value="Vertical" />
+          <Panel.Height value="#" />
+          <Panel.Width value="*" />
+          <Children>
+            <Label>
+              <Name value="label1" />
+              <Data value="Updated." />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Center" />
+              <Panel.Width value="150px" />
+              <Bindings>
+                <Binding SourceProperty="IsVisible" Expression="form.helpers.updated_message_vis" />
+              </Bindings>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-label" />
+                </CssClassConditional>
+                <CssClassConditional>
+                  <ClassName value="updated" />
+                </CssClassConditional>
+              </CssClass>
+            </Label>
+          </Children>
+          <CssClass>
+            <CssClassConditional>
+              <ClassName value="{theme}-panel" />
+              <IsThemedStyle value="True" />
+            </CssClassConditional>
+          </CssClass>
+        </Panel>
         <Panel>
           <Name value="panel16" />
           <Orientation value="Horizontal" />
@@ -1462,7 +1495,7 @@
               <ClassName value="{theme}-panel" />
             </CssClassConditional>
             <CssClassConditional>
-              <ClassName value="navbar" />
+              <ClassName value="my_footer" />
             </CssClassConditional>
           </CssClass>
         </Panel>
@@ -1608,6 +1641,15 @@
                 </AttributeType>
               </DeclaredType>
             </Attribute>
+            <Attribute>
+              <Name value="updated_message_vis" />
+              <Caption value="Updated _ message _ vis" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
           </Children>
         </Complex>
         <Attribute>
@@ -1707,21 +1749,23 @@
 
 //initial settings
 form.type=enums.type.movie
-form.detailedMovie.rating.seenItWhole=false
 form.search_by_actor=defaultFromValue(form.search_by_actor)
 
 
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",true)
-apiobjects.breadcrumbsCtrl1.addBreadcrumb("detail",form.name,"","",false)
+if hasValue(form.name) then
+	apiobjects.breadcrumbsCtrl1.addBreadcrumb("detail",form.name,"","",false)
+endif	
 
 var url=apiobjects.urlRouter1.findFormUrl(navigation.main.detail.fullName)
-url.addString("id",form.id)
+if hasValue(form.id) then
+	url.addString("id",form.id)
+endif
 url.updatePageUrl()
 
+
 form.actions.get_detail()
-
-
 form.actions.activate_detail_form()
 
 
@@ -1782,11 +1826,12 @@ if isFalse(already_exist) then
 			form.actions.create_new_record()
 		else 
 			system.alert("Form is not valid")
+			form.setTouched(true)
 		endif
 	else 
 		//series validation:
 		//if there is at least one season present	
-		if form.detailedMovie.seasons.count()=0 then
+		if (form.detailedMovie.seasons.count()=0) and (hasValue(form.type)) then
 			validation=false
 			system.alert("At least one season in series has to be present ")
 		else 	
@@ -1801,6 +1846,7 @@ if isFalse(already_exist) then
 				form.actions.create_new_record()
 			else 
 				system.alert("Form is not valid")
+				form.setTouched(true)
 			endif
 		endif
 	endif
@@ -1997,7 +2043,9 @@ foreach seasons in form.detailedMovie.seasons do
 	else 
 		seasons.delete_vis=true
 	endif
-endfor]]></Script>
+endfor
+
+form.helpers.updated_message_vis=false]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -2112,11 +2160,13 @@ form.actions.compare_data()
         <Script><![CDATA[
 if params.data.type = enums.type.movie then
 	//series -> movies
-	if isTrue(page1.confirm("You are about to lose some data, are you sure?")) then 
-		params.data.detailedMovie.seasons.clear()
-		form.actions.hide_buttons()	
-	else
-		params.data.type=enums.type.series	
+	if form.detailedMovie.seasons.count()>0 then
+		if isTrue(page1.confirm("You are about to lose some data, are you sure?")) then 
+			params.data.detailedMovie.seasons.clear()
+			form.actions.hide_buttons()	
+		else
+			params.data.type=enums.type.series	
+		endif
 	endif
 	form.actions.compare_data()
 else 
@@ -2187,7 +2237,7 @@ if page1.confirm("Are you sure you want to update these data?") then
 		
 		globals.before_change=form.toJson()
 		globals.data_protection=true
-		system.alert("Update successful")
+		form.helpers.updated_message_vis=true
 	endif
 else 
 	//do nothing
@@ -2285,6 +2335,8 @@ endfor
 form.starring_delete_vis=false
 form.genre_delete_vis=false
 form.add_season_vis=false
+
+
 
 //losing data protection
 globals.before_change=form.detailedMovie.toJson()
