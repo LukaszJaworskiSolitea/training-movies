@@ -412,6 +412,7 @@ globals.busy=false
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
 globals.data_protection=true
+
 form.sorting.title=true
 form.sorting.year=true
 form.sorting.score=true
@@ -443,13 +444,24 @@ form.actions.get_list()
       <Name value="handler_label5_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[if isTrue(form.sorting.title) then 
-	form.all_movies.fromJson(form.all_movies.orderBy(current.name,true).toJson())
+        <Script><![CDATA[
+
+
+if isTrue(form.sorting.title) then 
+	form.all_movies.fromJson(form.all_movies.orderBy(current.name,form.sorting.title).toJson())
 	form.sorting.title=false
 else 
-	form.all_movies.fromJson(form.all_movies.orderBy(current.name,false).toJson())
+	form.all_movies.fromJson(form.all_movies.orderBy(current.name,form.sorting.title).toJson())
 	form.sorting.title=true
-endif]]></Script>
+endif
+
+form.sorting.year=true
+form.sorting.score=true
+
+
+
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -462,12 +474,15 @@ endif]]></Script>
         <Script><![CDATA[
 
 if isTrue(form.sorting.year) then 
-	form.all_movies.fromJson(form.all_movies.orderBy(current.yearOfRelease,true).toJson())
+	form.all_movies.fromJson(form.all_movies.orderBy(current.yearOfRelease,form.sorting.year).toJson())
 	form.sorting.year=false
 else 
-	form.all_movies.fromJson(form.all_movies.orderBy(current.yearOfRelease,false).toJson())
+	form.all_movies.fromJson(form.all_movies.orderBy(current.yearOfRelease,form.sorting.year).toJson())
 	form.sorting.year=true
-endif]]></Script>
+endif
+
+form.sorting.title=true
+form.sorting.score=true]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -477,15 +492,21 @@ endif]]></Script>
       <Name value="handler_label7_OnClick" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,true).toJson())
+        <Script><![CDATA[
+
+
+
 
 if isTrue(form.sorting.score) then 
-	form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,true).toJson())
+	form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,form.sorting.score).toJson())
 	form.sorting.score=false
 else 
-	form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,false).toJson())
+	form.all_movies.fromJson(form.all_movies.orderBy(current.rating.score,form.sorting.score).toJson())
 	form.sorting.score=true
-endif]]></Script>
+endif
+
+form.sorting.title=true
+form.sorting.year=true]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

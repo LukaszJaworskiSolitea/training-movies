@@ -1027,8 +1027,8 @@
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="new_episode.new_date_of_watching" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_date_of_watching.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.rating.new_date_of_watching" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.rating.new_date_of_watching.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1057,8 +1057,8 @@
                                               <Panel.Height value="#" />
                                               <Panel.Width value="150px" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="new_episode.new_seen_it_whole" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_seen_it_whole.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.rating.new_seen_it_whole" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.rating.new_seen_it_whole.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1089,8 +1089,8 @@
                                               <Panel.Width value="150px" />
                                               <TextAlign value="Right" />
                                               <Bindings>
-                                                <Binding SourceProperty="Data" Expression="new_episode.new_score" />
-                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.new_score.isRequired()" />
+                                                <Binding SourceProperty="Data" Expression="new_episode.rating.new_score" />
+                                                <Binding SourceProperty="IsRequiredMarkVisible" Expression="new_episode.rating.new_score.isRequired()" />
                                               </Bindings>
                                               <CssClass>
                                                 <CssClassConditional>
@@ -1283,25 +1283,76 @@
             </CssClassConditional>
           </CssClass>
         </Repeater>
-        <Button>
-          <Name value="button9" />
-          <Caption value="Add season" />
+        <Panel>
+          <Name value="panel48" />
+          <Orientation value="Vertical" />
           <Panel.Height value="#" />
-          <Panel.HorizontalAlignment value="Right" />
-          <Panel.Width value="150px" />
-          <OnClick>
-            <ActionEvent ReferencedAction="~handler_button9_OnClick" />
-          </OnClick>
+          <Panel.Width value="*" />
           <Bindings>
             <Binding SourceProperty="IsVisible" Expression="form.add_season_vis" />
           </Bindings>
+          <Children>
+            <Panel>
+              <Name value="panel49" />
+              <Orientation value="Horizontal" />
+              <Panel.Height value="#" />
+              <Panel.HorizontalAlignment value="Right" />
+              <Panel.Width value="26%" />
+              <Children>
+                <Button>
+                  <Name value="button9" />
+                  <Caption value="Add season" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.Width value="150px" />
+                  <OnClick>
+                    <ActionEvent ReferencedAction="~handler_button9_OnClick" />
+                  </OnClick>
+                  <Bindings>
+                    <Binding SourceProperty="IsVisible" Expression="" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-button" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Button>
+                <TextBox>
+                  <Name value="textBox6" />
+                  <Caption value="Season No" />
+                  <CaptionLength value="80px" />
+                  <CaptionVAlign value="Middle" />
+                  <InputType value="Numeric" />
+                  <Panel.Height value="#" />
+                  <Panel.Width value="140px" />
+                  <TextAlign value="Right" />
+                  <Bindings>
+                    <Binding SourceProperty="Data" Expression="form.helpers.user_season_counter" />
+                  </Bindings>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-textbox" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </TextBox>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
+          </Children>
           <CssClass>
             <CssClassConditional>
-              <ClassName value="{theme}-button" />
+              <ClassName value="{theme}-panel" />
               <IsThemedStyle value="True" />
             </CssClassConditional>
           </CssClass>
-        </Button>
+        </Panel>
         <CustomHtml>
           <Name value="customHtml2" />
           <HtmlMarkup><![CDATA[<hr>]]></HtmlMarkup>
@@ -1369,6 +1420,9 @@
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_button1_OnClick" />
                   </OnClick>
+                  <Bindings>
+                    <Binding SourceProperty="IsEnabled" Expression="form.helpers.save_new_enable" />
+                  </Bindings>
                   <CssClass>
                     <CssClassConditional>
                       <ClassName value="{theme}-button" />
@@ -1650,6 +1704,26 @@
                 </AttributeType>
               </DeclaredType>
             </Attribute>
+            <Attribute>
+              <Name value="user_season_counter" />
+              <Caption value="User _ season _ counter" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Integer" />
+                  <IntMax value="30" />
+                  <IntMin value="1" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
+            <Attribute>
+              <Name value="save_new_enable" />
+              <Caption value="Save _ new _ enable" />
+              <DeclaredType>
+                <AttributeType>
+                  <BaseType value="Bool" />
+                </AttributeType>
+              </DeclaredType>
+            </Attribute>
           </Children>
         </Complex>
         <Attribute>
@@ -1761,11 +1835,15 @@ endif
 var url=apiobjects.urlRouter1.findFormUrl(navigation.main.detail.fullName)
 if hasValue(form.id) then
 	url.addString("id",form.id)
+	form.actions.get_detail()
+	form.helpers.save_new_enable=false
+else 
+	form.helpers.save_new_enable=true
 endif
 url.updatePageUrl()
 
 
-form.actions.get_detail()
+
 form.actions.activate_detail_form()
 
 
@@ -1805,7 +1883,9 @@ if hasValue(form.detailedMovie.id) then
 else 
 	form.helpers._update_enable=false
 	form.helpers._del_record_enable=false
-endif]]></Script>
+endif
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -1866,31 +1946,42 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
-var validation=true
-if form.type=enums.type.movie then 
-	//movie validation
-	if form.isValid() then 
-		form.actions.update_record()
+if isFalse(globals.data_protection) then 
+	var validation=true
+	if form.type=enums.type.movie then 
+		//movie validation
+		if form.isValid() then 
+			form.actions.update_record()
+		else 
+			system.alert("Form is not valid ")
+			form.setTouched(true)
+		endif
 	else 
-		system.alert("Form is not valid ")
+		//series validation:
+		//if there is at least one season present	
+		if (form.detailedMovie.seasons.count()=0) and (hasValue(form.type)) then
+			validation=false
+			system.alert("At least one season in series has to be present ")
+		else
+			//make sure every seasons has at leasta one episode...
+			foreach season in form.detailedMovie.seasons do 
+				if not (season.episodes.count()>0) then
+					validation=false
+				endif	
+			endfor 
+			
+			//...and form is valid
+			if (form.isValid()) and isTrue(validation) then 
+				form.actions.update_record()
+			else 
+				system.alert("Form is not valid")
+				form.setTouched(true)
+			endif
+		endif
 	endif
 else 
-	//series validation:
-	//make sure every seasons has at leasta one episode...
-	foreach season in form.detailedMovie.seasons do 
-		if not (season.episodes.count()>0) then
-			validation=false
-		endif	
-	endfor 
-	
-	//...and form is valid
-	if (form.isValid()) and isTrue(validation) then 
-		form.actions.update_record()
-	else 
-		system.alert("Form is not valid")
-	endif
+	system.alert("You didn't changed anything")
 endif
-
 
 ]]></Script>
       </ActionLangBody>
@@ -2066,19 +2157,34 @@ form.helpers.updated_message_vis=false]]></Script>
       <ActionLangBody IsValid="True">
         <Script><![CDATA[form.recurrent_val=1
 
-
 form.actions.find_lowest_missing()
-var counter=form.helpers.season_counter
+//at this moment lowest missing season no is found and stored under season_counter
 
-var item=form.detailedMovie.seasons.insertItemAt(counter)
-	item.number=counter
+
+var counter=0
+
+if not (form.helpers.season_counter = form.helpers.user_season_counter) then
+	counter=form.helpers.user_season_counter
+else 
+ 	counter=form.helpers.season_counter
+endif
+
+
+if form.detailedMovie.seasons.exists(current.number=counter) then
+	system.alert("Season "+toString(counter)+" already exists")
+else 
+	if form.helpers.user_season_counter.isValid() then
+		var item=form.detailedMovie.seasons.insertItemAt(counter)
+		item.number=counter
+	endif
+endif
+
+
 	
-
-foreach season in form.detailedMovie.seasons do 
-	season.new_episode.new_seen_it_whole=false
-endfor
-
-]]></Script>
+	
+//set default counter
+form.actions.find_lowest_missing()
+form.helpers.user_season_counter=form.helpers.season_counter]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
@@ -2093,24 +2199,26 @@ endfor
 
 //new episode validation
 var already_exist=params.data.episodes.exists(current.episodeName=params.data.new_episode.new_episode_name)
-if hasValue(params.data.new_episode.new_episode_name) and isFalse(already_exist) and
-   isTrue(params.data.new_episode.new_seen_it_whole) and 
-   hasvAlue(params.data.new_episode.new_score) then 
-   
-	var item=params.data.episodes.addItem()
-	item.episodeName=params.data.new_episode.new_episode_name
-	item.rating.dateOfWatching=params.data.new_episode.new_date_of_watching
-	item.rating.seenItWhole=params.data.new_episode.new_seen_it_whole
-	item.rating.score=params.data.new_episode.new_score
-	
-	params.data.new_episode.new_episode_name=defaultFromValue(params.data.new_episode.new_episode_name)
-	params.data.new_episode.new_date_of_watching=defaultFromValue(params.data.new_episode.new_date_of_watching)
-	params.data.new_episode.new_seen_it_whole=defaultFromValue(params.data.new_episode.new_seen_it_whole)
-	params.data.new_episode.new_score=defaultFromValue(params.data.new_episode.new_score)
-else 
-	system.alert("Incorrect data")
-endif
 
+if hasValue(params.data.new_episode.new_episode_name) and isFalse(already_exist) then
+	if form.isValid()  then  
+		var item=params.data.episodes.addItem()
+		item.episodeName=params.data.new_episode.new_episode_name
+		item.rating.dateOfWatching=params.data.new_episode.rating.new_date_of_watching
+		item.rating.seenItWhole=params.data.new_episode.rating.new_seen_it_whole
+		item.rating.score=params.data.new_episode.rating.new_score
+		
+		params.data.new_episode.new_episode_name=defaultFromValue(params.data.new_episode.new_episode_name)
+		params.data.new_episode.rating.new_date_of_watching=defaultFromValue(params.data.new_episode.rating.new_date_of_watching)
+		params.data.new_episode.rating.new_seen_it_whole=defaultFromValue(params.data.new_episode.rating.new_seen_it_whole)
+		params.data.new_episode.rating.new_score=defaultFromValue(params.data.new_episode.rating.new_score)
+	else 	
+		system.alert("Form is not valid")
+	endif
+else 
+	system.alert("Episode Name already exist or is empty")
+	form.setTouched(true)
+endif
 
 
 form.actions.hide_buttons()
@@ -2143,9 +2251,17 @@ endfor
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
+
 params.data.removeMe()
 
-form.helpers.season_counter=params.data.number
+
+
+//set default counter
+form.recurrent_val=1
+form.actions.find_lowest_missing()
+form.helpers.user_season_counter=form.helpers.season_counter
+
+
 form.actions.compare_data()
 ]]></Script>
       </ActionLangBody>
@@ -2173,8 +2289,9 @@ else
 	//second if has to be here to exclude value=null problem
 	if params.data.type=enums.type.series then
 		//movies->series
-		
 		form.actions.create_new_season()
+		//set default counter
+		form.helpers.user_season_counter=form.helpers.season_counter
 		form.actions.hide_buttons()	
 	endif
 endif
@@ -2330,12 +2447,11 @@ endif
 //visibility
 foreach season in form.detailedMovie.seasons do 
 	season.delete_vis=true
-	season.new_episode.new_seen_it_whole=false
+	season.new_episode.rating.new_seen_it_whole=false
 endfor
 form.starring_delete_vis=false
 form.genre_delete_vis=false
 form.add_season_vis=false
-
 
 
 //losing data protection
@@ -2345,7 +2461,14 @@ globals.data_protection=true
 
 form.all_data.fromJson(globals.all_data_json)
 
-form.actions.hide_buttons()]]></Script>
+form.actions.hide_buttons()
+
+//set default counter
+form.recurrent_val=1
+
+form.actions.find_lowest_missing()
+form.helpers.user_season_counter=form.helpers.season_counter
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

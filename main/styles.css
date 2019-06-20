@@ -8,8 +8,10 @@
 }
 .header {
 	background-image: url("https://www.freewebheaders.com/wordpress/wp-content/gallery/artistic-abstract/colored-flare-beams-abstract-art-web-header.jpg");
-	color:white;
-	
+	color:white;	
+}
+.updated {
+	color:red;
 }
 .pointer {
 	cursor:pointer;
