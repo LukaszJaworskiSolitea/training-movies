@@ -24,7 +24,7 @@
               <Children>
                 <Label>
                   <Name value="label5" />
-                  <Data value="Title" />
+                  <Data value="Title  &amp;#x21C5" />
                   <Heading value="h5" />
                   <Margin value="6, 6, 6, 20 px" />
                   <Panel.Height value="#" />
@@ -35,7 +35,9 @@
                   <CssClass>
                     <CssClassConditional>
                       <ClassName value="{theme}-label" />
-                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                    <CssClassConditional>
+                      <ClassName value="pointer" />
                     </CssClassConditional>
                   </CssClass>
                 </Label>
@@ -85,18 +87,20 @@
               <Children>
                 <Label>
                   <Name value="label6" />
-                  <Data value="Year of release" />
+                  <Data value="Year of release  &amp;#x21C5" />
                   <Heading value="h5" />
                   <Margin value="6, 6, 6, 10 px" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="150px" />
+                  <Panel.Width value="180px" />
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_label6_OnClick" />
                   </OnClick>
                   <CssClass>
                     <CssClassConditional>
                       <ClassName value="{theme}-label" />
-                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                    <CssClassConditional>
+                      <ClassName value="pointer" />
                     </CssClassConditional>
                   </CssClass>
                 </Label>
@@ -116,7 +120,7 @@
               <Children>
                 <Label>
                   <Name value="label7" />
-                  <Data value="Score" />
+                  <Data value="Score  &amp;#x21C5" />
                   <Heading value="h5" />
                   <Panel.Height value="#" />
                   <Panel.Width value="150px" />
@@ -126,7 +130,9 @@
                   <CssClass>
                     <CssClassConditional>
                       <ClassName value="{theme}-label" />
-                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                    <CssClassConditional>
+                      <ClassName value="pointer" />
                     </CssClassConditional>
                   </CssClass>
                 </Label>

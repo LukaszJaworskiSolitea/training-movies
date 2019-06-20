@@ -75,7 +75,9 @@
                       <CssClass>
                         <CssClassConditional>
                           <ClassName value="{theme}-hyperlink" />
-                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                        <CssClassConditional>
+                          <ClassName value="advanced_search" />
                         </CssClassConditional>
                       </CssClass>
                     </HyperLink>
@@ -211,7 +213,6 @@
             </CssClassConditional>
             <CssClassConditional>
               <ClassName value="header" />
-              <Condition value="False" />
             </CssClassConditional>
           </CssClass>
         </Panel>
