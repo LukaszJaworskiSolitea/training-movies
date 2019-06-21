@@ -363,13 +363,14 @@
               <Content>
                 <Panel>
                   <Name value="panel5" />
-                  <Orientation value="Vertical" />
+                  <Orientation value="Horizontal" />
                   <Bindings>
                     <Binding SourceProperty="IsVisible" Expression="form.starring_vis" />
                   </Bindings>
                   <Children>
                     <Repeater>
                       <Name value="repeater1" />
+                      <Margin value="0, 6, 6, 6 px" />
                       <Panel.Height value="#" />
                       <Panel.HorizontalAlignment value="Center" />
                       <Panel.Width value="*" />

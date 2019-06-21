@@ -1448,21 +1448,6 @@
                     </CssClassConditional>
                   </CssClass>
                 </Button>
-                <Button>
-                  <Name value="button4" />
-                  <Caption value="Clear" />
-                  <Panel.Height value="#" />
-                  <Panel.Width value="150px" />
-                  <OnClick>
-                    <ActionEvent ReferencedAction="~handler_button4_OnClick" />
-                  </OnClick>
-                  <CssClass>
-                    <CssClassConditional>
-                      <ClassName value="{theme}-button" />
-                      <IsThemedStyle value="True" />
-                    </CssClassConditional>
-                  </CssClass>
-                </Button>
               </Children>
               <CssClass>
                 <CssClassConditional>
@@ -1994,44 +1979,6 @@ endif
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[form.actions.delete_record()]]></Script>
-      </ActionLangBody>
-      <DataContext>
-        <ActionDataContext />
-      </DataContext>
-    </ActionBlock>
-    <ActionBlock>
-      <Name value="clear_details" />
-      <ActionLangBody IsValid="True">
-        <Script><![CDATA[if page1.confirm("You will lose all your data. Are you sure?") then
-	form.detailedMovie.clear()
-	form.detailedMovie.id=defaultFromValue(form.detailedMovie.id)
-	
-	//update and delete enab/disab
-	if hasValue(form.detailedMovie.id) then 
-		form.helpers._update_enable=true
-		form.helpers._del_record_enable=true
-		form.delete_id.id=form.detailedMovie.id
-	else 
-		form.helpers._update_enable=false
-		form.helpers._del_record_enable=false
-	endif
-else 
-//do nothing
-
-endif
-
-]]></Script>
-      </ActionLangBody>
-      <DataContext>
-        <ActionDataContext />
-      </DataContext>
-    </ActionBlock>
-    <ActionBlock>
-      <Name value="handler_button4_OnClick" />
-      <IsPrivate value="True" />
-      <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.actions.clear_details()
-form.actions.hide_buttons()]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />
