@@ -23,10 +23,15 @@
               <Panel.Height value="#" />
               <Panel.HorizontalAlignment value="Center" />
               <Panel.Width value="80px" />
+              <OnClick>
+                <ActionEvent ReferencedAction="~handler_label1_OnClick" />
+              </OnClick>
               <CssClass>
                 <CssClassConditional>
                   <ClassName value="{theme}-label" />
-                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+                <CssClassConditional>
+                  <ClassName value="pointer" />
                 </CssClassConditional>
               </CssClass>
             </Label>
@@ -442,6 +447,20 @@ endif]]></Script>
       <ActionLangBody IsValid="True">
         <Script><![CDATA[
 navigation.main.list.go(form.search_by_actor)]]></Script>
+      </ActionLangBody>
+      <DataContext>
+        <ActionDataContext />
+      </DataContext>
+    </ActionBlock>
+    <ActionBlock>
+      <Name value="handler_label1_OnClick" />
+      <IsPrivate value="True" />
+      <ActionLangBody IsValid="True">
+        <Script><![CDATA[form.search_by_actor.clear()
+form.advanced_search_vis=false
+navigation.main.list.go("")
+
+]]></Script>
       </ActionLangBody>
       <DataContext>
         <ActionDataContext />

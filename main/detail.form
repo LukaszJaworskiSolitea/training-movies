@@ -2155,7 +2155,7 @@ form.helpers.updated_message_vis=false]]></Script>
     <ActionBlock>
       <Name value="create_new_season" />
       <ActionLangBody IsValid="True">
-        <Script><![CDATA[form.recurrent_val=1
+        <Script><![CDATA[
 
 form.actions.find_lowest_missing()
 //at this moment lowest missing season no is found and stored under season_counter
@@ -2183,6 +2183,7 @@ endif
 	
 	
 //set default counter
+form.recurrent_val=1
 form.actions.find_lowest_missing()
 form.helpers.user_season_counter=form.helpers.season_counter]]></Script>
       </ActionLangBody>

@@ -18,17 +18,17 @@
           <Children>
             <Panel>
               <Name value="panel3" />
-              <Orientation value="Horizontal" />
+              <Orientation value="Vertical" />
               <Panel.Height value="#" />
-              <Panel.Width value="25%" />
+              <Panel.Width value="*" />
               <Children>
                 <Label>
                   <Name value="label5" />
                   <Data value="Title  &amp;#x21C5" />
                   <Heading value="h5" />
-                  <Margin value="6, 6, 6, 20 px" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="150px" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.Width value="65%" />
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_label5_OnClick" />
                   </OnClick>
@@ -51,15 +51,16 @@
             </Panel>
             <Panel>
               <Name value="panel31" />
-              <Orientation value="Horizontal" />
+              <Orientation value="Vertical" />
               <Panel.Height value="#" />
-              <Panel.Width value="25%" />
+              <Panel.Width value="*" />
               <Children>
                 <EnumCombo>
                   <Name value="enumCombo1" />
                   <CaptionLength value="0px" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="150px" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.Width value="65%" />
                   <Bindings>
                     <Binding SourceProperty="Data" Expression="form.type_filter" />
                     <Binding SourceProperty="IsRequiredMarkVisible" Expression="form.type_filter.isRequired()" />
@@ -81,17 +82,17 @@
             </Panel>
             <Panel>
               <Name value="panel32" />
-              <Orientation value="Horizontal" />
+              <Orientation value="Vertical" />
               <Panel.Height value="#" />
-              <Panel.Width value="25%" />
+              <Panel.Width value="30%" />
               <Children>
                 <Label>
                   <Name value="label6" />
                   <Data value="Year of release  &amp;#x21C5" />
                   <Heading value="h5" />
-                  <Margin value="6, 6, 6, 10 px" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="180px" />
+                  <Panel.HorizontalAlignment value="Right" />
+                  <Panel.Width value="80%" />
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_label6_OnClick" />
                   </OnClick>
@@ -101,6 +102,10 @@
                     </CssClassConditional>
                     <CssClassConditional>
                       <ClassName value="pointer" />
+                    </CssClassConditional>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
                 </Label>
@@ -114,16 +119,16 @@
             </Panel>
             <Panel>
               <Name value="panel33" />
-              <Orientation value="Horizontal" />
+              <Orientation value="Vertical" />
               <Panel.Height value="#" />
-              <Panel.Width value="25%" />
+              <Panel.Width value="*" />
               <Children>
                 <Label>
                   <Name value="label7" />
                   <Data value="Score  &amp;#x21C5" />
                   <Heading value="h5" />
                   <Panel.Height value="#" />
-                  <Panel.Width value="150px" />
+                  <Panel.Width value="50%" />
                   <OnClick>
                     <ActionEvent ReferencedAction="~handler_label7_OnClick" />
                   </OnClick>
@@ -144,6 +149,37 @@
                 </CssClassConditional>
               </CssClass>
             </Panel>
+            <Panel>
+              <Name value="panel6" />
+              <Orientation value="Vertical" />
+              <Panel.Height value="#" />
+              <Panel.Width value="*" />
+              <Bindings>
+                <Binding SourceProperty="IsVisible" Expression="form.starring_vis" />
+              </Bindings>
+              <Children>
+                <Label>
+                  <Name value="label13" />
+                  <Data value="Starring" />
+                  <Heading value="h5" />
+                  <Panel.Height value="#" />
+                  <Panel.HorizontalAlignment value="Center" />
+                  <Panel.Width value="75%" />
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-label" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Label>
+              </Children>
+              <CssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-panel" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </CssClass>
+            </Panel>
           </Children>
           <CssClass>
             <CssClassConditional>
@@ -153,33 +189,48 @@
           </CssClass>
         </Panel>
         <DataTable>
-          <Name value="dataTable1" />
+          <Name value="dataTable2" />
           <IsHeaderVisible value="False" />
           <Panel.Height value="#" />
           <Panel.Width value="*" />
           <OnRowActivate>
-            <ActionEvent ReferencedAction="~handler_dataTable1_OnRowActivate" />
+            <ActionEvent ReferencedAction="~action1" />
           </OnRowActivate>
           <Bindings>
             <Binding SourceProperty="DataItems" Expression="form.all_movies" />
           </Bindings>
           <Columns>
             <DataColumn>
-              <Name value="name" />
+              <Name value="dataColumn2" />
               <Caption value="Title" />
               <Content>
-                <Label>
-                  <Name value="label1" />
-                  <Bindings>
-                    <Binding SourceProperty="Data" Expression="name" />
-                  </Bindings>
+                <Panel>
+                  <Name value="panel7" />
+                  <Orientation value="Vertical" />
+                  <Children>
+                    <Label>
+                      <Name value="label8" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Center" />
+                      <Panel.Width value="50%" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="name" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-label" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Label>
+                  </Children>
                   <CssClass>
                     <CssClassConditional>
-                      <ClassName value="{theme}-label" />
+                      <ClassName value="{theme}-panel" />
                       <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
-                </Label>
+                </Panel>
               </Content>
               <HeaderCssClass>
                 <CssClassConditional>
@@ -189,21 +240,36 @@
               </HeaderCssClass>
             </DataColumn>
             <DataColumn>
-              <Name value="type" />
-              <Caption value="Type" />
+              <Name value="dataColumn4" />
+              <Caption value="Data column 4" />
               <Content>
-                <Label>
-                  <Name value="label2" />
-                  <Bindings>
-                    <Binding SourceProperty="Data" Expression="type" />
-                  </Bindings>
+                <Panel>
+                  <Name value="panel8" />
+                  <Orientation value="Vertical" />
+                  <Children>
+                    <Label>
+                      <Name value="label1" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Center" />
+                      <Panel.Width value="65%" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="type" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-label" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Label>
+                  </Children>
                   <CssClass>
                     <CssClassConditional>
-                      <ClassName value="{theme}-label" />
+                      <ClassName value="{theme}-panel" />
                       <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
-                </Label>
+                </Panel>
               </Content>
               <HeaderCssClass>
                 <CssClassConditional>
@@ -213,21 +279,75 @@
               </HeaderCssClass>
             </DataColumn>
             <DataColumn>
-              <Name value="yearOfRelease" />
+              <Name value="dataColumn6" />
               <Caption value="Year of Release" />
               <Content>
-                <Label>
-                  <Name value="label3" />
-                  <Bindings>
-                    <Binding SourceProperty="Data" Expression="yearOfRelease" />
-                  </Bindings>
+                <Panel>
+                  <Name value="panel9" />
+                  <Orientation value="Vertical" />
+                  <Children>
+                    <Label>
+                      <Name value="label2" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Center" />
+                      <Panel.Width value="50%" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="yearOfRelease" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-label" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Label>
+                  </Children>
                   <CssClass>
                     <CssClassConditional>
-                      <ClassName value="{theme}-label" />
+                      <ClassName value="{theme}-panel" />
                       <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
-                </Label>
+                </Panel>
+              </Content>
+              <HeaderCssClass>
+                <CssClassConditional>
+                  <ClassName value="{theme}-datacolumn" />
+                  <IsThemedStyle value="True" />
+                </CssClassConditional>
+              </HeaderCssClass>
+            </DataColumn>
+            <DataColumn>
+              <Name value="dataColumn8" />
+              <Caption value="Score" />
+              <Content>
+                <Panel>
+                  <Name value="panel10" />
+                  <Orientation value="Vertical" />
+                  <Children>
+                    <Label>
+                      <Name value="label3" />
+                      <Margin value="6, 6, 6, 56 px" />
+                      <Panel.Height value="#" />
+                      <Panel.Width value="50%" />
+                      <Bindings>
+                        <Binding SourceProperty="Data" Expression="rating.score" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-label" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Label>
+                  </Children>
+                  <CssClass>
+                    <CssClassConditional>
+                      <ClassName value="{theme}-panel" />
+                      <IsThemedStyle value="True" />
+                    </CssClassConditional>
+                  </CssClass>
+                </Panel>
               </Content>
               <HeaderCssClass>
                 <CssClassConditional>
@@ -238,20 +358,55 @@
             </DataColumn>
             <DataColumn>
               <Name value="dataColumn1" />
-              <Caption value="Score" />
+              <Caption value="Starring" />
+              <IsVisible value="False" />
               <Content>
-                <Label>
-                  <Name value="label4" />
+                <Panel>
+                  <Name value="panel5" />
+                  <Orientation value="Vertical" />
                   <Bindings>
-                    <Binding SourceProperty="Data" Expression="rating.score" />
+                    <Binding SourceProperty="IsVisible" Expression="form.starring_vis" />
                   </Bindings>
+                  <Children>
+                    <Repeater>
+                      <Name value="repeater1" />
+                      <Panel.Height value="#" />
+                      <Panel.HorizontalAlignment value="Center" />
+                      <Panel.Width value="*" />
+                      <Content>
+                        <Label>
+                          <Name value="label4" />
+                          <Panel.Height value="#" />
+                          <Panel.Width value="*" />
+                          <Bindings>
+                            <Binding SourceProperty="Data" Expression="actorName" />
+                          </Bindings>
+                          <CssClass>
+                            <CssClassConditional>
+                              <ClassName value="{theme}-label" />
+                              <IsThemedStyle value="True" />
+                            </CssClassConditional>
+                          </CssClass>
+                        </Label>
+                      </Content>
+                      <Bindings>
+                        <Binding SourceProperty="DataItems" Expression="starring" />
+                      </Bindings>
+                      <CssClass>
+                        <CssClassConditional>
+                          <ClassName value="{theme}-repeater" />
+                          <IsThemedStyle value="True" />
+                        </CssClassConditional>
+                      </CssClass>
+                    </Repeater>
+                  </Children>
                   <CssClass>
                     <CssClassConditional>
-                      <ClassName value="{theme}-label" />
+                      <ClassName value="{theme}-panel" />
                       <IsThemedStyle value="True" />
                     </CssClassConditional>
                   </CssClass>
-                </Label>
+                </Panel>
               </Content>
               <HeaderCssClass>
                 <CssClassConditional>
@@ -347,6 +502,15 @@
             <AttributeType />
           </DeclaredType>
         </Attribute>
+        <Attribute>
+          <Name value="starring_vis" />
+          <Caption value="Starring _ vis" />
+          <DeclaredType>
+            <AttributeType>
+              <BaseType value="Bool" />
+            </AttributeType>
+          </DeclaredType>
+        </Attribute>
       </Children>
       <Modifiers>
         <Modifier>
@@ -377,11 +541,15 @@ else
 	//in case of search_by_actor
 	
 	if hasValue(form.search_by_actor) then
+		form.starring_vis=true
 		var filtered=form.all_movies.where(current.starring.exists(var actor => 
 		indexOf(toUpper(actor.actorName),toUpper(form.search_by_actor))>0)).toJson()
 		
 		form.all_movies.fromJson(filtered)
+	else 
+		form.starring_vis=false
 	endif
+	
 endif
 
 
@@ -416,7 +584,7 @@ globals.data_protection=true
 form.sorting.title=true
 form.sorting.year=true
 form.sorting.score=true
-
+form.starring_vis=false
 
 apiobjects.breadcrumbsCtrl1.removeAll()
 apiobjects.breadcrumbsCtrl1.addBreadcrumb("list","Home","","",false)
@@ -431,7 +599,7 @@ form.actions.get_list()
       </DataContext>
     </ActionBlock>
     <ActionBlock>
-      <Name value="handler_dataTable1_OnRowActivate" />
+      <Name value="action1" />
       <IsPrivate value="True" />
       <ActionLangBody IsValid="True">
         <Script><![CDATA[navigation.main.detail.go(params.data.id,params.data.name)]]></Script>
